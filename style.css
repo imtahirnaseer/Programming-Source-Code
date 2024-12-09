@@ -9,6 +9,7 @@
 body {
     background-color: #f5f5f5;
     color: #333;
+    line-height: 1.6;
 }
 
 /* Hero Section */
@@ -160,34 +161,11 @@ footer {
     font-size: 0.9rem;
 }
 
-
-/* General Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Arial', sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background: linear-gradient(to right, #ece9e6, #ffffff);
-    padding: 0;
-    margin: 0;
-}
-
-
-
-
-
-
-
 /* Header Section */
 header.hero {
     position: relative;
     height: 250px;
-    background-image: url('background.jpg'); /* Replace with your background image */
+    background-image: url('background.jpg');
     background-size: cover;
     background-position: center;
     display: flex;
@@ -346,7 +324,7 @@ code {
     color: #333;
 }
 
-
+/* Footer */
 footer {
     background-color: #333;
     padding: 20px;
@@ -363,47 +341,106 @@ footer .social-icons {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 25px; /* Space between icons */
+    gap: 25px;
     margin-top: 10px;
 }
 
 footer .social-icons a {
     color: #fff;
-    font-size: 30px; /* Larger icons */
+    font-size: 30px;
     transition: color 0.3s, transform 0.3s;
 }
 
 footer .social-icons a:hover {
-    color: #0073b1; /* Hover color */
-    transform: scale(1.1); /* Slight zoom effect */
+    color: #0073b1;
+    transform: scale(1.1);
 }
 
 footer .social-icons a:active {
-    transform: scale(0.9); /* Click effect */
+    transform: scale(0.9);
 }
 
 footer .social-icons a i {
-    margin: 0 10px; /* Extra space around icons for better visual balance */
+    margin: 0 10px;
 }
 
-
-/* Code Highlighting */
-pre code span.text-blue-600 {
-    color: #3498db;
+footer a {
+    color: rgb(236, 248, 11);
+    text-decoration: none; /* Optional: removes underline */
 }
 
-pre code span.text-green-600 {
-    color: #27ae60;
+footer a:hover {
+    color: rgb(111, 111, 45); /* Optional: change color on hover */
 }
 
-pre code span.text-purple-600 {
-    color: #9b59b6;
+/* Mobile View */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 10px 20px;
+    }
+
+    .hero-content h2 {
+        font-size: 2.5rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .cta-button {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+
+    .languages {
+        padding: 40px 10px;
+    }
+
+    .language-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .language-card {
+        padding: 15px;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+    }
+
+    footer {
+        padding: 15px;
+    }
 }
 
-pre code span.text-yellow-600 {
-    color: #f1c40f;
-}
+/* Mobile-first View */
+@media (max-width: 480px) {
+    .hero-content h2 {
+        font-size: 2rem;
+    }
 
-pre code span.text-gray-500 {
-    color: #95a5a6;
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .cta-button {
+        padding: 8px 15px;
+        font-size: 0.8rem;
+    }
+
+    .navbar .logo {
+        font-size: 1.2rem;
+    }
+
+    .nav-links {
+        display: block;
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+    }
+
+    .social-icons {
+        gap: 20px;
+    }
 }
