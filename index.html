@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Journey</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" defer></script>
+</head>
+
+<body>
+    <header class="hero">
+        <div class="overlay"></div>
+        <nav class="navbar">
+            <!-- Dynamic Logo with Typewriter Effect -->
+            <h1 class="logo">
+                <span class="fixed-part">&lt;Code </span>
+                <span class="changing-part" id="changingText"></span>
+                <span class="fixed-part">/&gt;</span>
+            </h1>
+            <br>
+            <ul class="nav-links">
+                <li><a href="html.html">HTML</a></li>
+                <li><a href="css.html">CSS</a></li>
+                <li><a href="js.html">JavaScript</a></li>
+                <li><a href="c.html">C</a></li>
+                <li><a href="cpp.html">C++</a></li>
+                <li><a href="py.html">Python</a></li>
+                <li><a href="java.html">Java</a></li>
+                <li><a href="csharp.html">C#</a></li>
+                <li><a href="oops.html">OOPs</a></li>
+                <li><a href="dsa.html">DSA</a></li>
+            </ul>
+        </nav>
+        <div class="hero-content">
+            <h2>Welcome to Code Journey</h2>
+            <p>Your DSA Solutions in C, C++, Java, Python and Oops Solutions in C++, Java, Python, C#, Java Script......Scroll to see</p>
+            <a href="#explore" class="cta-button">Explore Now</a>
+        </div>
+    </header>
+
+    <section id="explore" class="languages">
+        <h2 class="section-title">Choose a Language</h2>
+        <div class="language-grid">
+            <div class="language-card">
+                <a href="html.html">
+                    <i class="fab fa-html5"></i>
+                    <h3>HTML</h3>
+                </a>
+            </div>
+            <div class="language-card">
+                <a href="css.html">
+                    <i class="fab fa-css3-alt"></i>
+                    <h3>CSS</h3>
+                </a>
+            </div>
+            <div class="language-card">
+                <a href="js.html">
+                    <i class="fab fa-js-square"></i>
+                    <h3>JavaScript</h3>
+                </a>
+            </div>
+            <div class="language-card">
+                <a href="c.html">
+                    <i class="fas fa-code"></i>
+                    <h3>C</h3>
+                </a>
+            </div>
+            <div class="language-card">
+                <a href="cpp.html">
+                    <i class="fas fa-laptop-code"></i>
+                    <h3>C++</h3>
+                </a>
+            </div>
+            <div class="language-card">
+                <a href="py.html">
+                    <i class="fas fa-dice-d6"></i>
+                    <h3>Python</h3>
+                </a>
+            </div>
+            <div class="language-card">
+                <a href="java.html">
+                    <i class="fas fa-coffee"></i>
+                    <h3>Java</h3>
+                </a>
+            </div>
+            <div class="language-card">
+                <a href="csharp.html">
+                    <i class="fas fa-hashtag"></i>
+                    <h3>C#</h3>
+                </a>
+            </div>
+            <div class="language-card">
+                <a href="oops.html">
+                    <i class="fas fa-object-group"></i>
+                    <h3>OOPs</h3>
+                </a>
+            </div>
+            <div class="language-card">
+                <a href="dsa.html">
+                    <i class="fas fa-database"></i>
+                    <h3>DSA</h3>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2024 Code Journey with Tahir Naseer All rights reserved.</p>
+        <div class="social-icons">
+            <a href="https://www.linkedin.com/in/imtahirnaseer" target="_blank" title="LinkedIn">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://github.com/imtahirnaseer" target="_blank" title="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://www.instagram.com/imtahirnaseer" target="_blank" title="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://imtahirnaseer.github.io/Portfolio" target="_blank" title="Website">
+                <i class="fas fa-globe"></i>
+            </a>
+            <a href="https://linktr.ee/imtahirnaseer" target="_blank" title="Linktree">
+                <i class="fab fa-linktree"></i>
+            </a>
+        </div>
+    </footer>
+    
+
+    <!-- Script for Typewriter Effect -->
+    <script>
+        const changingText = document.getElementById("changingText");
+        const words = ["Journey.","with Tahir Naseer.", "Master.", "Hacker.", "Learner.", "Viewer.", "Maker."];
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        function typeEffect() {
+            const currentWord = words[wordIndex];
+
+            if (isDeleting) {
+                // Remove characters
+                changingText.textContent = currentWord.substring(0, charIndex--);
+            } else {
+                // Add characters
+                changingText.textContent = currentWord.substring(0, charIndex++);
+            }
+
+            // Adjust typing speed
+            let speed = isDeleting ? 100 : 150;
+
+            if (!isDeleting && charIndex === currentWord.length) {
+                // Pause after completing a word
+                isDeleting = true;
+                speed = 1000; // Pause for 1 second
+            } else if (isDeleting && charIndex === 0) {
+                // Move to the next word after deleting
+                isDeleting = false;
+                wordIndex = (wordIndex + 1) % words.length; // Loop through words
+            }
+
+            setTimeout(typeEffect, speed);
+        }
+
+        // Start the typewriter effect
+        typeEffect();
+    </script>
+</body>
+
+</html>
