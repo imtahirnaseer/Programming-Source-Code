@@ -1,0 +1,3207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OOPs Questions in C++</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>OOPs Questions in C++</h1>
+
+       <!-- Question 1 -->
+<div class="question-box">
+    <h3>1. Program to break a number into its factors</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+#include <iostream>
+using namespace std;
+
+void find_factors(int num) {
+    for(int i = 1; i <= num; i++) {
+        if(num % i == 0) {
+            cout << i << " ";
+        }
+    }
+    cout << endl;
+}
+
+int main() {
+    int num;
+    cout << "Enter a number: ";
+    cin >> num;
+    cout << "Factors of " << num << " are: ";
+    find_factors(num);
+    return 0;
+}
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 2 -->
+<div class="question-box">
+    <h3>2. Program to generate prime series from 1 to 100</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+#include <iostream>
+using namespace std;
+
+bool is_prime(int num) {
+    if (num <= 1) return false;
+    for (int i = 2; i <= num / 2; i++) {
+        if (num % i == 0) {
+            return false;
+        }
+    }
+    return true;
+}
+
+int main() {
+    cout << "Prime numbers from 1 to 100 are: ";
+    for (int i = 1; i <= 100; i++) {
+        if (is_prime(i)) {
+            cout << i << " ";
+        }
+    }
+    cout << endl;
+    return 0;
+}
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 3 -->
+<div class="question-box">
+    <h3>3. Program to demonstrate the use of static data members</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+#include <iostream>
+using namespace std;
+
+class MyClass {
+public:
+    static int count; // Static data member
+    MyClass() {
+        count++;
+    }
+    static void showCount() {
+        cout << "Count is: " << count << endl;
+    }
+};
+
+int MyClass::count = 0;
+
+int main() {
+    MyClass obj1, obj2;
+    MyClass::showCount(); // Access static method
+    return 0;
+}
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 4 -->
+<div class="question-box">
+    <h3>4. Program to demonstrate the use of friendly functions</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+#include <iostream>
+using namespace std;
+
+class MyClass {
+private:
+    int x;
+public:
+    MyClass(int val) : x(val) {}
+    friend void showValue(MyClass &obj); // Friendly function declaration
+};
+
+void showValue(MyClass &obj) {
+    cout << "Value of x: " << obj.x << endl;
+}
+
+int main() {
+    MyClass obj(10);
+    showValue(obj); // Access private member via friendly function
+    return 0;
+}
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 5 -->
+<div class="question-box">
+    <h3>5. Program to demonstrate the use of zero argument and parameterized constructors</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+#include <iostream>
+using namespace std;
+
+class MyClass {
+public:
+    int value;
+    MyClass() { // Zero argument constructor
+        value = 0;
+    }
+    MyClass(int val) { // Parameterized constructor
+        value = val;
+    }
+    void display() {
+        cout << "Value: " << value << endl;
+    }
+};
+
+int main() {
+    MyClass obj1;
+    MyClass obj2(10);
+    obj1.display();
+    obj2.display();
+    return 0;
+}
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 6 -->
+<div class="question-box">
+    <h3>6. Program to demonstrate the use of multiple constructors in a class (Overloaded constructors)</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+#include <iostream>
+using namespace std;
+
+class MyClass {
+public:
+    int x, y;
+    MyClass() { // Default constructor
+        x = 0;
+        y = 0;
+    }
+    MyClass(int a) { // Single parameterized constructor
+        x = a;
+        y = 0;
+    }
+    MyClass(int a, int b) { // Double parameterized constructor
+        x = a;
+        y = b;
+    }
+    void display() {
+        cout << "x = " << x << ", y = " << y << endl;
+    }
+};
+
+int main() {
+    MyClass obj1;
+    MyClass obj2(5);
+    MyClass obj3(10, 20);
+    obj1.display();
+    obj2.display();
+    obj3.display();
+    return 0;
+}
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 7 -->
+<div class="question-box">
+    <h3>7. Program to demonstrate the overloading of unary operators</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+#include <iostream>
+using namespace std;
+
+class MyClass {
+public:
+    int value;
+    MyClass() : value(0) {}
+    MyClass operator++() { // Overloading unary ++ operator
+        value++;
+        return *this;
+    }
+    void display() {
+        cout << "Value: " << value << endl;
+    }
+};
+
+int main() {
+    MyClass obj;
+    ++obj; // Using overloaded ++ operator
+    obj.display();
+    return 0;
+}
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 8 -->
+<div class="question-box">
+    <h3>8. Program to demonstrate the overloading of binary arithmetic operators</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+#include <iostream>
+using namespace std;
+
+class MyClass {
+public:
+    int value;
+    MyClass(int val) : value(val) {}
+    MyClass operator+(const MyClass& other) { // Overloading binary + operator
+        return MyClass(value + other.value);
+    }
+    void display() {
+        cout << "Value: " << value << endl;
+    }
+};
+
+int main() {
+    MyClass obj1(10), obj2(20);
+    MyClass obj3 = obj1 + obj2; // Using overloaded + operator
+    obj3.display();
+    return 0;
+}
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 9 -->
+<div class="question-box">
+    <h3>9. Program to demonstrate the overloading of binary arithmetic operators using friend function</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+#include <iostream>
+using namespace std;
+
+class MyClass {
+public:
+    int value;
+    MyClass(int val) : value(val) {}
+    friend MyClass operator+(const MyClass& obj1, const MyClass& obj2); // Friend function
+    void display() {
+        cout << "Value: " << value << endl;
+    }
+};
+
+MyClass operator+(const MyClass& obj1, const MyClass& obj2) { // Friend function definition
+    return MyClass(obj1.value + obj2.value);
+}
+
+int main() {
+    MyClass obj1(10), obj2(20);
+    MyClass obj3 = obj1 + obj2; // Using friend function
+    obj3.display();
+    return 0;
+}
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 10 -->
+<div class="question-box">
+    <h3>10. Program to demonstrate the typecasting of basic type to class type</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+#include <iostream>
+using namespace std;
+
+class MyClass {
+public:
+    int value;
+    MyClass(int val) : value(val) {}
+    MyClass() : value(0) {}
+    operator int() { // Typecasting operator
+        return value;
+    }
+};
+
+int main() {
+    MyClass obj(100);
+    int num = obj; // Implicit typecasting
+    cout << "Converted value: " << num << endl;
+    return 0;
+}
+</code>
+        </pre>
+    </div>
+</div>
+
+
+
+<!-- Question 11 -->
+<div class="question-box">
+    <h3>11. Program to demonstrate the typecasting of class type to class type</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+#include <iostream>
+using namespace std;
+
+class MyClass {
+public:
+    int value;
+    MyClass(int val) : value(val) {}
+};
+
+class AnotherClass {
+public:
+    int value;
+    AnotherClass(MyClass obj) { // Typecasting constructor
+        value = obj.value;
+    }
+    void display() {
+        cout << "Value: " << value << endl;
+    }
+};
+
+int main() {
+    MyClass obj1(100);
+    AnotherClass obj2 = obj1; // Class type to class type typecasting
+    obj2.display();
+    return 0;
+}
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 12 -->
+<div class="question-box">
+    <h3>12. Program to demonstrate the multilevel inheritance</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+#include <iostream>
+using namespace std;
+
+class A {
+public:
+    void displayA() {
+        cout << "Class A" << endl;
+    }
+};
+
+class B : public A {
+public:
+    void displayB() {
+        cout << "Class B" << endl;
+    }
+};
+
+class C : public B {
+public:
+    void displayC() {
+        cout << "Class C" << endl;
+    }
+};
+
+int main() {
+    C obj;
+    obj.displayA();
+    obj.displayB();
+    obj.displayC();
+    return 0;
+}
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 13 -->
+<div class="question-box">
+    <h3>13. Program to demonstrate the multiple inheritance</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+#include <iostream>
+using namespace std;
+
+class A {
+public:
+    void displayA() {
+        cout << "Class A" << endl;
+    }
+};
+
+class B {
+public:
+    void displayB() {
+        cout << "Class B" << endl;
+    }
+};
+
+class C : public A, public B {
+public:
+    void displayC() {
+        cout << "Class C" << endl;
+    }
+};
+
+int main() {
+    C obj;
+    obj.displayA();
+    obj.displayB();
+    obj.displayC();
+    return 0;
+}
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 14 -->
+<div class="question-box">
+    <h3>14. Program to demonstrate the virtual derivation of a class</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+#include <iostream>
+using namespace std;
+
+class A {
+public:
+    virtual void display() {
+        cout << "Class A" << endl;
+    }
+};
+
+class B : public A {
+public:
+    void display() override {
+        cout << "Class B" << endl;
+    }
+};
+
+int main() {
+    A* obj;
+    B b;
+    obj = &b;
+    obj->display(); // Virtual function call
+    return 0;
+}
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 15 -->
+<div class="question-box">
+    <h3>15. Program to demonstrate the runtime polymorphism</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+#include <iostream>
+using namespace std;
+
+class Shape {
+public:
+    virtual void draw() {
+        cout << "Drawing Shape" << endl;
+    }
+};
+
+class Circle : public Shape {
+public:
+    void draw() override {
+        cout << "Drawing Circle" << endl;
+    }
+};
+
+class Rectangle : public Shape {
+public:
+    void draw() override {
+        cout << "Drawing Rectangle" << endl;
+    }
+};
+
+int main() {
+    Shape* shape;
+    Circle circle;
+    Rectangle rectangle;
+    
+    shape = &circle;
+    shape->draw(); // Calls Circle's draw
+    
+    shape = &rectangle;
+    shape->draw(); // Calls Rectangle's draw
+    
+    return 0;
+}
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 16 -->
+<div class="question-box">
+    <h3>16. Program to demonstrate the exception handling</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+#include <iostream>
+using namespace std;
+
+int main() {
+    try {
+        int num = 10;
+        if (num < 20) {
+            throw num; // Throw exception
+        }
+    }
+    catch (int e) {
+        cout << "Exception caught: " << e << endl;
+    }
+    return 0;
+}
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 17 -->
+<div class="question-box">
+    <h3>17. Program to demonstrate the use of function template</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+#include <iostream>
+using namespace std;
+
+template <typename T>
+T add(T a, T b) {
+    return a + b;
+}
+
+int main() {
+    cout << "Sum of 10 and 20: " << add(10, 20) << endl;
+    cout << "Sum of 5.5 and 3.5: " << add(5.5, 3.5) << endl;
+    return 0;
+}
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 18 -->
+<div class="question-box">
+    <h3>18. Program to demonstrate the use of class template</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+#include <iostream>
+using namespace std;
+
+template <class T>
+class MyClass {
+public:
+    T value;
+    MyClass(T val) : value(val) {}
+    void display() {
+        cout << "Value: " << value << endl;
+    }
+};
+
+int main() {
+    MyClass<int> obj1(10);
+    MyClass<double> obj2(5.5);
+    obj1.display();
+    obj2.display();
+    return 0;
+}
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 19 -->
+<div class="question-box">
+    <h3>19. Program to copy the contents of a file to another file byte by byte</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main() {
+    ifstream sourceFile("source.txt", ios::binary);
+    ofstream destinationFile("destination.txt", ios::binary);
+    
+    char ch;
+    while (sourceFile.get(ch)) {
+        destinationFile.put(ch); // Copy byte by byte
+    }
+    
+    sourceFile.close();
+    destinationFile.close();
+    
+    cout << "File copied successfully!" << endl;
+    return 0;
+}
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 20 -->
+<div class="question-box">
+    <h3>20. Program to demonstrate the reading and writing of objects</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+class MyClass {
+public:
+    int value;
+    MyClass(int val) : value(val) {}
+    void display() {
+        cout << "Value: " << value << endl;
+    }
+};
+
+int main() {
+    MyClass obj(10);
+    ofstream outFile("object.dat", ios::binary);
+    outFile.write(reinterpret_cast<char*>(&obj), sizeof(obj));
+    outFile.close();
+    
+    MyClass newObj(0);
+    ifstream inFile("object.dat", ios::binary);
+    inFile.read(reinterpret_cast<char*>(&newObj), sizeof(newObj));
+    inFile.close();
+    
+    newObj.display(); // Display the data read from file
+    return 0;
+}
+</code>
+        </pre>
+    </div>
+</div>
+
+<div class="container">
+    <h1>OOPs Questions in Java</h1>
+    </div>
+
+    <!-- Question 1 -->
+<div class="question-box">
+    <h3>1. Program to break a number into its factors</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a number: ");
+        int num = sc.nextInt();
+        
+        System.out.print("Factors of " + num + " are: ");
+        for (int i = 1; i <= num; i++) {
+            if (num % i == 0) {
+                System.out.print(i + " ");
+            }
+        }
+    }
+}
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 2 -->
+<div class="question-box">
+    <h3>2. Program to generate prime series from 1 to 100</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+public class Main {
+    public static void main(String[] args) {
+        System.out.print("Prime numbers between 1 and 100 are: ");
+        for (int num = 2; num <= 100; num++) {
+            boolean isPrime = true;
+            for (int i = 2; i <= num / 2; i++) {
+                if (num % i == 0) {
+                    isPrime = false;
+                    break;
+                }
+            }
+            if (isPrime) {
+                System.out.print(num + " ");
+            }
+        }
+    }
+}
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 3 -->
+<div class="question-box">
+    <h3>3. [Classes and Objects] Program to demonstrate the use of static data members</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+class Student {
+    static int count = 0;
+
+    Student() {
+        count++;
+    }
+
+    static void displayCount() {
+        System.out.println("Number of students: " + count);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Student s1 = new Student();
+        Student s2 = new Student();
+        Student.displayCount();
+    }
+}
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 4 -->
+<div class="question-box">
+    <h3>4. [Classes and Objects] Program to demonstrate the use of friendly functions</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+class Box {
+    private int width;
+    private int height;
+
+    Box(int w, int h) {
+        width = w;
+        height = h;
+    }
+
+    // Friend function
+    static void displayArea(Box box) {
+        System.out.println("Area: " + (box.width * box.height));
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Box b = new Box(5, 10);
+        Box.displayArea(b);
+    }
+}
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 5 -->
+<div class="question-box">
+    <h3>5. [Constructors and Destructors] Program to demonstrate the use of zero argument and parameterized constructors</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+class Car {
+    String make;
+    int year;
+
+    // Zero-argument constructor
+    Car() {
+        make = "Unknown";
+        year = 0;
+    }
+
+    // Parameterized constructor
+    Car(String make, int year) {
+        this.make = make;
+        this.year = year;
+    }
+
+    void display() {
+        System.out.println("Make: " + make + ", Year: " + year);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Car car1 = new Car();
+        Car car2 = new Car("Toyota", 2020);
+
+        car1.display();
+        car2.display();
+    }
+}
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 6 -->
+<div class="question-box">
+    <h3>6. [Constructors and Destructors] Program to demonstrate the use of multiple constructors in a class (Overloaded constructors)</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+class Rectangle {
+    int length;
+    int width;
+
+    // Constructor 1
+    Rectangle(int l, int w) {
+        length = l;
+        width = w;
+    }
+
+    // Constructor 2 (Overloaded)
+    Rectangle(int l) {
+        length = l;
+        width = 10; // default value
+    }
+
+    void display() {
+        System.out.println("Length: " + length + ", Width: " + width);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Rectangle rect1 = new Rectangle(10, 5);
+        Rectangle rect2 = new Rectangle(15);
+
+        rect1.display();
+        rect2.display();
+    }
+}
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 7 -->
+<div class="question-box">
+    <h3>7. [Operator Overloading] Program to demonstrate the overloading of unary operators</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+class Counter {
+    private int count;
+
+    Counter() {
+        count = 0;
+    }
+
+    // Overloading the ++ operator
+    void increment() {
+        count++;
+    }
+
+    void display() {
+        System.out.println("Count: " + count);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Counter counter = new Counter();
+        counter.increment();
+        counter.increment();
+        counter.display();
+    }
+}
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 8 -->
+<div class="question-box">
+    <h3>8. [Operator Overloading] Program to demonstrate the overloading of binary arithmetic operators</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+class Complex {
+    int real;
+    int imaginary;
+
+    Complex(int r, int i) {
+        real = r;
+        imaginary = i;
+    }
+
+    // Overloading the + operator
+    Complex add(Complex c) {
+        return new Complex(real + c.real, imaginary + c.imaginary);
+    }
+
+    void display() {
+        System.out.println(real + " + " + imaginary + "i");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Complex c1 = new Complex(5, 6);
+        Complex c2 = new Complex(3, 4);
+        Complex result = c1.add(c2);
+
+        result.display();
+    }
+}
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 9 -->
+<div class="question-box">
+    <h3>9. [Operator Overloading] Program to demonstrate the overloading of binary arithmetic operators using friend function</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+class Complex {
+    int real;
+    int imaginary;
+
+    Complex(int r, int i) {
+        real = r;
+        imaginary = i;
+    }
+
+    // Friend function for operator overloading
+    static Complex add(Complex c1, Complex c2) {
+        return new Complex(c1.real + c2.real, c1.imaginary + c2.imaginary);
+    }
+
+    void display() {
+        System.out.println(real + " + " + imaginary + "i");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Complex c1 = new Complex(2, 3);
+        Complex c2 = new Complex(4, 5);
+        Complex result = Complex.add(c1, c2);
+
+        result.display();
+    }
+}
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 10 -->
+<div class="question-box">
+    <h3>10. [Typecasting] Program to demonstrate the typecasting of basic type to class type</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+class Circle {
+    int radius;
+
+    Circle(int r) {
+        radius = r;
+    }
+
+    void display() {
+        System.out.println("Radius: " + radius);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        int r = 7;
+        Circle c = new Circle(r);  // Typecasting from int to Circle
+        c.display();
+    }
+}
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 11 -->
+<div class="question-box">
+    <h3>11. [Typecasting] Program to demonstrate the typecasting of class type to class type</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+class Shape {
+    void display() {
+        System.out.println("This is a shape.");
+    }
+}
+
+class Circle extends Shape {
+    @Override
+    void display() {
+        System.out.println("This is a circle.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Shape shape = new Circle();
+        shape.display();  // Dynamic method dispatch
+    }
+}
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 12 -->
+<div class="question-box">
+    <h3>12. [Inheritance] Program to demonstrate the multilevel inheritance</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+class Animal {
+    void eat() {
+        System.out.println("Eating...");
+    }
+}
+
+class Dog extends Animal {
+    void bark() {
+        System.out.println("Barking...");
+    }
+}
+
+class Puppy extends Dog {
+    void play() {
+        System.out.println("Playing...");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Puppy puppy = new Puppy();
+        puppy.eat();
+        puppy.bark();
+        puppy.play();
+    }
+}
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 13 -->
+<div class="question-box">
+    <h3>13. [Inheritance] Program to demonstrate the multiple inheritance</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+interface Animal {
+    void sound();
+}
+
+interface Bird {
+    void fly();
+}
+
+class Eagle implements Animal, Bird {
+    public void sound() {
+        System.out.println("Eagle's sound");
+    }
+
+    public void fly() {
+        System.out.println("Eagle is flying");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Eagle eagle = new Eagle();
+        eagle.sound();
+        eagle.fly();
+    }
+}
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 14 -->
+<div class="question-box">
+    <h3>14. [Inheritance] Program to demonstrate the virtual derivation of a class</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+class Base {
+    void display() {
+        System.out.println("Base class");
+    }
+}
+
+class Derived extends Base {
+    @Override
+    void display() {
+        System.out.println("Derived class");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Base obj = new Derived();
+        obj.display();  // Displays "Derived class" due to dynamic method dispatch
+    }
+}
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 15 -->
+<div class="question-box">
+    <h3>15. [Polymorphism] Program to demonstrate the runtime polymorphism</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+class Animal {
+    void sound() {
+        System.out.println("Animal sound");
+    }
+}
+
+class Dog extends Animal {
+    @Override
+    void sound() {
+        System.out.println("Barking");
+    }
+}
+
+class Cat extends Animal {
+    @Override
+    void sound() {
+        System.out.println("Meowing");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Animal animal1 = new Dog();
+        Animal animal2 = new Cat();
+
+        animal1.sound();  // Runtime polymorphism
+        animal2.sound();  // Runtime polymorphism
+    }
+}
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 16 -->
+<div class="question-box">
+    <h3>16. [Exception Handling] Program to demonstrate the exception handling</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+public class Main {
+    public static void main(String[] args) {
+        try {
+            int result = 10 / 0;  // This will throw ArithmeticException
+        } catch (ArithmeticException e) {
+            System.out.println("Exception caught: " + e);
+        }
+        System.out.println("Program continues after exception handling.");
+    }
+}
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 17 -->
+<div class="question-box">
+    <h3>17. [Templates and Generic Programming] Program to demonstrate the use of function template</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+class GenericFunction {
+    // Function template for swapping values
+    <T> void swap(T a, T b) {
+        System.out.println("Before swap: " + a + " " + b);
+        T temp = a;
+        a = b;
+        b = temp;
+        System.out.println("After swap: " + a + " " + b);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        GenericFunction gf = new GenericFunction();
+        gf.swap(10, 20);  // Swapping integers
+        gf.swap("Hello", "World");  // Swapping strings
+    }
+}
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 18 -->
+<div class="question-box">
+    <h3>18. [Templates and Generic Programming] Program to demonstrate the use of class template</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+class Box<T> {
+    T value;
+
+    Box(T value) {
+        this.value = value;
+    }
+
+    void display() {
+        System.out.println("Box contains: " + value);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Box<Integer> intBox = new Box<>(5);
+        Box<String> strBox = new Box<>("Hello");
+
+        intBox.display();
+        strBox.display();
+    }
+}
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 19 -->
+<div class="question-box">
+    <h3>19. [File Handling] Program to copy the contents of a file to another file byte by byte. The name of the source file and destination file should be taken as command-line arguments</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+import java.io.*;
+
+public class Main {
+    public static void main(String[] args) throws IOException {
+        if (args.length != 2) {
+            System.out.println("Usage: java Main <source file> <destination file>");
+            return;
+        }
+
+        FileInputStream fis = new FileInputStream(args[0]);
+        FileOutputStream fos = new FileOutputStream(args[1]);
+
+        int byteData;
+        while ((byteData = fis.read()) != -1) {
+            fos.write(byteData);
+        }
+
+        fis.close();
+        fos.close();
+
+        System.out.println("File copied successfully.");
+    }
+}
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 20 -->
+<div class="question-box">
+    <h3>20. [File Handling] Program to demonstrate the reading and writing of objects</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+import java.io.*;
+
+class Person implements Serializable {
+    String name;
+    int age;
+
+    Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    void display() {
+        System.out.println("Name: " + name + ", Age: " + age);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
+        Person person = new Person("Tahir", 19);
+
+        // Writing object to file
+        ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("person.ser"));
+        out.writeObject(person);
+        out.close();
+
+        // Reading object from file
+        ObjectInputStream in = new ObjectInputStream(new FileInputStream("person.ser"));
+        Person p = (Person) in.readObject();
+        in.close();
+
+        p.display();
+    }
+}
+</code>
+        </pre>
+    </div>
+</div>
+
+
+<div class="container">
+    <h1>OOPs Questions in Python</h1>
+    </div>
+
+<!-- Question 1 -->
+<div class="question-box">
+    <h3>1. Program to break a number into its factors</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+def factors(n):
+    for i in range(1, n+1):
+        if n % i == 0:
+            print(i, end=" ")
+
+n = int(input("Enter a number: "))
+factors(n)
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 2 -->
+<div class="question-box">
+    <h3>2. Program to generate prime series from 1 to 100</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+def is_prime(n):
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            return False
+    return True
+
+for num in range(1, 101):
+    if is_prime(num):
+        print(num, end=" ")
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 3 -->
+<div class="question-box">
+    <h3>3. [Classes and Objects] Program to demonstrate the use of static data members</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+class Student:
+    count = 0  # Static data member
+
+    def __init__(self, name):
+        self.name = name
+        Student.count += 1
+
+s1 = Student("Alice")
+s2 = Student("Bob")
+print("Total students:", Student.count)
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 4 -->
+<div class="question-box">
+    <h3>4. [Classes and Objects] Program to demonstrate the use of friendly functions</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+class Box:
+    def __init__(self, length, width):
+        self.length = length
+        self.width = width
+
+def area(box):
+    return box.length * box.width
+
+b = Box(10, 5)
+print("Area of the box:", area(b))
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 5 -->
+<div class="question-box">
+    <h3>5. [Constructors and Destructors] Program to demonstrate the use of zero argument and parameterized constructors</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+class Person:
+    def __init__(self, name="Unknown", age=0):
+        self.name = name
+        self.age = age
+
+    def display(self):
+        print(f"Name: {self.name}, Age: {self.age}")
+
+p1 = Person()
+p1.display()
+
+p2 = Person("John", 30)
+p2.display()
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 6 -->
+<div class="question-box">
+    <h3>6. [Constructors and Destructors] Program to demonstrate the use of multiple constructors in a class (Overloaded constructors)</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+class Box:
+    def __init__(self, length=None, width=None):
+        if length is None and width is None:
+            self.length = self.width = 0
+        else:
+            self.length = length
+            self.width = width
+
+    def area(self):
+        return self.length * self.width
+
+b1 = Box()
+print("Area of Box 1:", b1.area())
+
+b2 = Box(10, 5)
+print("Area of Box 2:", b2.area())
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 7 -->
+<div class="question-box">
+    <h3>7. [Operator Overloading] Program to demonstrate the overloading of unary operators</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+class Counter:
+    def __init__(self, count=0):
+        self.count = count
+
+    def __neg__(self):
+        self.count = -self.count
+        return self
+
+c = Counter(5)
+print("Before negation:", c.count)
+c = -c
+print("After negation:", c.count)
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 8 -->
+<div class="question-box">
+    <h3>8. [Operator Overloading] Program to demonstrate the overloading of binary arithmetic operators</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+class Point:
+    def __init__(self, x=0, y=0):
+        self.x = x
+        self.y = y
+
+    def __add__(self, other):
+        return Point(self.x + other.x, self.y + other.y)
+
+p1 = Point(2, 3)
+p2 = Point(4, 5)
+p3 = p1 + p2
+print(f"Resultant Point: ({p3.x}, {p3.y})")
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 9 -->
+<div class="question-box">
+    <h3>9. [Operator Overloading] Program to demonstrate the overloading of binary arithmetic operators using friend function</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+class Complex:
+    def __init__(self, real=0, imag=0):
+        self.real = real
+        self.imag = imag
+
+    def __add__(self, other):
+        return Complex(self.real + other.real, self.imag + other.imag)
+
+    def display(self):
+        print(f"{self.real} + {self.imag}i")
+
+c1 = Complex(2, 3)
+c2 = Complex(4, 5)
+c3 = c1 + c2
+c3.display()
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 10 -->
+<div class="question-box">
+    <h3>10. [Typecasting] Program to demonstrate the typecasting of basic type to class type</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+class Box:
+    def __init__(self, size=0):
+        self.size = size
+
+    def display(self):
+        print(f"Box size: {self.size}")
+
+b = Box(int("10"))
+b.display()
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 11 -->
+<div class="question-box">
+    <h3>11. [Typecasting] Program to demonstrate the typecasting of class type to class type</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+class Rectangle:
+    def __init__(self, length, width):
+        self.length = length
+        self.width = width
+
+    def area(self):
+        return self.length * self.width
+
+r = Rectangle(10, 5)
+r2 = Rectangle(int(r.length), int(r.width))
+print("Area of Rectangle 2:", r2.area())
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 12 -->
+<div class="question-box">
+    <h3>12. [Inheritance] Program to demonstrate the multilevel inheritance</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+class Animal:
+    def speak(self):
+        print("Animal makes a sound")
+
+class Dog(Animal):
+    def bark(self):
+        print("Dog barks")
+
+class Puppy(Dog):
+    def play(self):
+        print("Puppy plays")
+
+p = Puppy()
+p.speak()
+p.bark()
+p.play()
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 13 -->
+<div class="question-box">
+    <h3>13. [Inheritance] Program to demonstrate the multiple inheritance</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+class Animal:
+    def speak(self):
+        print("Animal makes a sound")
+
+class Dog:
+    def bark(self):
+        print("Dog barks")
+
+class Puppy(Animal, Dog):
+    def play(self):
+        print("Puppy plays")
+
+p = Puppy()
+p.speak()
+p.bark()
+p.play()
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 14 -->
+<div class="question-box">
+    <h3>14. [Inheritance] Program to demonstrate the virtual derivation of a class</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+class Base:
+    def display(self):
+        print("Base class")
+
+class Derived(Base):
+    def display(self):
+        print("Derived class")
+
+d = Derived()
+d.display()
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 15 -->
+<div class="question-box">
+    <h3>15. [Polymorphism] Program to demonstrate the runtime polymorphism</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+class Animal:
+    def sound(self):
+        print("Animal sound")
+
+class Dog(Animal):
+    def sound(self):
+        print("Barking")
+
+class Cat(Animal):
+    def sound(self):
+        print("Meowing")
+
+a = Dog()
+b = Cat()
+a.sound()
+b.sound()
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 16 -->
+<div class="question-box">
+    <h3>16. [Exception Handling] Program to demonstrate the exception handling</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+try:
+    x = 10 / 0
+except ZeroDivisionError as e:
+    print("Error:", e)
+print("Program continues.")
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 17 -->
+<div class="question-box">
+    <h3>17. [Templates and Generic Programming] Program to demonstrate the use of function template</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+def swap(a, b):
+    return b, a
+
+x, y = 10, 20
+x, y = swap(x, y)
+print("Swapped values:", x, y)
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 18 -->
+<div class="question-box">
+    <h3>18. [Templates and Generic Programming] Program to demonstrate the use of class template</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+class Box:
+    def __init__(self, value):
+        self.value = value
+
+    def display(self):
+        print("Value:", self.value)
+
+box = Box(10)
+box.display()
+
+box2 = Box("Hello")
+box2.display()
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 19 -->
+<div class="question-box">
+    <h3>19. [File Handling] Program to copy the contents of a file to another file byte by byte</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+with open("source.txt", "rb") as src, open("destination.txt", "wb") as dest:
+    while (chunk := src.read(1024)):
+        dest.write(chunk)
+print("File copied successfully.")
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 20 -->
+<div class="question-box">
+    <h3>20. [File Handling] Program to demonstrate the reading and writing of objects</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+import pickle
+
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def display(self):
+        print(f"Name: {self.name}, Age: {self.age}")
+
+p = Person("Tahir", 19)
+with open("person.pkl", "wb") as f:
+    pickle.dump(p, f)
+
+with open("person.pkl", "rb") as f:
+    p2 = pickle.load(f)
+p2.display()
+</code>
+        </pre>
+    </div>
+</div>
+
+
+<div class="container">
+    <h1>OOPs Questions in C#</h1>
+    </div>
+
+
+    <!-- Question 1 -->
+<div class="question-box">
+    <h3>1. Program to break a number into its factors</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+using System;
+
+class Program
+{
+    static void Factors(int n)
+    {
+        for (int i = 1; i <= n; i++)
+        {
+            if (n % i == 0)
+                Console.Write(i + " ");
+        }
+    }
+
+    static void Main()
+    {
+        Console.Write("Enter a number: ");
+        int n = int.Parse(Console.ReadLine());
+        Factors(n);
+    }
+}
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 2 -->
+<div class="question-box">
+    <h3>2. Program to generate prime series from 1 to 100</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+using System;
+
+class Program
+{
+    static bool IsPrime(int n)
+    {
+        for (int i = 2; i <= Math.Sqrt(n); i++)
+        {
+            if (n % i == 0)
+                return false;
+        }
+        return true;
+    }
+
+    static void Main()
+    {
+        for (int num = 1; num <= 100; num++)
+        {
+            if (IsPrime(num))
+                Console.Write(num + " ");
+        }
+    }
+}
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 3 -->
+<div class="question-box">
+    <h3>3. [Classes and Objects] Program to demonstrate the use of static data members</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+using System;
+
+class Student
+{
+    public static int count = 0;  // Static data member
+
+    public Student()
+    {
+        count++;
+    }
+
+    public void DisplayCount()
+    {
+        Console.WriteLine("Total students: " + count);
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Student s1 = new Student();
+        Student s2 = new Student();
+        Student s3 = new Student();
+        s1.DisplayCount();
+    }
+}
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 4 -->
+<div class="question-box">
+    <h3>4. [Classes and Objects] Program to demonstrate the use of friendly functions</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+using System;
+
+class Box
+{
+    private int length;
+    private int width;
+
+    public Box(int length, int width)
+    {
+        this.length = length;
+        this.width = width;
+    }
+
+    // Friend function
+    public static int Area(Box b)
+    {
+        return b.length * b.width;
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Box b = new Box(10, 5);
+        Console.WriteLine("Area of the box: " + Box.Area(b));
+    }
+}
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 5 -->
+<div class="question-box">
+    <h3>5. [Constructors and Destructors] Program to demonstrate the use of zero argument and parameterized constructors</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+using System;
+
+class Person
+{
+    public string name;
+    public int age;
+
+    // Zero-argument constructor
+    public Person()
+    {
+        name = "Unknown";
+        age = 0;
+    }
+
+    // Parameterized constructor
+    public Person(string name, int age)
+    {
+        this.name = name;
+        this.age = age;
+    }
+
+    public void Display()
+    {
+        Console.WriteLine($"Name: {name}, Age: {age}");
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Person p1 = new Person();
+        p1.Display();
+
+        Person p2 = new Person("John", 30);
+        p2.Display();
+    }
+}
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 6 -->
+<div class="question-box">
+    <h3>6. [Constructors and Destructors] Program to demonstrate the use of multiple constructors in a class (Overloaded constructors)</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+using System;
+
+class Box
+{
+    private int length;
+    private int width;
+
+    // Zero-argument constructor
+    public Box()
+    {
+        length = 0;
+        width = 0;
+    }
+
+    // Parameterized constructor
+    public Box(int length, int width)
+    {
+        this.length = length;
+        this.width = width;
+    }
+
+    public void Display()
+    {
+        Console.WriteLine($"Length: {length}, Width: {width}");
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Box b1 = new Box();
+        b1.Display();
+
+        Box b2 = new Box(10, 5);
+        b2.Display();
+    }
+}
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 7 -->
+<div class="question-box">
+    <h3>7. [Operator Overloading] Program to demonstrate the overloading of unary operators</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+using System;
+
+class Counter
+{
+    public int count;
+
+    public Counter(int count = 0)
+    {
+        this.count = count;
+    }
+
+    // Overloading unary negation operator
+    public static Counter operator -(Counter c)
+    {
+        return new Counter(-c.count);
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Counter c = new Counter(5);
+        Console.WriteLine("Before negation: " + c.count);
+        c = -c;
+        Console.WriteLine("After negation: " + c.count);
+    }
+}
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 8 -->
+<div class="question-box">
+    <h3>8. [Operator Overloading] Program to demonstrate the overloading of binary arithmetic operators</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+using System;
+
+class Point
+{
+    public int x, y;
+
+    public Point(int x, int y)
+    {
+        this.x = x;
+        this.y = y;
+    }
+
+    // Overloading the + operator
+    public static Point operator +(Point p1, Point p2)
+    {
+        return new Point(p1.x + p2.x, p1.y + p2.y);
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Point p1 = new Point(2, 3);
+        Point p2 = new Point(4, 5);
+        Point p3 = p1 + p2;
+        Console.WriteLine($"Resultant Point: ({p3.x}, {p3.y})");
+    }
+}
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 9 -->
+<div class="question-box">
+    <h3>9. [Operator Overloading] Program to demonstrate the overloading of binary arithmetic operators using friend function</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+using System;
+
+class Complex
+{
+    public int real, imag;
+
+    public Complex(int real, int imag)
+    {
+        this.real = real;
+        this.imag = imag;
+    }
+
+    // Overloading the + operator using a static method
+    public static Complex operator +(Complex c1, Complex c2)
+    {
+        return new Complex(c1.real + c2.real, c1.imag + c2.imag);
+    }
+
+    public void Display()
+    {
+        Console.WriteLine($"{real} + {imag}i");
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Complex c1 = new Complex(2, 3);
+        Complex c2 = new Complex(4, 5);
+        Complex c3 = c1 + c2;
+        c3.Display();
+    }
+}
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 10 -->
+<div class="question-box">
+    <h3>10. [Typecasting] Program to demonstrate the typecasting of basic type to class type</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+using System;
+
+class Box
+{
+    public int size;
+
+    public Box(int size)
+    {
+        this.size = size;
+    }
+
+    public void Display()
+    {
+        Console.WriteLine("Box size: " + size);
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Box b = new Box((int)10.5);
+        b.Display();
+    }
+}
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 11 -->
+<div class="question-box">
+    <h3>11. [Typecasting] Program to demonstrate the typecasting of class type to class type</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+using System;
+
+class Box
+{
+    public int size;
+
+    public Box(int size)
+    {
+        this.size = size;
+    }
+
+    public void Display()
+    {
+        Console.WriteLine("Box size: " + size);
+    }
+}
+
+class SmallBox : Box
+{
+    public SmallBox(int size) : base(size)
+    {
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Box b = new SmallBox(5);
+        b.Display();
+    }
+}
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 12 -->
+<div class="question-box">
+    <h3>12. [Inheritance] Program to demonstrate the multilevel inheritance</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+using System;
+
+class Animal
+{
+    public void Speak()
+    {
+        Console.WriteLine("Animal speaks");
+    }
+}
+
+class Dog : Animal
+{
+    public void Bark()
+    {
+        Console.WriteLine("Dog barks");
+    }
+}
+
+class Puppy : Dog
+{
+    public void Whine()
+    {
+        Console.WriteLine("Puppy whines");
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Puppy p = new Puppy();
+        p.Speak();
+        p.Bark();
+        p.Whine();
+    }
+}
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 13 -->
+<div class="question-box">
+    <h3>13. [Inheritance] Program to demonstrate the multiple inheritance</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+using System;
+
+interface IAnimal
+{
+    void Speak();
+}
+
+interface IDog
+{
+    void Bark();
+}
+
+class Puppy : IAnimal, IDog
+{
+    public void Speak()
+    {
+        Console.WriteLine("Puppy speaks");
+    }
+
+    public void Bark()
+    {
+        Console.WriteLine("Puppy barks");
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Puppy p = new Puppy();
+        p.Speak();
+        p.Bark();
+    }
+}
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 14 -->
+<div class="question-box">
+    <h3>14. [Inheritance] Program to demonstrate the virtual derivation of a class</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+using System;
+
+class Animal
+{
+    public virtual void Speak()
+    {
+        Console.WriteLine("Animal speaks");
+    }
+}
+
+class Dog : Animal
+{
+    public override void Speak()
+    {
+        Console.WriteLine("Dog barks");
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Animal a = new Dog();
+        a.Speak();
+    }
+}
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 15 -->
+<div class="question-box">
+    <h3>15. [Polymorphism] Program to demonstrate the runtime polymorphism</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+using System;
+
+class Animal
+{
+    public virtual void Sound()
+    {
+        Console.WriteLine("Animal makes sound");
+    }
+}
+
+class Dog : Animal
+{
+    public override void Sound()
+    {
+        Console.WriteLine("Dog barks");
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Animal a = new Dog();
+        a.Sound();
+    }
+}
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 16 -->
+<div class="question-box">
+    <h3>16. [Exception Handling] Program to demonstrate the exception handling</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        try
+        {
+            int x = 10 / 0;
+        }
+        catch (DivideByZeroException e)
+        {
+            Console.WriteLine("Error: " + e.Message);
+        }
+        Console.WriteLine("Program continues...");
+    }
+}
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 17 -->
+<div class="question-box">
+    <h3>17. [Templates and Generic Programming] Program to demonstrate the use of function template</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+using System;
+
+class Program
+{
+    public static T Swap<T>(T a, T b)
+    {
+        T temp = a;
+        a = b;
+        b = temp;
+        return b;
+    }
+
+    static void Main()
+    {
+        int x = 10, y = 20;
+        Swap(ref x, ref y);
+        Console.WriteLine($"Swapped values: x = {x}, y = {y}");
+    }
+}
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 18 -->
+<div class="question-box">
+    <h3>18. [Templates and Generic Programming] Program to demonstrate the use of class template</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+using System;
+
+class Box<T>
+{
+    private T value;
+
+    public Box(T value)
+    {
+        this.value = value;
+    }
+
+    public void Display()
+    {
+        Console.WriteLine($"Value: {value}");
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Box<int> intBox = new Box<int>(10);
+        intBox.Display();
+
+        Box<string> strBox = new Box<string>("Hello");
+        strBox.Display();
+    }
+}
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 19 -->
+<div class="question-box">
+    <h3>19. [File Handling] Program to copy the contents of a file to another file byte by byte</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+using System;
+using System.IO;
+
+class Program
+{
+    static void Main()
+    {
+        using (FileStream sourceStream = new FileStream("source.txt", FileMode.Open))
+        {
+            using (FileStream destStream = new FileStream("destination.txt", FileMode.Create))
+            {
+                sourceStream.CopyTo(destStream);
+            }
+        }
+        Console.WriteLine("File copied successfully.");
+    }
+}
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 20 -->
+<div class="question-box">
+    <h3>20. [File Handling] Program to demonstrate the reading and writing of objects</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+using System;
+using System.IO;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
+
+[Serializable]
+class Person
+{
+    public string Name { get; set; }
+    public int Age { get; set; }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Person p = new Person { Name = "Tahir", Age = 19 };
+
+        using (FileStream fs = new FileStream("person.dat", FileMode.Create))
+        {
+            IFormatter formatter = new BinaryFormatter();
+            formatter.Serialize(fs, p);
+        }
+
+        using (FileStream fs = new FileStream("person.dat", FileMode.Open))
+        {
+            IFormatter formatter = new BinaryFormatter();
+            Person deserializedPerson = (Person)formatter.Deserialize(fs);
+            Console.WriteLine($"Name: {deserializedPerson.Name}, Age: {deserializedPerson.Age}");
+        }
+    }
+}
+</code>
+        </pre>
+    </div>
+</div>
+
+
+<div class="container">
+    <h1>OOPs Questions in JavaScript</h1>
+    </div>
+
+    <!-- Question 1 -->
+<div class="question-box">
+    <h3>1. [OOP Concepts] Program to demonstrate the creation of a class and an object</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+class Car {
+    constructor(brand, model) {
+        this.brand = brand;
+        this.model = model;
+    }
+
+    displayInfo() {
+        console.log(`Car brand: ${this.brand}, Model: ${this.model}`);
+    }
+}
+
+let myCar = new Car('Toyota', 'Corolla');
+myCar.displayInfo();
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 2 -->
+<div class="question-box">
+    <h3>2. [OOP Concepts] Program to demonstrate inheritance</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+class Animal {
+    constructor(name) {
+        this.name = name;
+    }
+
+    speak() {
+        console.log(`${this.name} makes a sound`);
+    }
+}
+
+class Dog extends Animal {
+    speak() {
+        console.log(`${this.name} barks`);
+    }
+}
+
+let dog = new Dog('Buddy');
+dog.speak();
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 3 -->
+<div class="question-box">
+    <h3>3. [OOP Concepts] Program to demonstrate polymorphism</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+class Animal {
+    speak() {
+        console.log('Animal makes a sound');
+    }
+}
+
+class Dog extends Animal {
+    speak() {
+        console.log('Dog barks');
+    }
+}
+
+let animal = new Animal();
+animal.speak();
+
+let dog = new Dog();
+dog.speak();
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 4 -->
+<div class="question-box">
+    <h3>4. [OOP Concepts] Program to demonstrate encapsulation</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+class Person {
+    #name;
+
+    constructor(name) {
+        this.#name = name;
+    }
+
+    getName() {
+        return this.#name;
+    }
+
+    setName(name) {
+        this.#name = name;
+    }
+}
+
+let person = new Person('Alice');
+console.log(person.getName());
+person.setName('Bob');
+console.log(person.getName());
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 5 -->
+<div class="question-box">
+    <h3>5. [OOP Concepts] Program to demonstrate abstraction</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+class Animal {
+    speak() {
+        throw new Error('Method speak() must be implemented');
+    }
+}
+
+class Dog extends Animal {
+    speak() {
+        console.log('Dog barks');
+    }
+}
+
+let dog = new Dog();
+dog.speak();
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 6 -->
+<div class="question-box">
+    <h3>6. [OOP Concepts] Program to demonstrate constructor overloading</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+class Car {
+    constructor(brand, model = 'Unknown') {
+        this.brand = brand;
+        this.model = model;
+    }
+
+    displayInfo() {
+        console.log(`Car brand: ${this.brand}, Model: ${this.model}`);
+    }
+}
+
+let car1 = new Car('Toyota', 'Corolla');
+let car2 = new Car('Honda');
+
+car1.displayInfo();
+car2.displayInfo();
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 7 -->
+<div class="question-box">
+    <h3>7. [Inheritance] Program to demonstrate multi-level inheritance</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+class Animal {
+    speak() {
+        console.log('Animal speaks');
+    }
+}
+
+class Dog extends Animal {
+    bark() {
+        console.log('Dog barks');
+    }
+}
+
+class Puppy extends Dog {
+    whine() {
+        console.log('Puppy whines');
+    }
+}
+
+let puppy = new Puppy();
+puppy.speak();
+puppy.bark();
+puppy.whine();
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 8 -->
+<div class="question-box">
+    <h3>8. [Inheritance] Program to demonstrate multiple inheritance using interfaces</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+class Animal {
+    speak() {
+        console.log('Animal speaks');
+    }
+}
+
+class Dog {
+    bark() {
+        console.log('Dog barks');
+    }
+}
+
+class Puppy extends Animal {
+    constructor() {
+        super();
+        Object.assign(this, new Dog());
+    }
+
+    whine() {
+        console.log('Puppy whines');
+    }
+}
+
+let puppy = new Puppy();
+puppy.speak();
+puppy.bark();
+puppy.whine();
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 9 -->
+<div class="question-box">
+    <h3>9. [Polymorphism] Program to demonstrate runtime polymorphism</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+class Animal {
+    sound() {
+        console.log('Animal makes sound');
+    }
+}
+
+class Dog extends Animal {
+    sound() {
+        console.log('Dog barks');
+    }
+}
+
+let animal = new Animal();
+let dog = new Dog();
+
+animal.sound();
+dog.sound();
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 10 -->
+<div class="question-box">
+    <h3>10. [Exception Handling] Program to demonstrate try-catch block</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+try {
+    let result = 10 / 0;
+    if (result === Infinity) throw 'Divide by zero error';
+} catch (e) {
+    console.log('Error: ' + e);
+} finally {
+    console.log('Finally block executed');
+}
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 11 -->
+<div class="question-box">
+    <h3>11. [Templates and Generic Programming] Program to demonstrate a generic function</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+function swap(a, b) {
+    [a, b] = [b, a];
+    console.log(`Swapped values: a = ${a}, b = ${b}`);
+}
+
+let x = 10, y = 20;
+swap(x, y);
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 12 -->
+<div class="question-box">
+    <h3>12. [Templates and Generic Programming] Program to demonstrate a generic class</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+class Box {
+    constructor(value) {
+        this.value = value;
+    }
+
+    display() {
+        console.log(`Value: ${this.value}`);
+    }
+}
+
+let intBox = new Box(10);
+let strBox = new Box('Hello');
+
+intBox.display();
+strBox.display();
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 13 -->
+<div class="question-box">
+    <h3>13. [File Handling] Program to demonstrate file read/write</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+const fs = require('fs');
+
+fs.writeFileSync('file.txt', 'Hello, world!');
+
+let data = fs.readFileSync('file.txt', 'utf8');
+console.log(data);
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 14 -->
+<div class="question-box">
+    <h3>14. [File Handling] Program to demonstrate the copying of file contents</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+const fs = require('fs');
+
+let data = fs.readFileSync('source.txt', 'utf8');
+fs.writeFileSync('destination.txt', data);
+console.log('File copied successfully');
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 15 -->
+<div class="question-box">
+    <h3>15. [File Handling] Program to demonstrate reading and writing objects to a file</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+const fs = require('fs');
+
+let person = { name: 'Alice', age: 25 };
+
+fs.writeFileSync('person.json', JSON.stringify(person));
+
+let data = fs.readFileSync('person.json', 'utf8');
+let personObj = JSON.parse(data);
+
+console.log(personObj);
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 16 -->
+<div class="question-box">
+    <h3>16. [Class Instantiation] Program to demonstrate class instantiation</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+class Animal {
+    constructor(name) {
+        this.name = name;
+    }
+}
+
+let animal1 = new Animal('Lion');
+console.log(animal1.name);
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 17 -->
+<div class="question-box">
+    <h3>17. [Class Instantiation] Program to demonstrate static properties and methods</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+class MathUtility {
+    static add(a, b) {
+        return a + b;
+    }
+}
+
+console.log(MathUtility.add(5, 10));
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 18 -->
+<div class="question-box">
+    <h3>18. [Class Instantiation] Program to demonstrate constructor overloading in JavaScript</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+class Rectangle {
+    constructor(length, width = length) {
+        this.length = length;
+        this.width = width;
+    }
+
+    area() {
+        return this.length * this.width;
+    }
+}
+
+let square = new Rectangle(5);
+let rectangle = new Rectangle(5, 10);
+
+console.log(square.area());
+console.log(rectangle.area());
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 19 -->
+<div class="question-box">
+    <h3>19. [Class Instantiation] Program to demonstrate getters and setters</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+class Person {
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    get personInfo() {
+        return `${this.name}, ${this.age}`;
+    }
+
+    set personAge(age) {
+        this.age = age;
+    }
+}
+
+let person = new Person('Alice', 25);
+console.log(person.personInfo);
+
+person.personAge = 30;
+console.log(person.personInfo);
+</code>
+        </pre>
+    </div>
+</div>
+
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+<div>
+    <footer>
+        <p>Copyright &copy; Tahir Naseer 2024</p>
+    </footer>
+</div>
