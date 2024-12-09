@@ -5,103 +5,263 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Code Journey</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" defer></script>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: linear-gradient(to right, #3e465e, #434f4a); /* Matching the gradient with the welcome section */
+            color: white;
+        }
+
+        .navbar .logo h2 {
+            font-size: 32px;
+            font-weight: bold;
+            text-transform: capitalize;
+            color: #f9d200;
+        }
+
+        .navbar .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .navbar .nav-links li {
+            margin-left: 20px;
+        }
+
+        .navbar .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-size: 16px;
+            padding: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .navbar .nav-links a:hover {
+            background-color: #f9d200;
+            color: #333;
+        }
+
+        .welcome-section {
+            background: linear-gradient(to right, #3e465e, #434f4a); /* Same gradient for consistency */
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .welcome-section h1 {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        .welcome-section p {
+            font-size: 18px;
+            margin-bottom: 40px;
+        }
+
+        .explore-button {
+            background-color: #f9d200;
+            color: #333;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-size: 18px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .explore-button:hover {
+            background-color: #f39c12;
+            color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .languages {
+            padding: 60px 20px;
+            background-color: #ffffff;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 40px;
+            color: #333;
+        }
+
+        .language-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .language-card {
+            background-color: #f4f4f4;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .language-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .language-card i {
+            font-size: 40px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .language-card h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .language-card p {
+            font-size: 16px;
+            color: #555;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer a {
+            color: #f9d200;
+            text-decoration: none;
+        }
+
+        .social-icons a {
+            margin: 0 10px;
+            font-size: 24px;
+            color: white;
+        }
+
+        .social-icons a:hover {
+            color: #f9d200;
+        }
+
+        /* Typewriter Effect */
+        #changingText {
+            font-size: 30px;
+            font-weight: bold;
+            color: #f9d200;
+            display: inline;
+        }
+    </style>
 </head>
 
 <body>
-    <header class="hero">
-        <div class="overlay"></div>
-        <nav class="navbar">
-            <!-- Dynamic Logo with Typewriter Effect -->
-            <h1 class="logo">
-                <span class="fixed-part">&lt;Code </span>
+    <header class="navbar">
+        <div class="logo">
+            <h2>
+                <span class="fixed-part">&lt;Code</span>
                 <span class="changing-part" id="changingText"></span>
                 <span class="fixed-part">/&gt;</span>
-            </h1>
-            <br>
-            <ul class="nav-links">
-                <li><a href="html.html">HTML</a></li>
-                <li><a href="c.html">C</a></li>
-                <li><a href="cpp.html">C++</a></li>
-                <li><a href="oops.html">OOPs</a></li>
-                <li><a href="dsa.html">DSA</a></li>
-            </ul>
-        </nav>
-        <div class="hero-content">
-            <h2>Welcome to Code Journey</h2>
-            <p>Your DSA Solutions in C, C++, Java, Python and Oops Solutions in C++, Java, Python, C#, Java Script......Scroll to see</p>
-            <a href="#explore" class="cta-button">Explore Now</a>
+            </h2>
         </div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#choose-language">Language</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
     </header>
 
-    <section id="explore" class="languages">
-        <h2 class="section-title">Choose a Language</h2>
-        <div class="language-grid">
-            <div class="language-card">
-                <a href="html.html">
-                    <i class="fab fa-html5"></i>
-                    <h3>HTML</h3>
-                </a>
-            </div>
-            <div class="language-card">
-                <a href="css.html">
-                    <i class="fab fa-css3-alt"></i>
-                    <h3>CSS</h3>
-                </a>
-            </div>
-            <div class="language-card">
-                <a href="js.html">
-                    <i class="fab fa-js-square"></i>
-                    <h3>JavaScript</h3>
-                </a>
-            </div>
-            <div class="language-card">
-                <a href="c.html">
-                    <i class="fas fa-code"></i>
-                    <h3>C</h3>
-                </a>
-            </div>
-            <div class="language-card">
-                <a href="cpp.html">
-                    <i class="fas fa-laptop-code"></i>
-                    <h3>C++</h3>
-                </a>
-            </div>
-            <div class="language-card">
-                <a href="py.html">
-                    <i class="fas fa-dice-d6"></i>
-                    <h3>Python</h3>
-                </a>
-            </div>
-            <div class="language-card">
-                <a href="java.html">
-                    <i class="fas fa-coffee"></i>
-                    <h3>Java</h3>
-                </a>
-            </div>
-            <div class="language-card">
-                <a href="csharp.html">
-                    <i class="fas fa-hashtag"></i>
-                    <h3>C#</h3>
-                </a>
-            </div>
-            <div class="language-card">
-                <a href="oops.html">
-                    <i class="fas fa-object-group"></i>
-                    <h3>OOPs</h3>
-                </a>
-            </div>
-            <div class="language-card">
-                <a href="dsa.html">
-                    <i class="fas fa-database"></i>
-                    <h3>DSA</h3>
-                </a>
+    <!-- Welcome Section -->
+    <section id="home" class="welcome-section">
+        <div class="container">
+            <div class="welcome-content">
+                <h1>Welcome to Code Journey</h1>
+                <p>Programming languages are the backbone of software development, offering the tools and syntax needed to create applications, websites, and systems. Each language has its own strengths and use cases, from web development with HTML, CSS, and JavaScript to powerful applications built with Python, Java, or C++. Understanding these languages empowers developers to solve complex problems, automate tasks, and build innovative solutions, making them essential for anyone looking to pursue a career in technology or improve their problem-solving skills.</p>
+                <a href="#choose-language" class="explore-button">Explore Languages</a>
             </div>
         </div>
     </section>
 
-    <footer>
+    <!-- Choose a Language Section -->
+    <section id="choose-language" class="languages">
+        <div class="container">
+            <h2 class="section-title">Choose a Language</h2>
+            <div class="language-grid">
+                <!-- Language Cards -->
+                <div class="language-card" onclick="window.location.href='html.html'">
+                    <i class="fab fa-html5"></i>
+                    <h3>HTML</h3>
+                    <p>Learn the language of the web with HTML. Create websites, structures, and more!</p>
+                </div>
+                <div class="language-card" onclick="window.location.href='css.html'">
+                    <i class="fab fa-css3-alt"></i>
+                    <h3>CSS</h3>
+                    <p>Style your websites with CSS. Make them beautiful and responsive.</p>
+                </div>
+                <div class="language-card" onclick="window.location.href='js.html'">
+                    <i class="fab fa-js-square"></i>
+                    <h3>JavaScript</h3>
+                    <p>Make your websites interactive with JavaScript. Add animations, logic, and more!</p>
+                </div>
+                <div class="language-card" onclick="window.location.href='c.html'">
+                    <i class="fas fa-code"></i>
+                    <h3>C</h3>
+                    <p>Learn C, one of the oldest and most powerful programming languages.</p>
+                </div>
+                <div class="language-card" onclick="window.location.href='cpp.html'">
+                    <i class="fas fa-laptop-code"></i>
+                    <h3>C++</h3>
+                    <p>Master C++, a powerful language used for building high-performance applications.</p>
+                </div>
+                <div class="language-card" onclick="window.location.href='csharp.html'">
+                    <i class="fas fa-hashtag"></i>
+                    <h3>C#</h3>
+                    <p>Learn C#, a modern programming language for building applications on the .NET framework.</p>
+                </div>
+                <div class="language-card" onclick="window.location.href='py.html'">
+                    <i class="fas fa-coffee"></i>
+                    <h3>Python</h3>
+                    <p>Learn Python for web development, data science, automation, and more!</p>
+                </div>
+                <div class="language-card" onclick="window.location.href='java.html'">
+                    <i class="fas fa-laptop-code"></i>
+                    <h3>Java</h3>
+                    <p>Master Java, the most popular language for building enterprise-level applications.</p>
+                </div>
+                <div class="language-card" onclick="window.location.href='dsa.html'">
+                    <i class="fas fa-database"></i>
+                    <h3>DSA</h3>
+                    <p>Learn Data Structures and Algorithms to optimize your coding skills and problem-solving ability.</p>
+                </div>
+                <div class="language-card" onclick="window.location.href='oops.html'">
+                    <i class="fas fa-object-group"></i>
+                    <h3>OOPs</h3>
+                    <p>Understand Object-Oriented Programming concepts to design scalable and maintainable applications.</p>
+                </div>
+                
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer id="contact">
         <p>© 2024 Code Journey with <a href="https://imtahirnaseer.github.io/Portfolio" target="_blank" title="Tahir Naseer" style="color: rgb(247, 219, 10);">Tahir Naseer</a> All rights reserved.</p>
         <div class="social-icons">
             <a href="https://www.linkedin.com/in/imtahirnaseer" target="_blank" title="LinkedIn">
@@ -121,12 +281,11 @@
             </a>
         </div>
     </footer>
-    
 
     <!-- Script for Typewriter Effect -->
     <script>
         const changingText = document.getElementById("changingText");
-        const words = ["Journey.","with Tahir Naseer.", "Master.", "Hacker.", "Learner.", "Viewer.", "Maker."];
+        const words = ["Journey.", "with Tahir Naseer.", "Master.", "Hacker.", "Learner.", "Viewer.", "Maker."];
         let wordIndex = 0;
         let charIndex = 0;
         let isDeleting = false;
@@ -135,30 +294,24 @@
             const currentWord = words[wordIndex];
 
             if (isDeleting) {
-                // Remove characters
                 changingText.textContent = currentWord.substring(0, charIndex--);
             } else {
-                // Add characters
                 changingText.textContent = currentWord.substring(0, charIndex++);
             }
 
-            // Adjust typing speed
             let speed = isDeleting ? 100 : 150;
 
             if (!isDeleting && charIndex === currentWord.length) {
-                // Pause after completing a word
                 isDeleting = true;
-                speed = 1000; // Pause for 1 second
+                speed = 1000;
             } else if (isDeleting && charIndex === 0) {
-                // Move to the next word after deleting
                 isDeleting = false;
-                wordIndex = (wordIndex + 1) % words.length; // Loop through words
+                wordIndex = (wordIndex + 1) % words.length;
             }
 
             setTimeout(typeEffect, speed);
         }
 
-        // Start the typewriter effect
         typeEffect();
     </script>
 </body>
