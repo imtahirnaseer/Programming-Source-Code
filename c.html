@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C Programming Questions</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>C Programming Questions</h1>
+
+        <!-- Question 1 -->
+        <div class="question-box">
+            <h3>1. C "Hello, World!" Program</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+#include <stdio.h>
+
+int main() {
+    printf("Hello, World!");
+    return 0;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="question-box">
+            <h3>2. C Program to Add Two Integers</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+#include <stdio.h>
+
+int main() {
+    int a, b;
+    printf("Enter two integers: ");
+    scanf("%d %d", &a, &b);
+    printf("Sum: %d", a + b);
+    return 0;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="question-box">
+            <h3>3. C Program to Find ASCII Value of a Character</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+#include <stdio.h>
+
+int main() {
+    char c;
+    printf("Enter a character: ");
+    scanf("%c", &c);
+    printf("ASCII value: %d", c);
+    return 0;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 4 -->
+        <div class="question-box">
+            <h3>4. C Program to Compute Quotient and Remainder for integer division</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+#include <stdio.h>
+
+int main() {
+    int dividend, divisor;
+    printf("Enter dividend and divisor: ");
+    scanf("%d %d", &dividend, &divisor);
+    printf("Quotient: %d, Remainder: %d", dividend / divisor, dividend % divisor);
+    return 0;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 5 -->
+        <div class="question-box">
+            <h3>5. C Program to Find the Size of int, float, double and char</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+#include <stdio.h>
+
+int main() {
+    printf("Size of int: %lu\n", sizeof(int));
+    printf("Size of float: %lu\n", sizeof(float));
+    printf("Size of double: %lu\n", sizeof(double));
+    printf("Size of char: %lu\n", sizeof(char));
+    return 0;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 6 -->
+        <div class="question-box">
+            <h3>6. C Program to Swap Two Numbers</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+#include <stdio.h>
+
+int main() {
+    int a, b, temp;
+    printf("Enter two numbers: ");
+    scanf("%d %d", &a, &b);
+    temp = a;
+    a = b;
+    b = temp;
+    printf("After swapping: a = %d, b = %d", a, b);
+    return 0;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 7 -->
+        <div class="question-box">
+            <h3>7. C Program to Check Whether a Number is Even or Odd</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+#include <stdio.h>
+
+int main() {
+    int number;
+    printf("Enter a number: ");
+    scanf("%d", &number);
+    if (number % 2 == 0) {
+        printf("%d is even.\n", number);
+    } else {
+        printf("%d is odd.\n", number);
+    }
+    return 0;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 8 -->
+        <div class="question-box">
+            <h3>8. C Program to Find the Largest Number Among Three Numbers</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+#include <stdio.h>
+
+int main() {
+    int a, b, c;
+    printf("Enter three numbers: ");
+    scanf("%d %d %d", &a, &b, &c);
+    if (a >= b && a >= c) {
+        printf("Largest number is %d\n", a);
+    } else if (b >= a && b >= c) {
+        printf("Largest number is %d\n", b);
+    } else {
+        printf("Largest number is %d\n", c);
+    }
+    return 0;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 9 -->
+        <div class="question-box">
+            <h3>9. C Program to Find all Roots of a Quadratic Equation</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    float a, b, c, discriminant, root1, root2;
+    printf("Enter coefficients a, b and c: ");
+    scanf("%f %f %f", &a, &b, &c);
+    discriminant = b * b - 4 * a * c;
+    if (discriminant > 0) {
+        root1 = (-b + sqrt(discriminant)) / (2 * a);
+        root2 = (-b - sqrt(discriminant)) / (2 * a);
+        printf("Roots are real and different.\n");
+        printf("Root 1 = %.2f\n", root1);
+        printf("Root 2 = %.2f\n", root2);
+    } else if (discriminant == 0) {
+        root1 = root2 = -b / (2 * a);
+        printf("Roots are real and the same.\n");
+        printf("Root 1 = Root 2 = %.2f\n", root1);
+    } else {
+        float realPart = -b / (2 * a);
+        float imaginaryPart = sqrt(-discriminant) / (2 * a);
+        printf("Roots are complex and different.\n");
+        printf("Root 1 = %.2f + %.2fi\n", realPart, imaginaryPart);
+        printf("Root 2 = %.2f - %.2fi\n", realPart, imaginaryPart);
+    }
+    return 0;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 10 -->
+        <div class="question-box">
+            <h3>10. C Program to Check Leap Year</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+#include <stdio.h>
+
+int main() {
+    int year;
+    printf("Enter a year: ");
+    scanf("%d", &year);
+    if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {
+        printf("%d is a leap year.\n", year);
+    } else {
+        printf("%d is not a leap year.\n", year);
+    }
+    return 0;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 11 -->
+        <div class="question-box">
+            <h3>11. C Program to Check Whether a Number is Positive or Negative</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+#include <stdio.h>
+
+int main() {
+    int number;
+    printf("Enter a number: ");
+    scanf("%d", &number);
+    if (number > 0) {
+        printf("%d is positive.\n", number);
+    } else if (number < 0) {
+        printf("%d is negative.\n", number);
+    } else {
+        printf("%d is zero.\n", number);
+    }
+    return 0;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 12 -->
+        <div class="question-box">
+            <h3>12. C Program to Calculate the Sum of Natural Numbers</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+#include <stdio.h>
+
+int main() {
+    int n, sum = 0;
+    printf("Enter a number: ");
+    scanf("%d", &n);
+    for (int i = 1; i <= n; i++) {
+        sum += i;
+    }
+    printf("Sum of natural numbers up to %d is %d\n", n, sum);
+    return 0;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 13 -->
+        <div class="question-box">
+            <h3>13. C Program to Find Factorial of a Number</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+#include <stdio.h>
+
+int factorial(int n) {
+    if (n == 0) {
+        return 1;
+    }
+    return n * factorial(n - 1);
+}
+
+int main() {
+    int num;
+    printf("Enter a number: ");
+    scanf("%d", &num);
+    printf("Factorial of %d is %d\n", num, factorial(num));
+    return 0;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 14 -->
+        <div class="question-box">
+            <h3>14. Write a program to display the multiplication table</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+#include <stdio.h>
+
+int main() {
+    int number;
+    printf("Enter a number: ");
+    scanf("%d", &number);
+    for (int i = 1; i <= 10; i++) {
+        printf("%d x %d = %d\n", number, i, number * i);
+    }
+    return 0;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 15 -->
+        <div class="question-box">
+            <h3>15. C Program to Display Fibonacci Sequence</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+#include <stdio.h>
+
+int main() {
+    int n, first = 0, second = 1, next;
+    printf("Enter the number of terms: ");
+    scanf("%d", &n);
+    printf("Fibonacci Sequence: ");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", first);
+        next = first + second;
+        first = second;
+        second = next;
+    }
+    return 0;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 16 -->
+        <div class="question-box">
+            <h3>16. Write a program to display all odd numbers from 1 to 50 using for loop only</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+#include <stdio.h>
+
+int main() {
+    for (int i = 1; i <= 50; i += 2) {
+        printf("%d ", i);
+    }
+    return 0;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 17 -->
+        <div class="question-box">
+            <h3>17. Write a C language program using recursive function to enter an integer and find the number of digits and their sum</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+#include <stdio.h>
+
+int sumOfDigits(int n) {
+    if (n == 0)
+        return 0;
+    return n % 10 + sumOfDigits(n / 10);
+}
+
+int countDigits(int n) {
+    if (n == 0)
+        return 0;
+    return 1 + countDigits(n / 10);
+}
+
+int main() {
+    int num;
+    printf("Enter an integer: ");
+    scanf("%d", &num);
+    printf("Number of digits: %d\n", countDigits(num));
+    printf("Sum of digits: %d\n", sumOfDigits(num));
+    return 0;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 18 -->
+        <div class="question-box">
+            <h3>18. C Program to Count Number of Digits in an Integer</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+#include <stdio.h>
+
+int main() {
+    int num, count = 0;
+    printf("Enter an integer: ");
+    scanf("%d", &num);
+    while (num != 0) {
+        num /= 10;
+        count++;
+    }
+    printf("Number of digits: %d\n", count);
+    return 0;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 19 -->
+        <div class="question-box">
+            <h3>19. C Program to Reverse a Number</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+#include <stdio.h>
+
+int main() {
+    int num, reversed = 0;
+    printf("Enter a number: ");
+    scanf("%d", &num);
+    while (num != 0) {
+        reversed = reversed * 10 + num % 10;
+        num /= 10;
+    }
+    printf("Reversed number: %d\n", reversed);
+    return 0;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 20 -->
+        <div class="question-box">
+            <h3>20. C Program to Check Whether a string is Palindrome or Not</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char str[100], reverse[100];
+    int length, i, j;
+    printf("Enter a string: ");
+    scanf("%s", str);
+    length = strlen(str);
+    for (i = length - 1, j = 0; i >= 0; i--, j++) {
+        reverse[j] = str[i];
+    }
+    reverse[j] = '\0';
+    if (strcmp(str, reverse) == 0) {
+        printf("The string is a palindrome.\n");
+    } else {
+        printf("The string is not a palindrome.\n");
+    }
+    return 0;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 21 -->
+        <div class="question-box">
+            <h3>21. C Program to Check Whether a Number is Prime or Not</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+#include <stdio.h>
+
+int main() {
+    int num, i, isPrime = 1;
+    printf("Enter a number: ");
+    scanf("%d", &num);
+    for (i = 2; i <= num / 2; i++) {
+        if (num % i == 0) {
+            isPrime = 0;
+            break;
+        }
+    }
+    if (isPrime && num > 1) {
+        printf("%d is prime.\n", num);
+    } else {
+        printf("%d is not prime.\n", num);
+    }
+    return 0;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+                <!-- Question 22 -->
+                <div class="question-box">
+                    <h3>22. C Program to Display Prime Numbers Between Two Intervals</h3>
+                    <div class="code-container">
+                        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                        <pre>
+        <code>
+        #include <stdio.h>
+        
+        int isPrime(int n) {
+            for (int i = 2; i <= n / 2; i++) {
+                if (n % i == 0)
+                    return 0;
+            }
+            return 1;
+        }
+        
+        int main() {
+            int lower, upper;
+            printf("Enter two numbers: ");
+            scanf("%d %d", &lower, &upper);
+            printf("Prime numbers between %d and %d are: \n", lower, upper);
+            for (int i = lower; i <= upper; i++) {
+                if (isPrime(i)) {
+                    printf("%d ", i);
+                }
+            }
+            return 0;
+        }
+        </code>
+                        </pre>
+                    </div>
+                </div>
+        
+                <!-- Question 23 -->
+                <div class="question-box">
+                    <h3>23. C Program to Check Armstrong Number</h3>
+                    <div class="code-container">
+                        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                        <pre>
+        <code>
+        #include <stdio.h>
+        #include <math.h>
+        
+        int main() {
+            int num, sum = 0, remainder, temp, n = 0;
+            printf("Enter an integer: ");
+            scanf("%d", &num);
+            temp = num;
+            while (temp != 0) {
+                temp /= 10;
+                ++n;
+            }
+            temp = num;
+            while (temp != 0) {
+                remainder = temp % 10;
+                sum += pow(remainder, n);
+                temp /= 10;
+            }
+            if (sum == num)
+                printf("%d is an Armstrong number.\n", num);
+            else
+                printf("%d is not an Armstrong number.\n", num);
+            return 0;
+        }
+        </code>
+                        </pre>
+                    </div>
+                </div>
+        
+                <!-- Question 24 -->
+                <div class="question-box">
+                    <h3>24. C Program to Make a Simple Calculator Using switch...case</h3>
+                    <div class="code-container">
+                        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                        <pre>
+        <code>
+        #include <stdio.h>
+        
+        int main() {
+            int num1, num2, result;
+            char operator;
+            printf("Enter operator (+, -, *, /): ");
+            scanf("%c", &operator);
+            printf("Enter two numbers: ");
+            scanf("%d %d", &num1, &num2);
+            
+            switch (operator) {
+                case '+':
+                    result = num1 + num2;
+                    break;
+                case '-':
+                    result = num1 - num2;
+                    break;
+                case '*':
+                    result = num1 * num2;
+                    break;
+                case '/':
+                    result = num1 / num2;
+                    break;
+                default:
+                    printf("Invalid operator.\n");
+                    return 1;
+            }
+            printf("Result: %d\n", result);
+            return 0;
+        }
+        </code>
+                        </pre>
+                    </div>
+                </div>
+        
+                <!-- Question 25 -->
+                <div class="question-box">
+                    <h3>25. C Program to Display Prime Numbers Between Intervals Using Function</h3>
+                    <div class="code-container">
+                        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                        <pre>
+        <code>
+        #include <stdio.h>
+        
+        int isPrime(int n) {
+            for (int i = 2; i <= n / 2; i++) {
+                if (n % i == 0)
+                    return 0;
+            }
+            return 1;
+        }
+        
+        void displayPrimeNumbers(int lower, int upper) {
+            printf("Prime numbers between %d and %d are: \n", lower, upper);
+            for (int i = lower; i <= upper; i++) {
+                if (isPrime(i)) {
+                    printf("%d ", i);
+                }
+            }
+        }
+        
+        int main() {
+            int lower, upper;
+            printf("Enter two numbers: ");
+            scanf("%d %d", &lower, &upper);
+            displayPrimeNumbers(lower, upper);
+            return 0;
+        }
+        </code>
+                        </pre>
+                    </div>
+                </div>
+        
+                <!-- Question 26 -->
+                <div class="question-box">
+                    <h3>26. Write a C language program using recursive function to find the factorial of an integer</h3>
+                    <div class="code-container">
+                        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                        <pre>
+        <code>
+        #include <stdio.h>
+        
+        int factorial(int n) {
+            if (n == 0 || n == 1) {
+                return 1;
+            }
+            return n * factorial(n - 1);
+        }
+        
+        int main() {
+            int num;
+            printf("Enter an integer: ");
+            scanf("%d", &num);
+            printf("Factorial of %d is %d\n", num, factorial(num));
+            return 0;
+        }
+        </code>
+                        </pre>
+                    </div>
+                </div>
+        
+                <!-- Question 27 -->
+                <div class="question-box">
+                    <h3>27. C Program to Calculate Average Using Arrays</h3>
+                    <div class="code-container">
+                        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                        <pre>
+        <code>
+        #include <stdio.h>
+        
+        int main() {
+            int n, sum = 0;
+            float average;
+            printf("Enter the number of elements: ");
+            scanf("%d", &n);
+            int arr[n];
+            printf("Enter %d numbers: \n", n);
+            for (int i = 0; i < n; i++) {
+                scanf("%d", &arr[i]);
+                sum += arr[i];
+            }
+            average = (float)sum / n;
+            printf("Average = %.2f\n", average);
+            return 0;
+        }
+        </code>
+                        </pre>
+                    </div>
+                </div>
+        
+                <!-- Question 28 -->
+                <div class="question-box">
+                    <h3>28. C Program to Find Largest Element of an Array</h3>
+                    <div class="code-container">
+                        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                        <pre>
+        <code>
+        #include <stdio.h>
+        
+        int main() {
+            int n;
+            printf("Enter the number of elements: ");
+            scanf("%d", &n);
+            int arr[n];
+            printf("Enter %d numbers: \n", n);
+            for (int i = 0; i < n; i++) {
+                scanf("%d", &arr[i]);
+            }
+            int largest = arr[0];
+            for (int i = 1; i < n; i++) {
+                if (arr[i] > largest) {
+                    largest = arr[i];
+                }
+            }
+            printf("Largest element is %d\n", largest);
+            return 0;
+        }
+        </code>
+                        </pre>
+                    </div>
+                </div>
+        
+                <!-- Question 29 -->
+                <div class="question-box">
+                    <h3>29. C Program to Add Two Matrix Using Multi-dimensional Arrays</h3>
+                    <div class="code-container">
+                        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                        <pre>
+        <code>
+        #include <stdio.h>
+        
+        int main() {
+            int m, n;
+            printf("Enter the number of rows and columns: ");
+            scanf("%d %d", &m, &n);
+            int mat1[m][n], mat2[m][n], sum[m][n];
+            
+            printf("Enter elements of first matrix: \n");
+            for (int i = 0; i < m; i++) {
+                for (int j = 0; j < n; j++) {
+                    scanf("%d", &mat1[i][j]);
+                }
+            }
+            
+            printf("Enter elements of second matrix: \n");
+            for (int i = 0; i < m; i++) {
+                for (int j = 0; j < n; j++) {
+                    scanf("%d", &mat2[i][j]);
+                }
+            }
+            
+            printf("Sum of matrices: \n");
+            for (int i = 0; i < m; i++) {
+                for (int j = 0; j < n; j++) {
+                    sum[i][j] = mat1[i][j] + mat2[i][j];
+                    printf("%d ", sum[i][j]);
+                }
+                printf("\n");
+            }
+            return 0;
+        }
+        </code>
+                        </pre>
+                    </div>
+                </div>
+        
+                        <!-- Question 30 -->
+        <div class="question-box">
+            <h3>30. C Program to Multiply Two Matrices Using Multi-dimensional Arrays</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+#include <stdio.h>
+
+int main() {
+    int m, n, p, q;
+    printf("Enter the number of rows and columns of first matrix: ");
+    scanf("%d %d", &m, &n);
+    printf("Enter the number of rows and columns of second matrix: ");
+    scanf("%d %d", &p, &q);
+    
+    if (n != p) {
+        printf("Matrix multiplication is not possible.\n");
+        return 1;
+    }
+    
+    int mat1[m][n], mat2[p][q], result[m][q];
+    
+    printf("Enter elements of first matrix: \n");
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            scanf("%d", &mat1[i][j]);
+        }
+    }
+    
+    printf("Enter elements of second matrix: \n");
+    for (int i = 0; i < p; i++) {
+        for (int j = 0; j < q; j++) {
+            scanf("%d", &mat2[i][j]);
+        }
+    }
+    
+    printf("Product of matrices: \n");
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < q; j++) {
+            result[i][j] = 0;
+            for (int k = 0; k < n; k++) {
+                result[i][j] += mat1[i][k] * mat2[k][j];
+            }
+            printf("%d ", result[i][j]);
+        }
+        printf("\n");
+    }
+    return 0;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 31 -->
+        <div class="question-box">
+            <h3>31. C Program to Find Transpose of a Matrix</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+#include <stdio.h>
+
+int main() {
+    int m, n;
+    printf("Enter the number of rows and columns of matrix: ");
+    scanf("%d %d", &m, &n);
+    
+    int mat[m][n], transpose[n][m];
+    
+    printf("Enter elements of matrix: \n");
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            scanf("%d", &mat[i][j]);
+        }
+    }
+    
+    printf("Transpose of matrix: \n");
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            transpose[i][j] = mat[j][i];
+            printf("%d ", transpose[i][j]);
+        }
+        printf("\n");
+    }
+    return 0;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 32 -->
+        <div class="question-box">
+            <h3>32. C Program to Multiply Two Matrices by Passing Matrix to a Function</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+#include <stdio.h>
+
+void multiplyMatrices(int m, int n, int p, int mat1[m][n], int mat2[n][p], int result[m][p]) {
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < p; j++) {
+            result[i][j] = 0;
+            for (int k = 0; k < n; k++) {
+                result[i][j] += mat1[i][k] * mat2[k][j];
+            }
+        }
+    }
+}
+
+int main() {
+    int m, n, p, q;
+    printf("Enter the dimensions of the matrices: ");
+    scanf("%d %d %d %d", &m, &n, &p, &q);
+    
+    if (n != p) {
+        printf("Matrix multiplication is not possible.\n");
+        return 1;
+    }
+    
+    int mat1[m][n], mat2[n][q], result[m][q];
+    
+    printf("Enter elements of first matrix: \n");
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            scanf("%d", &mat1[i][j]);
+        }
+    }
+    
+    printf("Enter elements of second matrix: \n");
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < q; j++) {
+            scanf("%d", &mat2[i][j]);
+        }
+    }
+    
+    multiplyMatrices(m, n, q, mat1, mat2, result);
+    
+    printf("Product of matrices: \n");
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < q; j++) {
+            printf("%d ", result[i][j]);
+        }
+        printf("\n");
+    }
+    return 0;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 33 -->
+        <div class="question-box">
+            <h3>33. C Program to Create a Structure “Employee” with Eno, Ename, Esalary, and DOJ as member elements</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+#include <stdio.h>
+
+struct Employee {
+    int eno;
+    char ename[50];
+    float esalary;
+    char doj[20];
+};
+
+int main() {
+    struct Employee employees[5];
+    
+    printf("Enter details of 5 employees:\n");
+    for (int i = 0; i < 5; i++) {
+        printf("Employee %d\n", i + 1);
+        printf("Enter employee number: ");
+        scanf("%d", &employees[i].eno);
+        printf("Enter employee name: ");
+        scanf("%s", employees[i].ename);
+        printf("Enter employee salary: ");
+        scanf("%f", &employees[i].esalary);
+        printf("Enter date of joining (DD-MM-YYYY): ");
+        scanf("%s", employees[i].doj);
+    }
+    
+    printf("\nEmployees with salary more than 50000:\n");
+    for (int i = 0; i < 5; i++) {
+        if (employees[i].esalary > 50000) {
+            printf("Employee Name: %s\n", employees[i].ename);
+        }
+    }
+    
+    return 0;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 34 -->
+        <div class="question-box">
+            <h3>34. C Program to Find the Length of a String</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+#include <stdio.h>
+
+int main() {
+    char str[100];
+    printf("Enter a string: ");
+    scanf("%s", str);
+    
+    int length = 0;
+    while (str[length] != '\0') {
+        length++;
+    }
+    
+    printf("Length of the string is: %d\n", length);
+    return 0;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 35 -->
+        <div class="question-box">
+            <h3>35. C Program to Concatenate Two Strings</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+#include <stdio.h>
+
+int main() {
+    char str1[50], str2[50];
+    printf("Enter first string: ");
+    scanf("%s", str1);
+    printf("Enter second string: ");
+    scanf("%s", str2);
+    
+    int i = 0;
+    while (str1[i] != '\0') {
+        i++;
+    }
+    
+    int j = 0;
+    while (str2[j] != '\0') {
+        str1[i] = str2[j];
+        i++;
+        j++;
+    }
+    str1[i] = '\0';
+    
+    printf("Concatenated string: %s\n", str1);
+    return 0;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 36 -->
+        <div class="question-box">
+            <h3>36. C Program to Copy String Without Using strcpy()</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+#include <stdio.h>
+
+int main() {
+    char str1[50], str2[50];
+    printf("Enter a string: ");
+    scanf("%s", str1);
+    
+    int i = 0;
+    while (str1[i] != '\0') {
+        str2[i] = str1[i];
+        i++;
+    }
+    str2[i] = '\0';
+    
+    printf("Copied string: %s\n", str2);
+    return 0;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 37 -->
+        <div class="question-box">
+            <h3>37. C Program to Create a Structure “Student” with Rollno, name, marks and DOB as member elements</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+#include <stdio.h>
+
+struct Student {
+    int rollno;
+    char name[50];
+    float marks;
+    char dob[20];
+};
+
+int main() {
+    struct Student students[5];
+    
+    printf("Enter details of 5 students:\n");
+    for (int i = 0; i < 5; i++) {
+        printf("Student %d\n", i + 1);
+        printf("Enter roll number: ");
+        scanf("%d", &students[i].rollno);
+        printf("Enter name: ");
+        scanf("%s", students[i].name);
+        printf("Enter marks: ");
+        scanf("%f", &students[i].marks);
+        printf("Enter date of birth (DD-MM-YYYY): ");
+        scanf("%s", students[i].dob);
+    }
+    
+    printf("\nStudents older than 22 years:\n");
+    for (int i = 0; i < 5; i++) {
+        if (students[i].marks < 40) {
+            printf("Student Name: %s\n", students[i].name);
+        }
+    }
+    
+    return 0;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 38 -->
+        <div class="question-box">
+            <h3>38. C Program to Find Prime Numbers Between Two Intervals</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+#include <stdio.h>
+
+int main() {
+    int low, high;
+    printf("Enter two numbers: ");
+    scanf("%d %d", &low, &high);
+    
+    printf("Prime numbers between %d and %d are: ", low, high);
+    for (int num = low; num <= high; num++) {
+        int isPrime = 1;
+        for (int i = 2; i <= num / 2; i++) {
+            if (num % i == 0) {
+                isPrime = 0;
+                break;
+            }
+        }
+        if (isPrime && num > 1) {
+            printf("%d ", num);
+        }
+    }
+    printf("\n");
+    return 0;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 39 -->
+        <div class="question-box">
+            <h3>39. C Program to Check Whether a Number is Prime or Not</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+#include <stdio.h>
+
+int main() {
+    int num;
+    printf("Enter a number: ");
+    scanf("%d", &num);
+    
+    int isPrime = 1;
+    for (int i = 2; i <= num / 2; i++) {
+        if (num % i == 0) {
+            isPrime = 0;
+            break;
+        }
+    }
+    
+    if (isPrime && num > 1) {
+        printf("%d is a prime number.\n", num);
+    } else {
+        printf("%d is not a prime number.\n", num);
+    }
+    return 0;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 40 -->
+        <div class="question-box">
+            <h3>40. C Program to Reverse a Number</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+#include <stdio.h>
+
+int main() {
+    int num, reversed = 0;
+    printf("Enter a number: ");
+    scanf("%d", &num);
+    
+    while (num != 0) {
+        reversed = reversed * 10 + num % 10;
+        num /= 10;
+    }
+    
+    printf("Reversed number: %d\n", reversed);
+    return 0;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+                
+            </div>
+        
+            <script src="script.js"></script>
+        </body>
+        </html>
+        
+        <div>
+            <footer>
+                <p>Copyright &copy; Tahir Naseer 2024</p>
+            </footer>
+        </div>
