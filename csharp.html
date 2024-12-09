@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C# Programming Questions</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>C# Programming Questions</h1>
+
+        <div class="question-box">
+            <h3>1. Write a C# program to check whether a number is even or odd</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+using System;
+
+class Program {
+    public static void CheckEvenOdd(int number) {
+        if (number % 2 == 0) {
+            Console.WriteLine(number + " is even.");
+        } else {
+            Console.WriteLine(number + " is odd.");
+        }
+    }
+
+    static void Main(string[] args) {
+        CheckEvenOdd(7);
+    }
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <div class="question-box">
+            <h3>2. Write a C# program to calculate the factorial of a number</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+using System;
+
+class Program {
+    public static int Factorial(int n) {
+        if (n == 0 || n == 1) {
+            return 1;
+        }
+        return n * Factorial(n - 1);
+    }
+
+    static void Main(string[] args) {
+        Console.WriteLine(Factorial(5));
+    }
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <div class="question-box">
+            <h3>3. Create a C# program to reverse a number</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+using System;
+
+class Program {
+    public static void ReverseNumber(int num) {
+        int reversed = 0;
+        while (num != 0) {
+            reversed = reversed * 10 + num % 10;
+            num /= 10;
+        }
+        Console.WriteLine("Reversed Number: " + reversed);
+    }
+
+    static void Main(string[] args) {
+        ReverseNumber(12345);
+    }
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <div class="question-box">
+            <h3>4. Write a C# program to find the largest element in an array</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+using System;
+
+class Program {
+    public static int FindLargest(int[] arr) {
+        int largest = arr[0];
+        for (int i = 1; i < arr.Length; i++) {
+            if (arr[i] > largest) {
+                largest = arr[i];
+            }
+        }
+        return largest;
+    }
+
+    static void Main(string[] args) {
+        int[] numbers = { 10, 20, 5, 40, 15 };
+        Console.WriteLine("Largest Element: " + FindLargest(numbers));
+    }
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <div class="question-box">
+            <h3>5. Create a C# program to check if a number is prime</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+using System;
+
+class Program {
+    public static bool IsPrime(int n) {
+        if (n <= 1) {
+            return false;
+        }
+        for (int i = 2; i <= Math.Sqrt(n); i++) {
+            if (n % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    static void Main(string[] args) {
+        Console.WriteLine(IsPrime(29));
+    }
+}
+</code>
+                </pre>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+<div>
+    <footer>
+        <p>© 2024 Code Journey with <a href="https://imtahirnaseer.github.io/Portfolio" target="_blank" title="Tahir Naseer" style="color: rgb(209, 235, 17);">Tahir Naseer</a> All rights reserved.</p>
+    </footer>
+</div>
