@@ -1,0 +1,4328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSA Questions in C</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
+<body>
+    
+    <div class="container">
+        <h1>DSA Questions in C</h1>
+
+        <!-- Question 1 -->
+        <div class="question-box">
+            <h3>1. Program to demonstrate concept of structures</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+#include <stdio.h>
+
+struct Student {
+    char name[50];
+    int age;
+    float marks;
+};
+
+int main() {
+    struct Student student1 = {"John", 20, 85.5};
+    printf("Name: %s\n", student1.name);
+    printf("Age: %d\n", student1.age);
+    printf("Marks: %.2f\n", student1.marks);
+    return 0;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="question-box">
+            <h3>2. Program to implement single Linked List</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node {
+    int data;
+    struct Node* next;
+};
+
+void printList(struct Node* head) {
+    struct Node* temp = head;
+    while (temp != NULL) {
+        printf("%d -> ", temp->data);
+        temp = temp->next;
+    }
+    printf("NULL\n");
+}
+
+int main() {
+    struct Node* head = NULL;
+    struct Node* second = NULL;
+    struct Node* third = NULL;
+
+    head = (struct Node*)malloc(sizeof(struct Node));
+    second = (struct Node*)malloc(sizeof(struct Node));
+    third = (struct Node*)malloc(sizeof(struct Node));
+
+    head->data = 1;
+    head->next = second;
+
+    second->data = 2;
+    second->next = third;
+
+    third->data = 3;
+    third->next = NULL;
+
+    printList(head);
+
+    return 0;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="question-box">
+            <h3>3. Program to implement Doubly Linked List</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node {
+    int data;
+    struct Node* next;
+    struct Node* prev;
+};
+
+void printList(struct Node* head) {
+    struct Node* temp = head;
+    while (temp != NULL) {
+        printf("%d <-> ", temp->data);
+        temp = temp->next;
+    }
+    printf("NULL\n");
+}
+
+int main() {
+    struct Node* head = NULL;
+    struct Node* second = NULL;
+    struct Node* third = NULL;
+
+    head = (struct Node*)malloc(sizeof(struct Node));
+    second = (struct Node*)malloc(sizeof(struct Node));
+    third = (struct Node*)malloc(sizeof(struct Node));
+
+    head->data = 1;
+    head->next = second;
+    head->prev = NULL;
+
+    second->data = 2;
+    second->next = third;
+    second->prev = head;
+
+    third->data = 3;
+    third->next = NULL;
+    third->prev = second;
+
+    printList(head);
+
+    return 0;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 4 -->
+        <div class="question-box">
+            <h3>4. Program to implement Stack using Linked List</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node {
+    int data;
+    struct Node* next;
+};
+
+void push(struct Node** top, int value) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = value;
+    newNode->next = *top;
+    *top = newNode;
+}
+
+int pop(struct Node** top) {
+    if (*top == NULL) {
+        printf("Stack is empty.\n");
+        return -1;
+    }
+    struct Node* temp = *top;
+    int poppedValue = temp->data;
+    *top = (*top)->next;
+    free(temp);
+    return poppedValue;
+}
+
+void printStack(struct Node* top) {
+    struct Node* temp = top;
+    while (temp != NULL) {
+        printf("%d -> ", temp->data);
+        temp = temp->next;
+    }
+    printf("NULL\n");
+}
+
+int main() {
+    struct Node* stack = NULL;
+
+    push(&stack, 10);
+    push(&stack, 20);
+    push(&stack, 30);
+
+    printf("Stack: ");
+    printStack(stack);
+
+    printf("Popped value: %d\n", pop(&stack));
+
+    printf("Stack after pop: ");
+    printStack(stack);
+
+    return 0;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 5 -->
+        <div class="question-box">
+            <h3>5. Program to implement Queue using Linked List</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node {
+    int data;
+    struct Node* next;
+};
+
+void enqueue(struct Node** front, struct Node** rear, int value) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = value;
+    newNode->next = NULL;
+    if (*rear == NULL) {
+        *front = *rear = newNode;
+        return;
+    }
+    (*rear)->next = newNode;
+    *rear = newNode;
+}
+
+int dequeue(struct Node** front, struct Node** rear) {
+    if (*front == NULL) {
+        printf("Queue is empty.\n");
+        return -1;
+    }
+    struct Node* temp = *front;
+    int dequeuedValue = temp->data;
+    *front = (*front)->next;
+    if (*front == NULL) {
+        *rear = NULL;
+    }
+    free(temp);
+    return dequeuedValue;
+}
+
+void printQueue(struct Node* front) {
+    struct Node* temp = front;
+    while (temp != NULL) {
+        printf("%d <- ", temp->data);
+        temp = temp->next;
+    }
+    printf("NULL\n");
+}
+
+int main() {
+    struct Node* front = NULL;
+    struct Node* rear = NULL;
+
+    enqueue(&front, &rear, 10);
+    enqueue(&front, &rear, 20);
+    enqueue(&front, &rear, 30);
+
+    printf("Queue: ");
+    printQueue(front);
+
+    printf("Dequeued value: %d\n", dequeue(&front, &rear));
+
+    printf("Queue after dequeue: ");
+    printQueue(front);
+
+    return 0;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 6 -->
+        <div class="question-box">
+            <h3>6. Program to implement Stack using arrays</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+#include <stdio.h>
+#define MAX 5
+
+int stack[MAX];
+int top = -1;
+
+void push(int value) {
+    if (top == MAX - 1) {
+        printf("Stack overflow.\n");
+        return;
+    }
+    stack[++top] = value;
+}
+
+int pop() {
+    if (top == -1) {
+        printf("Stack underflow.\n");
+        return -1;
+    }
+    return stack[top--];
+}
+
+void printStack() {
+    if (top == -1) {
+        printf("Stack is empty.\n");
+        return;
+    }
+    for (int i = top; i >= 0; i--) {
+        printf("%d -> ", stack[i]);
+    }
+    printf("NULL\n");
+}
+
+int main() {
+    push(10);
+    push(20);
+    push(30);
+
+    printf("Stack: ");
+    printStack();
+
+    printf("Popped value: %d\n", pop());
+
+    printf("Stack after pop: ");
+    printStack();
+
+    return 0;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 7 -->
+        <div class="question-box">
+            <h3>7. Program to implement Queue using arrays</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+#include <stdio.h>
+#define MAX 5
+
+int queue[MAX];
+int front = -1, rear = -1;
+
+void enqueue(int value) {
+    if (rear == MAX - 1) {
+        printf("Queue overflow.\n");
+        return;
+    }
+    if (front == -1) {
+        front = 0;
+    }
+    queue[++rear] = value;
+}
+
+int dequeue() {
+    if (front == -1 || front > rear) {
+        printf("Queue underflow.\n");
+        return -1;
+    }
+    return queue[front++];
+}
+
+void printQueue() {
+    if (front == -1 || front > rear) {
+        printf("Queue is empty.\n");
+        return;
+    }
+    for (int i = front; i <= rear; i++) {
+        printf("%d <- ", queue[i]);
+    }
+    printf("NULL\n");
+}
+
+int main() {
+    enqueue(10);
+    enqueue(20);
+    enqueue(30);
+
+    printf("Queue: ");
+    printQueue();
+
+    printf("Dequeued value: %d\n", dequeue());
+
+    printf("Queue after dequeue: ");
+    printQueue();
+
+    return 0;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+           <!-- Question 8 -->
+           <div class="question-box">
+            <h3>8. Program to Create and Copy a Tree</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node {
+    int data;
+    struct Node* left;
+    struct Node* right;
+};
+
+struct Node* createNode(int data) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = data;
+    newNode->left = newNode->right = NULL;
+    return newNode;
+}
+
+void inorderTraversal(struct Node* root) {
+    if (root != NULL) {
+        inorderTraversal(root->left);
+        printf("%d ", root->data);
+        inorderTraversal(root->right);
+    }
+}
+
+int main() {
+    struct Node* root = createNode(1);
+    root->left = createNode(2);
+    root->right = createNode(3);
+    root->left->left = createNode(4);
+    root->left->right = createNode(5);
+
+    printf("Inorder traversal of the tree: ");
+    inorderTraversal(root);
+    return 0;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 9 -->
+        <div class="question-box">
+            <h3>9. Program to implement Tree Traversal</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node {
+    int data;
+    struct Node* left;
+    struct Node* right;
+};
+
+struct Node* createNode(int data) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = data;
+    newNode->left = newNode->right = NULL;
+    return newNode;
+}
+
+void preorder(struct Node* root) {
+    if (root != NULL) {
+        printf("%d ", root->data);
+        preorder(root->left);
+        preorder(root->right);
+    }
+}
+
+void inorder(struct Node* root) {
+    if (root != NULL) {
+        inorder(root->left);
+        printf("%d ", root->data);
+        inorder(root->right);
+    }
+}
+
+void postorder(struct Node* root) {
+    if (root != NULL) {
+        postorder(root->left);
+        postorder(root->right);
+        printf("%d ", root->data);
+    }
+}
+
+int main() {
+    struct Node* root = createNode(1);
+    root->left = createNode(2);
+    root->right = createNode(3);
+    root->left->left = createNode(4);
+    root->left->right = createNode(5);
+
+    printf("Preorder traversal: ");
+    preorder(root);
+    printf("\n");
+
+    printf("Inorder traversal: ");
+    inorder(root);
+    printf("\n");
+
+    printf("Postorder traversal: ");
+    postorder(root);
+    printf("\n");
+
+    return 0;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 10 -->
+        <div class="question-box">
+            <h3>10. Program to implement Insert and Delete Operation on Trees</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node {
+    int data;
+    struct Node* left;
+    struct Node* right;
+};
+
+struct Node* createNode(int data) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = data;
+    newNode->left = newNode->right = NULL;
+    return newNode;
+}
+
+struct Node* insert(struct Node* root, int data) {
+    if (root == NULL) {
+        return createNode(data);
+    }
+
+    if (data < root->data) {
+        root->left = insert(root->left, data);
+    } else if (data > root->data) {
+        root->right = insert(root->right, data);
+    }
+    return root;
+}
+
+struct Node* deleteNode(struct Node* root, int data) {
+    if (root == NULL) {
+        return root;
+    }
+
+    if (data < root->data) {
+        root->left = deleteNode(root->left, data);
+    } else if (data > root->data) {
+        root->right = deleteNode(root->right, data);
+    } else {
+        if (root->left == NULL) {
+            struct Node* temp = root->right;
+            free(root);
+            return temp;
+        } else if (root->right == NULL) {
+            struct Node* temp = root->left;
+            free(root);
+            return temp;
+        }
+
+        struct Node* temp = root->right;
+        while (temp && temp->left != NULL) {
+            temp = temp->left;
+        }
+        root->data = temp->data;
+        root->right = deleteNode(root->right, temp->data);
+    }
+    return root;
+}
+
+void inorder(struct Node* root) {
+    if (root != NULL) {
+        inorder(root->left);
+        printf("%d ", root->data);
+        inorder(root->right);
+    }
+}
+
+int main() {
+    struct Node* root = NULL;
+    root = insert(root, 50);
+    root = insert(root, 30);
+    root = insert(root, 20);
+    root = insert(root, 40);
+    root = insert(root, 70);
+    root = insert(root, 60);
+    root = insert(root, 80);
+
+    printf("Inorder traversal: ");
+    inorder(root);
+    printf("\n");
+
+    root = deleteNode(root, 20);
+    printf("Inorder traversal after deletion of 20: ");
+    inorder(root);
+    printf("\n");
+
+    root = deleteNode(root, 30);
+    printf("Inorder traversal after deletion of 30: ");
+    inorder(root);
+    printf("\n");
+
+    return 0;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 11 -->
+        <div class="question-box">
+            <h3>11. Program to implement AVL Trees</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node {
+    int data;
+    struct Node* left;
+    struct Node* right;
+    int height;
+};
+
+int max(int a, int b) {
+    return (a > b) ? a : b;
+}
+
+int height(struct Node* node) {
+    return (node == NULL) ? 0 : node->height;
+}
+
+struct Node* createNode(int data) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = data;
+    newNode->left = newNode->right = NULL;
+    newNode->height = 1;
+    return newNode;
+}
+
+int getBalanceFactor(struct Node* node) {
+    return (node == NULL) ? 0 : height(node->left) - height(node->right);
+}
+
+struct Node* rotateRight(struct Node* y) {
+    struct Node* x = y->left;
+    struct Node* T2 = x->right;
+
+    x->right = y;
+    y->left = T2;
+
+    y->height = max(height(y->left), height(y->right)) + 1;
+    x->height = max(height(x->left), height(x->right)) + 1;
+
+    return x;
+}
+
+struct Node* rotateLeft(struct Node* x) {
+    struct Node* y = x->right;
+    struct Node* T2 = y->left;
+
+    y->left = x;
+    x->right = T2;
+
+    x->height = max(height(x->left), height(x->right)) + 1;
+    y->height = max(height(y->left), height(y->right)) + 1;
+
+    return y;
+}
+
+struct Node* insert(struct Node* node, int data) {
+    if (node == NULL) {
+        return createNode(data);
+    }
+
+    if (data < node->data) {
+        node->left = insert(node->left, data);
+    } else if (data > node->data) {
+        node->right = insert(node->right, data);
+    } else {
+        return node;
+    }
+
+    node->height = 1 + max(height(node->left), height(node->right));
+
+    int balance = getBalanceFactor(node);
+
+    if (balance > 1 && data < node->left->data) {
+        return rotateRight(node);
+    }
+
+    if (balance < -1 && data > node->right->data) {
+        return rotateLeft(node);
+    }
+
+    if (balance > 1 && data > node->left->data) {
+        node->left = rotateLeft(node->left);
+        return rotateRight(node);
+    }
+
+    if (balance < -1 && data < node->right->data) {
+        node->right = rotateRight(node->right);
+        return rotateLeft(node);
+    }
+
+    return node;
+}
+
+void inorder(struct Node* root) {
+    if (root != NULL) {
+        inorder(root->left);
+        printf("%d ", root->data);
+        inorder(root->right);
+    }
+}
+
+int main() {
+    struct Node* root = NULL;
+    root = insert(root, 10);
+    root = insert(root, 20);
+    root = insert(root, 30);
+    root = insert(root, 40);
+    root = insert(root, 50);
+    root = insert(root, 25);
+
+    printf("Inorder traversal of the AVL tree: ");
+    inorder(root);
+    printf("\n");
+
+    return 0;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 12 -->
+        <div class="question-box">
+            <h3>12. Program to implement Warshal’s algorithm to find path matrix</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+#include <stdio.h>
+
+#define V 4
+
+void warshall(int graph[V][V]) {
+    for (int k = 0; k < V; k++) {
+        for (int i = 0; i < V; i++) {
+            for (int j = 0; j < V; j++) {
+                graph[i][j] = graph[i][j] || (graph[i][k] && graph[k][j]);
+            }
+        }
+    }
+}
+
+void printGraph(int graph[V][V]) {
+    for (int i = 0; i < V; i++) {
+        for (int j = 0; j < V; j++) {
+            printf("%d ", graph[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+int main() {
+    int graph[V][V] = {
+        {0, 1, 0, 1},
+        {0, 0, 1, 0},
+        {1, 0, 0, 1},
+        {0, 0, 1, 0}
+    };
+
+    printf("Initial Graph:\n");
+    printGraph(graph);
+
+    warshall(graph);
+
+    printf("\nPath Matrix:\n");
+    printGraph(graph);
+
+    return 0;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 13 -->
+        <div class="question-box">
+            <h3>13. Program to implement Djikstra’s algorithm</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+#include <stdio.h>
+#include <limits.h>
+
+#define V 9
+
+int minDistance(int dist[], int sptSet[]) {
+    int min = INT_MAX, minIndex;
+
+    for (int v = 0; v < V; v++) {
+        if (!sptSet[v] && dist[v] <= min) {
+            min = dist[v], minIndex = v;
+        }
+    }
+    return minIndex;
+}
+
+void dijkstra(int graph[V][V], int src) {
+    int dist[V];
+    int sptSet[V];
+
+    for (int i = 0; i < V; i++) {
+        dist[i] = INT_MAX;
+        sptSet[i] = 0;
+    }
+
+    dist[src] = 0;
+
+    for (int count = 0; count < V - 1; count++) {
+        int u = minDistance(dist, sptSet);
+        sptSet[u] = 1;
+
+        for (int v = 0; v < V; v++) {
+            if (!sptSet[v] && graph[u][v] && dist[u] != INT_MAX && dist[u] + graph[u][v] < dist[v]) {
+                dist[v] = dist[u] + graph[u][v];
+            }
+        }
+    }
+
+    printf("Vertex Distance from Source %d\n", src);
+    for (int i = 0; i < V; i++) {
+        printf("%d \t\t %d\n", i, dist[i]);
+    }
+}
+
+int main() {
+    int graph[V][V] = {
+        {0, 4, 0, 0, 0, 0, 0, 8, 0},
+        {4, 0, 8, 0, 0, 0, 0, 11, 0},
+        {0, 8, 0, 7, 0, 4, 0, 0, 2},
+        {0, 0, 7, 0, 9, 14, 0, 0, 0},
+        {0, 0, 0, 9, 0, 10, 0, 0, 0},
+        {0, 0, 4, 14, 10, 0, 2, 0, 0},
+        {0, 0, 0, 0, 0, 2, 0, 1, 6},
+        {8, 11, 0, 0, 0, 0, 1, 0, 7},
+        {0, 0, 2, 0, 0, 0, 6, 7, 0}
+    };
+
+    dijkstra(graph, 0);
+
+    return 0;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 14 -->
+        <div class="question-box">
+            <h3>14. Program to implement Binary Search</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+#include <stdio.h>
+
+int binarySearch(int arr[], int left, int right, int target) {
+    while (left <= right) {
+        int mid = left + (right - left) / 2;
+
+        if (arr[mid] == target) {
+            return mid;
+        } else if (arr[mid] < target) {
+            left = mid + 1;
+        } else {
+            right = mid - 1;
+        }
+    }
+    return -1;
+}
+
+int main() {
+    int arr[] = {1, 3, 5, 7, 9, 11};
+    int target = 7;
+    int result = binarySearch(arr, 0, 5, target);
+
+    if (result != -1) {
+        printf("Element found at index: %d\n", result);
+    } else {
+        printf("Element not found.\n");
+    }
+    return 0;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 15 to 20 (Sorting Algorithms) -->
+        <!-- Adding all 6 Sorting algorithms -->
+        <div class="question-box">
+            <h3>15. Program to implement Bubble Sort</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+#include <stdio.h>
+
+void bubbleSort(int arr[], int n) {
+    for (int i = 0; i < n-1; i++) {
+        for (int j = 0; j < n-i-1; j++) {
+            if (arr[j] > arr[j+1]) {
+                int temp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = temp;
+            }
+        }
+    }
+}
+
+int main() {
+    int arr[] = {64, 34, 25, 12, 22, 11, 90};
+    int n = sizeof(arr)/sizeof(arr[0]);
+    bubbleSort(arr, n);
+    
+    printf("Sorted array: \n");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+    return 0;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <div class="question-box">
+            <h3>16. Program to implement Selection Sort</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+#include <stdio.h>
+
+void selectionSort(int arr[], int n) {
+    for (int i = 0; i < n-1; i++) {
+        int minIdx = i;
+        for (int j = i+1; j < n; j++) {
+            if (arr[j] < arr[minIdx]) {
+                minIdx = j;
+            }
+        }
+        int temp = arr[minIdx];
+        arr[minIdx] = arr[i];
+        arr[i] = temp;
+    }
+}
+
+int main() {
+    int arr[] = {64, 34, 25, 12, 22, 11, 90};
+    int n = sizeof(arr)/sizeof(arr[0]);
+    selectionSort(arr, n);
+    
+    printf("Sorted array: \n");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+    return 0;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <div class="question-box">
+            <h3>17. Program to implement Insertion Sort</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+#include <stdio.h>
+
+void insertionSort(int arr[], int n) {
+    for (int i = 1; i < n; i++) {
+        int key = arr[i];
+        int j = i - 1;
+        while (j >= 0 && arr[j] > key) {
+            arr[j + 1] = arr[j];
+            j--;
+        }
+        arr[j + 1] = key;
+    }
+}
+
+int main() {
+    int arr[] = {64, 34, 25, 12, 22, 11, 90};
+    int n = sizeof(arr)/sizeof(arr[0]);
+    insertionSort(arr, n);
+    
+    printf("Sorted array: \n");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+    return 0;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <div class="question-box">
+            <h3>18. Program to implement Heap Sort</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+#include <stdio.h>
+
+void heapify(int arr[], int n, int i) {
+    int largest = i;
+    int left = 2 * i + 1;
+    int right = 2 * i + 2;
+
+    if (left < n && arr[left] > arr[largest]) {
+        largest = left;
+    }
+
+    if (right < n && arr[right] > arr[largest]) {
+        largest = right;
+    }
+
+    if (largest != i) {
+        int temp = arr[i];
+        arr[i] = arr[largest];
+        arr[largest] = temp;
+        heapify(arr, n, largest);
+    }
+}
+
+void heapSort(int arr[], int n) {
+    for (int i = n / 2 - 1; i >= 0; i--) {
+        heapify(arr, n, i);
+    }
+
+    for (int i = n - 1; i >= 0; i--) {
+        int temp = arr[0];
+        arr[0] = arr[i];
+        arr[i] = temp;
+        heapify(arr, i, 0);
+    }
+}
+
+int main() {
+    int arr[] = {64, 34, 25, 12, 22, 11, 90};
+    int n = sizeof(arr)/sizeof(arr[0]);
+    heapSort(arr, n);
+    
+    printf("Sorted array: \n");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+    return 0;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <div class="question-box">
+            <h3>19. Program to implement Merge Sort</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+#include <stdio.h>
+
+void merge(int arr[], int left, int mid, int right) {
+    int n1 = mid - left + 1;
+    int n2 = right - mid;
+
+    int leftArr[n1], rightArr[n2];
+
+    for (int i = 0; i < n1; i++) {
+        leftArr[i] = arr[left + i];
+    }
+    for (int i = 0; i < n2; i++) {
+        rightArr[i] = arr[mid + 1 + i];
+    }
+
+    int i = 0, j = 0, k = left;
+    while (i < n1 && j < n2) {
+        if (leftArr[i] <= rightArr[j]) {
+            arr[k] = leftArr[i];
+            i++;
+        } else {
+            arr[k] = rightArr[j];
+            j++;
+        }
+        k++;
+    }
+
+    while (i < n1) {
+        arr[k] = leftArr[i];
+        i++;
+        k++;
+    }
+
+    while (j < n2) {
+        arr[k] = rightArr[j];
+        j++;
+        k++;
+    }
+}
+
+void mergeSort(int arr[], int left, int right) {
+    if (left < right) {
+        int mid = left + (right - left) / 2;
+        mergeSort(arr, left, mid);
+        mergeSort(arr, mid + 1, right);
+        merge(arr, left, mid, right);
+    }
+}
+
+int main() {
+    int arr[] = {64, 34, 25, 12, 22, 11, 90};
+    int n = sizeof(arr)/sizeof(arr[0]);
+    mergeSort(arr, 0, n - 1);
+    
+    printf("Sorted array: \n");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+    return 0;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <div class="question-box">
+            <h3>20. Program to implement Quick Sort</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+#include <stdio.h>
+
+int partition(int arr[], int low, int high) {
+    int pivot = arr[high];
+    int i = low - 1;
+
+    for (int j = low; j < high; j++) {
+        if (arr[j] < pivot) {
+            i++;
+            int temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+        }
+    }
+
+    int temp = arr[i + 1];
+    arr[i + 1] = arr[high];
+    arr[high] = temp;
+
+    return i + 1;
+}
+
+void quickSort(int arr[], int low, int high) {
+    if (low < high) {
+        int pi = partition(arr, low, high);
+        quickSort(arr, low, pi - 1);
+        quickSort(arr, pi + 1, high);
+    }
+}
+
+int main() {
+    int arr[] = {64, 34, 25, 12, 22, 11, 90};
+    int n = sizeof(arr)/sizeof(arr[0]);
+    quickSort(arr, 0, n - 1);
+    
+    printf("Sorted array: \n");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+    return 0;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+
+
+        <!-- cpp -->
+            <div class="container">
+                <h1>DSA Questions in C++</h1>
+            </div>
+            
+                    <!-- Question 1 -->
+                    <div class="question-box">
+                        <h3>1. Program to demonstrate concept of structures</h3>
+                        <div class="code-container">
+                            <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                            <pre>
+            <code>
+            #include <iostream>
+            using namespace std;
+            
+            struct Student {
+                string name;
+                int age;
+                float marks;
+            };
+            
+            int main() {
+                Student student1 = {"John", 20, 85.5};
+                cout << "Name: " << student1.name << endl;
+                cout << "Age: " << student1.age << endl;
+                cout << "Marks: " << student1.marks << endl;
+                return 0;
+            }
+            </code>
+                            </pre>
+                        </div>
+                    </div> 
+            
+                    <!-- Question 2 -->
+                    <div class="question-box">
+                        <h3>2. Program to implement single Linked List</h3>
+                        <div class="code-container">
+                            <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                            <pre>
+            <code>
+            #include <iostream>
+            using namespace std;
+            
+            struct Node {
+                int data;
+                Node* next;
+            };
+            
+            void insert(Node*& head, int value) {
+                Node* newNode = new Node;
+                newNode->data = value;
+                newNode->next = head;
+                head = newNode;
+            }
+            
+            void display(Node* head) {
+                Node* temp = head;
+                while (temp != nullptr) {
+                    cout << temp->data << " ";
+                    temp = temp->next;
+                }
+                cout << endl;
+            }
+            
+            int main() {
+                Node* head = nullptr;
+                insert(head, 10);
+                insert(head, 20);
+                insert(head, 30);
+                display(head);
+                return 0;
+            }
+            </code>
+                            </pre>
+                        </div>
+                    </div> 
+            
+                    <!-- Question 3 -->
+                    <div class="question-box">
+                        <h3>3. Program to implement Doubly Linked List</h3>
+                        <div class="code-container">
+                            <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                            <pre>
+            <code>
+            #include <iostream>
+            using namespace std;
+            
+            struct Node {
+                int data;
+                Node* next;
+                Node* prev;
+            };
+            
+            void insert(Node*& head, int value) {
+                Node* newNode = new Node;
+                newNode->data = value;
+                newNode->next = head;
+                newNode->prev = nullptr;
+                if (head != nullptr) {
+                    head->prev = newNode;
+                }
+                head = newNode;
+            }
+            
+            void display(Node* head) {
+                Node* temp = head;
+                while (temp != nullptr) {
+                    cout << temp->data << " ";
+                    temp = temp->next;
+                }
+                cout << endl;
+            }
+            
+            int main() {
+                Node* head = nullptr;
+                insert(head, 10);
+                insert(head, 20);
+                insert(head, 30);
+                display(head);
+                return 0;
+            }
+            </code>
+                            </pre>
+                        </div>
+                    </div> 
+            
+                    <!-- Question 4 -->
+                    <div class="question-box">
+                        <h3>4. Program to implement Stack using Linked List</h3>
+                        <div class="code-container">
+                            <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                            <pre>
+            <code>
+            #include <iostream>
+            using namespace std;
+            
+            struct Node {
+                int data;
+                Node* next;
+            };
+            
+            class Stack {
+            private:
+                Node* top;
+            public:
+                Stack() {
+                    top = nullptr;
+                }
+                
+                void push(int value) {
+                    Node* newNode = new Node;
+                    newNode->data = value;
+                    newNode->next = top;
+                    top = newNode;
+                }
+            
+                void pop() {
+                    if (top != nullptr) {
+                        Node* temp = top;
+                        top = top->next;
+                        delete temp;
+                    }
+                }
+            
+                int peek() {
+                    if (top != nullptr) {
+                        return top->data;
+                    }
+                    return -1;  // Stack is empty
+                }
+            
+                bool isEmpty() {
+                    return top == nullptr;
+                }
+            };
+            
+            int main() {
+                Stack stack;
+                stack.push(10);
+                stack.push(20);
+                stack.push(30);
+                cout << "Top element: " << stack.peek() << endl;
+                stack.pop();
+                cout << "Top element after pop: " << stack.peek() << endl;
+                return 0;
+            }
+            </code>
+                            </pre>
+                        </div>
+                    </div> 
+            
+                    <!-- Question 5 -->
+                    <div class="question-box">
+                        <h3>5. Program to implement Queue using Linked List</h3>
+                        <div class="code-container">
+                            <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                            <pre>
+            <code>
+            #include <iostream>
+            using namespace std;
+            
+            struct Node {
+                int data;
+                Node* next;
+            };
+            
+            class Queue {
+            private:
+                Node* front;
+                Node* rear;
+            public:
+                Queue() {
+                    front = rear = nullptr;
+                }
+            
+                void enqueue(int value) {
+                    Node* newNode = new Node;
+                    newNode->data = value;
+                    newNode->next = nullptr;
+                    if (rear == nullptr) {
+                        front = rear = newNode;
+                        return;
+                    }
+                    rear->next = newNode;
+                    rear = newNode;
+                }
+            
+                void dequeue() {
+                    if (front == nullptr) return;
+                    Node* temp = front;
+                    front = front->next;
+                    if (front == nullptr) {
+                        rear = nullptr;
+                    }
+                    delete temp;
+                }
+            
+                int peek() {
+                    if (front != nullptr) {
+                        return front->data;
+                    }
+                    return -1;  // Queue is empty
+                }
+            };
+            
+            int main() {
+                Queue q;
+                q.enqueue(10);
+                q.enqueue(20);
+                q.enqueue(30);
+                cout << "Front element: " << q.peek() << endl;
+                q.dequeue();
+                cout << "Front element after dequeue: " << q.peek() << endl;
+                return 0;
+            }
+            </code>
+                            </pre>
+                        </div>
+                    </div> 
+            
+                    <!-- Question 6 -->
+                    <div class="question-box">
+                        <h3>6. Program to implement Stack using arrays</h3>
+                        <div class="code-container">
+                            <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                            <pre>
+            <code>
+            #include <iostream>
+            using namespace std;
+            
+            class Stack {
+            private:
+                int arr[5];
+                int top;
+            public:
+                Stack() {
+                    top = -1;
+                }
+            
+                void push(int value) {
+                    if (top < 4) {
+                        arr[++top] = value;
+                    } else {
+                        cout << "Stack Overflow!" << endl;
+                    }
+                }
+            
+                void pop() {
+                    if (top >= 0) {
+                        top--;
+                    } else {
+                        cout << "Stack Underflow!" << endl;
+                    }
+                }
+            
+                int peek() {
+                    if (top >= 0) {
+                        return arr[top];
+                    }
+                    return -1;
+                }
+            
+                bool isEmpty() {
+                    return top == -1;
+                }
+            };
+            
+            int main() {
+                Stack stack;
+                stack.push(10);
+                stack.push(20);
+                stack.push(30);
+                cout << "Top element: " << stack.peek() << endl;
+                stack.pop();
+                cout << "Top element after pop: " << stack.peek() << endl;
+                return 0;
+            }
+            </code>
+                            </pre>
+                        </div>
+                    </div> 
+            
+                    <!-- Question 7 -->
+                    <div class="question-box">
+                        <h3>7. Program to implement Queue using arrays</h3>
+                        <div class="code-container">
+                            <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                            <pre>
+            <code>
+            #include <iostream>
+            using namespace std;
+            
+            class Queue {
+            private:
+                int arr[5];
+                int front, rear;
+            public:
+                Queue() {
+                    front = rear = -1;
+                }
+            
+                void enqueue(int value) {
+                    if (rear < 4) {
+                        if (front == -1) front = 0;
+                        arr[++rear] = value;
+                    } else {
+                        cout << "Queue Overflow!" << endl;
+                    }
+                }
+            
+                void dequeue() {
+                    if (front == -1) {
+                        cout << "Queue Underflow!" << endl;
+                        return;
+                    }
+                    front++;
+                    if (front > rear) {
+                        front = rear = -1;
+                    }
+                }
+            
+                int peek() {
+                    if (front != -1) {
+                        return arr[front];
+                    }
+                    return -1;
+                }
+            };
+            
+            int main() {
+                Queue q;
+                q.enqueue(10);
+                q.enqueue(20);
+                q.enqueue(30);
+                cout << "Front element: " << q.peek() << endl;
+                q.dequeue();
+                cout << "Front element after dequeue: " << q.peek() << endl;
+                return 0;
+            }
+            </code>
+                            </pre>
+                        </div>
+                    </div> 
+            
+                    <!-- Question 8 -->
+                    <div class="question-box">
+                        <h3>8. Program to Create and Copy a Tree</h3>
+                        <div class="code-container">
+                            <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                            <pre>
+            <code>
+            #include <iostream>
+            using namespace std;
+            
+            struct Node {
+                int data;
+                Node* left;
+                Node* right;
+            };
+            
+            Node* createNode(int value) {
+                Node* newNode = new Node;
+                newNode->data = value;
+                newNode->left = newNode->right = nullptr;
+                return newNode;
+            }
+            
+            Node* copyTree(Node* root) {
+                if (root == nullptr) return nullptr;
+                Node* newRoot = createNode(root->data);
+                newRoot->left = copyTree(root->left);
+                newRoot->right = copyTree(root->right);
+                return newRoot;
+            }
+            
+            void inorder(Node* root) {
+                if (root != nullptr) {
+                    inorder(root->left);
+                    cout << root->data << " ";
+                    inorder(root->right);
+                }
+            }
+            
+            int main() {
+                Node* root = createNode(1);
+                root->left = createNode(2);
+                root->right = createNode(3);
+                root->left->left = createNode(4);
+                root->left->right = createNode(5);
+                
+                Node* copiedTree = copyTree(root);
+            
+                cout << "Inorder traversal of original tree: ";
+                inorder(root);
+                cout << endl;
+            
+                cout << "Inorder traversal of copied tree: ";
+                inorder(copiedTree);
+                cout << endl;
+            
+                return 0;
+            }
+            </code>
+                            </pre>
+                        </div>
+                    </div> 
+            
+                    <!-- Question 9 -->
+                    <div class="question-box">
+                        <h3>9. Program to implement Tree Traversal</h3>
+                        <div class="code-container">
+                            <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                            <pre>
+            <code>
+            #include <iostream>
+            using namespace std;
+            
+            struct Node {
+                int data;
+                Node* left;
+                Node* right;
+            };
+            
+            void inorder(Node* root) {
+                if (root != nullptr) {
+                    inorder(root->left);
+                    cout << root->data << " ";
+                    inorder(root->right);
+                }
+            }
+            
+            void preorder(Node* root) {
+                if (root != nullptr) {
+                    cout << root->data << " ";
+                    preorder(root->left);
+                    preorder(root->right);
+                }
+            }
+            
+            void postorder(Node* root) {
+                if (root != nullptr) {
+                    postorder(root->left);
+                    postorder(root->right);
+                    cout << root->data << " ";
+                }
+            }
+            
+            int main() {
+                Node* root = new Node{1, nullptr, nullptr};
+                root->left = new Node{2, nullptr, nullptr};
+                root->right = new Node{3, nullptr, nullptr};
+                root->left->left = new Node{4, nullptr, nullptr};
+                root->left->right = new Node{5, nullptr, nullptr};
+            
+                cout << "Inorder Traversal: ";
+                inorder(root);
+                cout << endl;
+            
+                cout << "Preorder Traversal: ";
+                preorder(root);
+                cout << endl;
+            
+                cout << "Postorder Traversal: ";
+                postorder(root);
+                cout << endl;
+            
+                return 0;
+            }
+            </code>
+                            </pre>
+                        </div>
+                    </div>
+
+    <!-- Question 10 -->
+    <div class="question-box">
+        <h3>10. Program to implement Insert and Delete Operation on Trees</h3>
+        <div class="code-container">
+            <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+            <pre>
+<code>
+#include <iostream>
+using namespace std;
+
+struct Node {
+int data;
+Node* left;
+Node* right;
+};
+
+Node* insert(Node* root, int value) {
+if (root == nullptr) {
+    Node* newNode = new Node;
+    newNode->data = value;
+    newNode->left = newNode->right = nullptr;
+    return newNode;
+}
+
+if (value < root->data) {
+    root->left = insert(root->left, value);
+} else {
+    root->right = insert(root->right, value);
+}
+
+return root;
+}
+
+Node* deleteNode(Node* root, int value) {
+if (root == nullptr) return root;
+
+if (value < root->data) {
+    root->left = deleteNode(root->left, value);
+} else if (value > root->data) {
+    root->right = deleteNode(root->right, value);
+} else {
+    if (root->left == nullptr) {
+        Node* temp = root->right;
+        delete root;
+        return temp;
+    } else if (root->right == nullptr) {
+        Node* temp = root->left;
+        delete root;
+        return temp;
+    }
+
+    Node* temp = root->right;
+    while (temp && temp->left) temp = temp->left;
+    root->data = temp->data;
+    root->right = deleteNode(root->right, temp->data);
+}
+
+return root;
+}
+
+void inorder(Node* root) {
+if (root != nullptr) {
+    inorder(root->left);
+    cout << root->data << " ";
+    inorder(root->right);
+}
+}
+
+int main() {
+Node* root = nullptr;
+root = insert(root, 50);
+insert(root, 30);
+insert(root, 20);
+insert(root, 40);
+insert(root, 70);
+insert(root, 60);
+insert(root, 80);
+
+cout << "Inorder traversal before deletion: ";
+inorder(root);
+cout << endl;
+
+root = deleteNode(root, 20);
+root = deleteNode(root, 30);
+root = deleteNode(root, 50);
+
+cout << "Inorder traversal after deletion: ";
+inorder(root);
+cout << endl;
+
+return 0;
+}
+</code>
+            </pre>
+        </div>
+    </div> 
+
+    <!-- Question 11 -->
+    <div class="question-box">
+        <h3>11. Program to implement AVL Trees</h3>
+        <div class="code-container">
+            <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+            <pre>
+<code>
+#include <iostream>
+using namespace std;
+
+struct Node {
+int data;
+Node* left;
+Node* right;
+int height;
+};
+
+int height(Node* root) {
+return root ? root->height : 0;
+}
+
+int balanceFactor(Node* root) {
+return height(root->left) - height(root->right);
+}
+
+Node* rotateRight(Node* y) {
+Node* x = y->left;
+Node* T2 = x->right;
+x->right = y;
+y->left = T2;
+y->height = max(height(y->left), height(y->right)) + 1;
+x->height = max(height(x->left), height(x->right)) + 1;
+return x;
+}
+
+Node* rotateLeft(Node* x) {
+Node* y = x->right;
+Node* T2 = y->left;
+y->left = x;
+x->right = T2;
+x->height = max(height(x->left), height(x->right)) + 1;
+y->height = max(height(y->left), height(y->right)) + 1;
+return y;
+}
+
+Node* insert(Node* root, int value) {
+if (root == nullptr) {
+    Node* newNode = new Node{value, nullptr, nullptr, 1};
+    return newNode;
+}
+
+if (value < root->data) {
+    root->left = insert(root->left, value);
+} else {
+    root->right = insert(root->right, value);
+}
+
+root->height = max(height(root->left), height(root->right)) + 1;
+
+int balance = balanceFactor(root);
+
+if (balance > 1 && value < root->left->data) {
+    return rotateRight(root);
+}
+
+if (balance < -1 && value > root->right->data) {
+    return rotateLeft(root);
+}
+
+if (balance > 1 && value > root->left->data) {
+    root->left = rotateLeft(root->left);
+    return rotateRight(root);
+}
+
+if (balance < -1 && value < root->right->data) {
+    root->right = rotateRight(root->right);
+    return rotateLeft(root);
+}
+
+return root;
+}
+
+void inorder(Node* root) {
+if (root != nullptr) {
+    inorder(root->left);
+    cout << root->data << " ";
+    inorder(root->right);
+}
+}
+
+int main() {
+Node* root = nullptr;
+root = insert(root, 10);
+root = insert(root, 20);
+root = insert(root, 30);
+root = insert(root, 40);
+root = insert(root, 50);
+root = insert(root, 25);
+
+cout << "Inorder traversal of the AVL tree: ";
+inorder(root);
+cout << endl;
+
+return 0;
+}
+</code>
+            </pre>
+        </div>
+    </div> 
+
+    <!-- Question 12 -->
+    <div class="question-box">
+        <h3>12. Program to implement Warshall's Algorithm to find path matrix</h3>
+        <div class="code-container">
+            <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+            <pre>
+<code>
+#include <iostream>
+using namespace std;
+
+#define V 4
+
+void warshall(int graph[V][V]) {
+int path[V][V];
+
+for (int i = 0; i < V; i++) {
+    for (int j = 0; j < V; j++) {
+        path[i][j] = graph[i][j];
+    }
+}
+
+for (int k = 0; k < V; k++) {
+    for (int i = 0; i < V; i++) {
+        for (int j = 0; j < V; j++) {
+            path[i][j] = path[i][j] || (path[i][k] && path[k][j]);
+        }
+    }
+}
+
+cout << "Path matrix: " << endl;
+for (int i = 0; i < V; i++) {
+    for (int j = 0; j < V; j++) {
+        cout << path[i][j] << " ";
+    }
+    cout << endl;
+}
+}
+
+int main() {
+int graph[V][V] = { {0, 1, 0, 1},
+                    {1, 0, 1, 1},
+                    {0, 1, 0, 0},
+                    {1, 1, 0, 0} };
+
+warshall(graph);
+return 0;
+}
+</code>
+            </pre>
+        </div>
+    </div> 
+
+    <!-- Question 13 -->
+    <div class="question-box">
+        <h3>13. Program to implement Dijkstra's Algorithm</h3>
+        <div class="code-container">
+            <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+            <pre>
+<code>
+#include <iostream>
+#include <climits>
+using namespace std;
+
+#define V 9
+
+int minDistance(int dist[], bool sptSet[]) {
+int min = INT_MAX, minIndex;
+for (int v = 0; v < V; v++) {
+    if (!sptSet[v] && dist[v] <= min) {
+        min = dist[v];
+        minIndex = v;
+    }
+}
+return minIndex;
+}
+
+void dijkstra(int graph[V][V], int src) {
+int dist[V];
+bool sptSet[V];
+
+for (int i = 0; i < V; i++) {
+    dist[i] = INT_MAX;
+    sptSet[i] = false;
+}
+
+dist[src] = 0;
+
+for (int count = 0; count < V - 1; count++) {
+    int u = minDistance(dist, sptSet);
+    sptSet[u] = true;
+
+    for (int v = 0; v < V; v++) {
+        if (!sptSet[v] && graph[u][v] && dist[u] != INT_MAX && dist[u] + graph[u][v] < dist[v]) {
+            dist[v] = dist[u] + graph[u][v];
+        }
+    }
+}
+
+cout << "Vertex \t Distance from Source" << endl;
+for (int i = 0; i < V; i++) {
+    cout << i << " \t " << dist[i] << endl;
+}
+}
+
+int main() {
+int graph[V][V] = { {0, 4, 0, 0, 0, 0, 0, 8, 0},
+                    {4, 0, 8, 0, 0, 0, 0, 0, 0},
+                    {0, 8, 0, 7, 0, 4, 0, 0, 0},
+                    {0, 0, 7, 0, 9, 14, 0, 0, 0},
+                    {0, 0, 0, 9, 0, 10, 0, 0, 0},
+                    {0, 0, 4, 14, 10, 0, 2, 0, 0},
+                    {0, 0, 0, 0, 0, 2, 0, 1, 6},
+                    {8, 0, 0, 0, 0, 0, 1, 0, 7},
+                    {0, 0, 0, 0, 0, 0, 6, 7, 0} };
+
+dijkstra(graph, 0);
+return 0;
+}
+</code>
+            </pre>
+        </div>
+    </div>
+
+      <!-- Question 14 -->
+      <div class="question-box">
+        <h3>14. Program to implement Binary Search</h3>
+        <div class="code-container">
+            <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+            <pre>
+<code>
+#include <iostream>
+using namespace std;
+
+int binarySearch(int arr[], int left, int right, int x) {
+if (right >= left) {
+    int mid = left + (right - left) / 2;
+
+    if (arr[mid] == x) return mid;
+    if (arr[mid] > x) return binarySearch(arr, left, mid - 1, x);
+
+    return binarySearch(arr, mid + 1, right, x);
+}
+return -1;
+}
+
+int main() {
+int arr[] = {2, 3, 4, 10, 40};
+int n = sizeof(arr) / sizeof(arr[0]);
+int x = 10;
+int result = binarySearch(arr, 0, n - 1, x);
+
+if (result == -1) {
+    cout << "Element not present in array" << endl;
+} else {
+    cout << "Element found at index " << result << endl;
+}
+
+return 0;
+}
+</code>
+            </pre>
+        </div>
+    </div>
+
+    <!-- Question 15 -->
+    <div class="question-box">
+        <h3>15. Program to implement Bubble Sort</h3>
+        <div class="code-container">
+            <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+            <pre>
+<code>
+#include <iostream>
+using namespace std;
+
+void bubbleSort(int arr[], int n) {
+for (int i = 0; i < n - 1; i++) {
+    for (int j = 0; j < n - i - 1; j++) {
+        if (arr[j] > arr[j + 1]) {
+            swap(arr[j], arr[j + 1]);
+        }
+    }
+}
+}
+
+int main() {
+int arr[] = {64, 34, 25, 12, 22, 11, 90};
+int n = sizeof(arr) / sizeof(arr[0]);
+
+bubbleSort(arr, n);
+
+cout << "Sorted array: ";
+for (int i = 0; i < n; i++) {
+    cout << arr[i] << " ";
+}
+cout << endl;
+
+return 0;
+}
+</code>
+            </pre>
+        </div>
+    </div>
+
+    <!-- Question 16 -->
+    <div class="question-box">
+        <h3>16. Program to implement Selection Sort</h3>
+        <div class="code-container">
+            <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+            <pre>
+<code>
+#include <iostream>
+using namespace std;
+
+void selectionSort(int arr[], int n) {
+for (int i = 0; i < n - 1; i++) {
+    int minIdx = i;
+    for (int j = i + 1; j < n; j++) {
+        if (arr[j] < arr[minIdx]) {
+            minIdx = j;
+        }
+    }
+    swap(arr[minIdx], arr[i]);
+}
+}
+
+int main() {
+int arr[] = {64, 25, 12, 22, 11};
+int n = sizeof(arr) / sizeof(arr[0]);
+
+selectionSort(arr, n);
+
+cout << "Sorted array: ";
+for (int i = 0; i < n; i++) {
+    cout << arr[i] << " ";
+}
+cout << endl;
+
+return 0;
+}
+</code>
+            </pre>
+        </div>
+    </div>
+
+    <!-- Question 17 -->
+    <div class="question-box">
+        <h3>17. Program to implement Insertion Sort</h3>
+        <div class="code-container">
+            <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+            <pre>
+<code>
+#include <iostream>
+using namespace std;
+
+void insertionSort(int arr[], int n) {
+for (int i = 1; i < n; i++) {
+    int key = arr[i];
+    int j = i - 1;
+
+    while (j >= 0 && arr[j] > key) {
+        arr[j + 1] = arr[j];
+        j = j - 1;
+    }
+    arr[j + 1] = key;
+}
+}
+
+int main() {
+int arr[] = {12, 11, 13, 5, 6};
+int n = sizeof(arr) / sizeof(arr[0]);
+
+insertionSort(arr, n);
+
+cout << "Sorted array: ";
+for (int i = 0; i < n; i++) {
+    cout << arr[i] << " ";
+}
+cout << endl;
+
+return 0;
+}
+</code>
+            </pre>
+        </div>
+    </div>
+
+    <!-- Question 18 -->
+    <div class="question-box">
+        <h3>18. Program to implement Heap Sort</h3>
+        <div class="code-container">
+            <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+            <pre>
+<code>
+#include <iostream>
+using namespace std;
+
+void heapify(int arr[], int n, int i) {
+int largest = i;
+int left = 2 * i + 1;
+int right = 2 * i + 2;
+
+if (left < n && arr[left] > arr[largest]) {
+    largest = left;
+}
+
+if (right < n && arr[right] > arr[largest]) {
+    largest = right;
+}
+
+if (largest != i) {
+    swap(arr[i], arr[largest]);
+    heapify(arr, n, largest);
+}
+}
+
+void heapSort(int arr[], int n) {
+for (int i = n / 2 - 1; i >= 0; i--) {
+    heapify(arr, n, i);
+}
+
+for (int i = n - 1; i >= 0; i--) {
+    swap(arr[0], arr[i]);
+    heapify(arr, i, 0);
+}
+}
+
+int main() {
+int arr[] = {12, 11, 13, 5, 6, 7};
+int n = sizeof(arr) / sizeof(arr[0]);
+
+heapSort(arr, n);
+
+cout << "Sorted array: ";
+for (int i = 0; i < n; i++) {
+    cout << arr[i] << " ";
+}
+cout << endl;
+
+return 0;
+}
+</code>
+            </pre>
+        </div>
+    </div>
+
+    <!-- Question 19 -->
+    <div class="question-box">
+        <h3>19. Program to implement Merge Sort</h3>
+        <div class="code-container">
+            <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+            <pre>
+<code>
+#include <iostream>
+using namespace std;
+
+void merge(int arr[], int left, int right) {
+if (left >= right) return;
+int mid = left + (right - left) / 2;
+
+merge(arr, left, mid);
+merge(arr, mid + 1, right);
+
+int n1 = mid - left + 1;
+int n2 = right - mid;
+int leftArr[n1], rightArr[n2];
+
+for (int i = 0; i < n1; i++) leftArr[i] = arr[left + i];
+for (int i = 0; i < n2; i++) rightArr[i] = arr[mid + 1 + i];
+
+int i = 0, j = 0, k = left;
+while (i < n1 && j < n2) {
+    if (leftArr[i] <= rightArr[j]) {
+        arr[k] = leftArr[i];
+        i++;
+    } else {
+        arr[k] = rightArr[j];
+        j++;
+    }
+    k++;
+}
+
+while (i < n1) arr[k++] = leftArr[i++];
+while (j < n2) arr[k++] = rightArr[j++];
+}
+
+int main() {
+int arr[] = {12, 11, 13, 5, 6, 7};
+int n = sizeof(arr) / sizeof(arr[0]);
+
+merge(arr, 0, n - 1);
+
+cout << "Sorted array: ";
+for (int i = 0; i < n; i++) {
+    cout << arr[i] << " ";
+}
+cout << endl;
+
+return 0;
+}
+</code>
+            </pre>
+        </div>
+    </div>
+
+    <!-- Question 20 -->
+    <div class="question-box">
+        <h3>20. Program to implement Quick Sort</h3>
+        <div class="code-container">
+            <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+            <pre>
+<code>
+#include <iostream>
+using namespace std;
+
+int partition(int arr[], int low, int high) {
+int pivot = arr[high];
+int i = (low - 1);
+
+for (int j = low; j < high; j++) {
+    if (arr[j] <= pivot) {
+        i++;
+        swap(arr[i], arr[j]);
+    }
+}
+swap(arr[i + 1], arr[high]);
+return (i + 1);
+}
+
+void quickSort(int arr[], int low, int high) {
+if (low < high) {
+    int pi = partition(arr, low, high);
+
+    quickSort(arr, low, pi - 1);
+    quickSort(arr, pi + 1, high);
+}
+}
+
+int main() {
+int arr[] = {10, 7, 8, 9, 1, 5};
+int n = sizeof(arr) / sizeof(arr[0]);
+
+quickSort(arr, 0, n - 1);
+
+cout << "Sorted array: ";
+for (int i = 0; i < n; i++) {
+    cout << arr[i] << " ";
+}
+cout << endl;
+
+return 0;
+}
+</code>
+            </pre>
+        </div>
+    </div>
+
+
+
+    <div class="container">
+        <h1>DSA Questions in Java</h1>
+        </div>
+
+        <!-- Question 1 -->
+        <div class="question-box">
+            <h3>1. Program to demonstrate concept of structures</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+class Student {
+    String name;
+    int age;
+    float marks;
+
+    Student(String name, int age, float marks) {
+        this.name = name;
+        this.age = age;
+        this.marks = marks;
+    }
+
+    void display() {
+        System.out.println("Name: " + name);
+        System.out.println("Age: " + age);
+        System.out.println("Marks: " + marks);
+    }
+
+    public static void main(String[] args) {
+        Student student1 = new Student("John", 20, 85.5f);
+        student1.display();
+    }
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="question-box">
+            <h3>2. Program to implement single Linked List</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+class LinkedList {
+    Node head;
+
+    class Node {
+        int data;
+        Node next;
+
+        Node(int data) {
+            this.data = data;
+            next = null;
+        }
+    }
+
+    public void insert(int data) {
+        Node newNode = new Node(data);
+        if (head == null) {
+            head = newNode;
+        } else {
+            Node temp = head;
+            while (temp.next != null) {
+                temp = temp.next;
+            }
+            temp.next = newNode;
+        }
+    }
+
+    public void display() {
+        Node temp = head;
+        while (temp != null) {
+            System.out.print(temp.data + " ");
+            temp = temp.next;
+        }
+    }
+
+    public static void main(String[] args) {
+        LinkedList list = new LinkedList();
+        list.insert(10);
+        list.insert(20);
+        list.insert(30);
+        list.display();
+    }
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="question-box">
+            <h3>3. Program to implement Doubly Linked List</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+class DoublyLinkedList {
+    Node head;
+
+    class Node {
+        int data;
+        Node next;
+        Node prev;
+
+        Node(int data) {
+            this.data = data;
+            next = null;
+            prev = null;
+        }
+    }
+
+    public void insert(int data) {
+        Node newNode = new Node(data);
+        if (head == null) {
+            head = newNode;
+        } else {
+            Node temp = head;
+            while (temp.next != null) {
+                temp = temp.next;
+            }
+            temp.next = newNode;
+            newNode.prev = temp;
+        }
+    }
+
+    public void display() {
+        Node temp = head;
+        while (temp != null) {
+            System.out.print(temp.data + " ");
+            temp = temp.next;
+        }
+    }
+
+    public static void main(String[] args) {
+        DoublyLinkedList list = new DoublyLinkedList();
+        list.insert(10);
+        list.insert(20);
+        list.insert(30);
+        list.display();
+    }
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 4 -->
+        <div class="question-box">
+            <h3>4. Program to implement Stack using Linked List</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+class Stack {
+    Node top;
+
+    class Node {
+        int data;
+        Node next;
+
+        Node(int data) {
+            this.data = data;
+            next = null;
+        }
+    }
+
+    public void push(int data) {
+        Node newNode = new Node(data);
+        newNode.next = top;
+        top = newNode;
+    }
+
+    public void pop() {
+        if (top == null) {
+            System.out.println("Stack is empty");
+            return;
+        }
+        System.out.println("Popped element: " + top.data);
+        top = top.next;
+    }
+
+    public void display() {
+        Node temp = top;
+        while (temp != null) {
+            System.out.print(temp.data + " ");
+            temp = temp.next;
+        }
+    }
+
+    public static void main(String[] args) {
+        Stack stack = new Stack();
+        stack.push(10);
+        stack.push(20);
+        stack.push(30);
+        stack.display();
+        stack.pop();
+        stack.display();
+    }
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 5 -->
+        <div class="question-box">
+            <h3>5. Program to implement Queue using Linked List</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+class Queue {
+    Node front, rear;
+
+    class Node {
+        int data;
+        Node next;
+
+        Node(int data) {
+            this.data = data;
+            next = null;
+        }
+    }
+
+    public void enqueue(int data) {
+        Node newNode = new Node(data);
+        if (rear == null) {
+            front = rear = newNode;
+            return;
+        }
+        rear.next = newNode;
+        rear = newNode;
+    }
+
+    public void dequeue() {
+        if (front == null) {
+            System.out.println("Queue is empty");
+            return;
+        }
+        System.out.println("Dequeued element: " + front.data);
+        front = front.next;
+    }
+
+    public void display() {
+        Node temp = front;
+        while (temp != null) {
+            System.out.print(temp.data + " ");
+            temp = temp.next;
+        }
+    }
+
+    public static void main(String[] args) {
+        Queue queue = new Queue();
+        queue.enqueue(10);
+        queue.enqueue(20);
+        queue.enqueue(30);
+        queue.display();
+        queue.dequeue();
+        queue.display();
+    }
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 6 -->
+        <div class="question-box">
+            <h3>6. Program to implement Stack using arrays</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+class Stack {
+    int[] arr;
+    int top;
+    int capacity;
+
+    Stack(int size) {
+        capacity = size;
+        arr = new int[capacity];
+        top = -1;
+    }
+
+    public void push(int data) {
+        if (top == capacity - 1) {
+            System.out.println("Stack overflow");
+            return;
+        }
+        arr[++top] = data;
+    }
+
+    public void pop() {
+        if (top == -1) {
+            System.out.println("Stack underflow");
+            return;
+        }
+        System.out.println("Popped element: " + arr[top--]);
+    }
+
+    public void display() {
+        if (top == -1) {
+            System.out.println("Stack is empty");
+            return;
+        }
+        for (int i = 0; i <= top; i++) {
+            System.out.print(arr[i] + " ");
+        }
+    }
+
+    public static void main(String[] args) {
+        Stack stack = new Stack(5);
+        stack.push(10);
+        stack.push(20);
+        stack.push(30);
+        stack.display();
+        stack.pop();
+        stack.display();
+    }
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 7 -->
+        <div class="question-box">
+            <h3>7. Program to implement Queue using arrays</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+class Queue {
+    int[] arr;
+    int front, rear, size, capacity;
+
+    Queue(int size) {
+        capacity = size;
+        arr = new int[capacity];
+        front = size - 1;
+        rear = size - 1;
+        this.size = 0;
+    }
+
+    public void enqueue(int data) {
+        if (size == capacity) {
+            System.out.println("Queue is full");
+            return;
+        }
+        rear = (rear + 1) % capacity;
+        arr[rear] = data;
+        size++;
+    }
+
+    public void dequeue() {
+        if (size == 0) {
+            System.out.println("Queue is empty");
+            return;
+        }
+        front = (front + 1) % capacity;
+        System.out.println("Dequeued element: " + arr[front]);
+        size--;
+    }
+
+    public void display() {
+        if (size == 0) {
+            System.out.println("Queue is empty");
+            return;
+        }
+        int i = front + 1;
+        for (int j = 0; j < size; j++) {
+            System.out.print(arr[i] + " ");
+            i = (i + 1) % capacity;
+        }
+    }
+
+    public static void main(String[] args) {
+        Queue queue = new Queue(5);
+        queue.enqueue(10);
+        queue.enqueue(20);
+        queue.enqueue(30);
+        queue.display();
+        queue.dequeue();
+        queue.display();
+    }
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+         <!-- Question 8 -->
+         <div class="question-box">
+            <h3>8. Program to Create and Copy a Tree</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+class TreeNode {
+    int data;
+    TreeNode left, right;
+
+    TreeNode(int data) {
+        this.data = data;
+        left = right = null;
+    }
+}
+
+class BinaryTree {
+    TreeNode root;
+
+    public BinaryTree cloneTree(TreeNode node) {
+        if (node == null) {
+            return null;
+        }
+        BinaryTree newTree = new BinaryTree();
+        newTree.root = new TreeNode(node.data);
+        newTree.root.left = cloneTree(node.left);
+        newTree.root.right = cloneTree(node.right);
+        return newTree;
+    }
+
+    public void inorder(TreeNode node) {
+        if (node != null) {
+            inorder(node.left);
+            System.out.print(node.data + " ");
+            inorder(node.right);
+        }
+    }
+
+    public static void main(String[] args) {
+        BinaryTree tree = new BinaryTree();
+        tree.root = new TreeNode(1);
+        tree.root.left = new TreeNode(2);
+        tree.root.right = new TreeNode(3);
+        tree.root.left.left = new TreeNode(4);
+        
+        System.out.println("Original Tree:");
+        tree.inorder(tree.root);
+
+        BinaryTree clonedTree = tree.cloneTree(tree.root);
+        System.out.println("\nCloned Tree:");
+        clonedTree.inorder(clonedTree.root);
+    }
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 9 -->
+        <div class="question-box">
+            <h3>9. Program to implement Tree Traversal</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+class TreeNode {
+    int data;
+    TreeNode left, right;
+
+    TreeNode(int data) {
+        this.data = data;
+        left = right = null;
+    }
+}
+
+class BinaryTree {
+    TreeNode root;
+
+    public void inorder(TreeNode node) {
+        if (node != null) {
+            inorder(node.left);
+            System.out.print(node.data + " ");
+            inorder(node.right);
+        }
+    }
+
+    public void preorder(TreeNode node) {
+        if (node != null) {
+            System.out.print(node.data + " ");
+            preorder(node.left);
+            preorder(node.right);
+        }
+    }
+
+    public void postorder(TreeNode node) {
+        if (node != null) {
+            postorder(node.left);
+            postorder(node.right);
+            System.out.print(node.data + " ");
+        }
+    }
+
+    public static void main(String[] args) {
+        BinaryTree tree = new BinaryTree();
+        tree.root = new TreeNode(1);
+        tree.root.left = new TreeNode(2);
+        tree.root.right = new TreeNode(3);
+        tree.root.left.left = new TreeNode(4);
+
+        System.out.println("Inorder Traversal:");
+        tree.inorder(tree.root);
+
+        System.out.println("\nPreorder Traversal:");
+        tree.preorder(tree.root);
+
+        System.out.println("\nPostorder Traversal:");
+        tree.postorder(tree.root);
+    }
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 10 -->
+        <div class="question-box">
+            <h3>10. Program to implement Insert and Delete Operation on Trees</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+class TreeNode {
+    int data;
+    TreeNode left, right;
+
+    TreeNode(int data) {
+        this.data = data;
+        left = right = null;
+    }
+}
+
+class BinaryTree {
+    TreeNode root;
+
+    public TreeNode insert(TreeNode node, int data) {
+        if (node == null) {
+            return new TreeNode(data);
+        }
+        if (data < node.data) {
+            node.left = insert(node.left, data);
+        } else if (data > node.data) {
+            node.right = insert(node.right, data);
+        }
+        return node;
+    }
+
+    public TreeNode delete(TreeNode root, int data) {
+        if (root == null) {
+            return root;
+        }
+        if (data < root.data) {
+            root.left = delete(root.left, data);
+        } else if (data > root.data) {
+            root.right = delete(root.right, data);
+        } else {
+            if (root.left == null) {
+                return root.right;
+            } else if (root.right == null) {
+                return root.left;
+            }
+            root.data = minValue(root.right);
+            root.right = delete(root.right, root.data);
+        }
+        return root;
+    }
+
+    public int minValue(TreeNode root) {
+        int minValue = root.data;
+        while (root.left != null) {
+            minValue = root.left.data;
+            root = root.left;
+        }
+        return minValue;
+    }
+
+    public void inorder(TreeNode node) {
+        if (node != null) {
+            inorder(node.left);
+            System.out.print(node.data + " ");
+            inorder(node.right);
+        }
+    }
+
+    public static void main(String[] args) {
+        BinaryTree tree = new BinaryTree();
+        tree.root = tree.insert(tree.root, 50);
+        tree.insert(tree.root, 30);
+        tree.insert(tree.root, 20);
+        tree.insert(tree.root, 40);
+        tree.insert(tree.root, 70);
+        tree.insert(tree.root, 60);
+        tree.insert(tree.root, 80);
+
+        System.out.println("Original Tree:");
+        tree.inorder(tree.root);
+
+        tree.delete(tree.root, 20);
+        System.out.println("\nAfter deleting 20:");
+        tree.inorder(tree.root);
+    }
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 11 -->
+        <div class="question-box">
+            <h3>11. Program to implement AVL Trees</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+// AVL Tree implementation will be added here
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 12 -->
+        <div class="question-box">
+            <h3>12. Program to implement Warshall's Algorithm to find path matrix</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+class Warshall {
+    static final int INF = 999;
+
+    public void warshallAlgorithm(int[][] graph) {
+        int n = graph.length;
+        for (int k = 0; k < n; k++) {
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j < n; j++) {
+                    if (graph[i][k] == 1 && graph[k][j] == 1) {
+                        graph[i][j] = 1;
+                    }
+                }
+            }
+        }
+    }
+
+    public void printMatrix(int[][] graph) {
+        int n = graph.length;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                System.out.print(graph[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+
+    public static void main(String[] args) {
+        Warshall algorithm = new Warshall();
+        int[][] graph = {
+            {0, 1, INF, INF},
+            {1, 0, 1, INF},
+            {INF, 1, 0, 1},
+            {INF, INF, 1, 0}
+        };
+
+        System.out.println("Initial graph:");
+        algorithm.printMatrix(graph);
+
+        algorithm.warshallAlgorithm(graph);
+        System.out.println("Path matrix after Warshall's algorithm:");
+        algorithm.printMatrix(graph);
+    }
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 13 -->
+        <div class="question-box">
+            <h3>13. Program to implement Dijkstra's Algorithm</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+class Dijkstra {
+    static final int INF = Integer.MAX_VALUE;
+
+    public void dijkstra(int graph[][], int source) {
+        int n = graph.length;
+        int[] dist = new int[n];
+        boolean[] sptSet = new boolean[n];
+
+        for (int i = 0; i < n; i++) {
+            dist[i] = INF;
+            sptSet[i] = false;
+        }
+        dist[source] = 0;
+
+        for (int count = 0; count < n - 1; count++) {
+            int u = minDistance(dist, sptSet);
+            sptSet[u] = true;
+
+            for (int v = 0; v < n; v++) {
+                if (!sptSet[v] && graph[u][v] != INF && dist[u] != INF && dist[u] + graph[u][v] < dist[v]) {
+                    dist[v] = dist[u] + graph[u][v];
+                }
+            }
+        }
+
+        printSolution(dist);
+    }
+
+    public int minDistance(int[] dist, boolean[] sptSet) {
+        int min = INF, minIndex = -1;
+
+        for (int v = 0; v < dist.length; v++) {
+            if (!sptSet[v] && dist[v] <= min) {
+                min = dist[v];
+                minIndex = v;
+            }
+        }
+        return minIndex;
+    }
+
+    public void printSolution(int[] dist) {
+        System.out.println("Vertex \t Distance from Source");
+        for (int i = 0; i < dist.length; i++) {
+            System.out.println(i + " \t " + dist[i]);
+        }
+    }
+
+    public static void main(String[] args) {
+        Dijkstra dijkstra = new Dijkstra();
+        int graph[][] = {
+            {0, 9, 6, 0, 0, 0},
+            {9, 0, 2, 3, 0, 0},
+            {6, 2, 0, 0, 0, 0},
+            {0, 3, 0, 0, 1, 2},
+            {0, 0, 0, 1, 0, 4},
+            {0, 0, 0, 2, 4, 0}
+        };
+
+        dijkstra.dijkstra(graph, 0);
+    }
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 14 -->
+        <div class="question-box">
+            <h3>14. Program to implement Binary Search</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+class BinarySearch {
+    public int binarySearch(int[] arr, int left, int right, int target) {
+        if (right >= left) {
+            int mid = left + (right - left) / 2;
+
+            if (arr[mid] == target) {
+                return mid;
+            }
+
+            if (arr[mid] > target) {
+                return binarySearch(arr, left, mid - 1, target);
+            }
+
+            return binarySearch(arr, mid + 1, right, target);
+        }
+
+        return -1;
+    }
+
+    public static void main(String[] args) {
+        BinarySearch search = new BinarySearch();
+        int[] arr = {2, 3, 4, 10, 40};
+        int target = 10;
+        int result = search.binarySearch(arr, 0, arr.length - 1, target);
+        if (result == -1) {
+            System.out.println("Element not found");
+        } else {
+            System.out.println("Element found at index " + result);
+        }
+    }
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+               <!-- Question 15 -->
+               <div class="question-box">
+                <h3>15. Program to implement Bubble Sort</h3>
+                <div class="code-container">
+                    <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                    <pre>
+    <code>
+    class BubbleSort {
+        public void bubbleSort(int[] arr) {
+            int n = arr.length;
+            for (int i = 0; i < n - 1; i++) {
+                for (int j = 0; j < n - i - 1; j++) {
+                    if (arr[j] > arr[j + 1]) {
+                        // swap arr[j] and arr[j + 1]
+                        int temp = arr[j];
+                        arr[j] = arr[j + 1];
+                        arr[j + 1] = temp;
+                    }
+                }
+            }
+        }
+    
+        public void printArray(int[] arr) {
+            for (int num : arr) {
+                System.out.print(num + " ");
+            }
+            System.out.println();
+        }
+    
+        public static void main(String[] args) {
+            BubbleSort sorter = new BubbleSort();
+            int[] arr = {64, 34, 25, 12, 22, 11, 90};
+            
+            System.out.println("Unsorted array:");
+            sorter.printArray(arr);
+            
+            sorter.bubbleSort(arr);
+            
+            System.out.println("Sorted array:");
+            sorter.printArray(arr);
+        }
+    }
+    </code>
+                    </pre>
+                </div>
+            </div>
+    
+            <!-- Question 16 -->
+            <div class="question-box">
+                <h3>16. Program to implement Selection Sort</h3>
+                <div class="code-container">
+                    <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                    <pre>
+    <code>
+    class SelectionSort {
+        public void selectionSort(int[] arr) {
+            int n = arr.length;
+            for (int i = 0; i < n - 1; i++) {
+                int minIdx = i;
+                for (int j = i + 1; j < n; j++) {
+                    if (arr[j] < arr[minIdx]) {
+                        minIdx = j;
+                    }
+                }
+                // Swap the found minimum element with the first element
+                int temp = arr[minIdx];
+                arr[minIdx] = arr[i];
+                arr[i] = temp;
+            }
+        }
+    
+        public void printArray(int[] arr) {
+            for (int num : arr) {
+                System.out.print(num + " ");
+            }
+            System.out.println();
+        }
+    
+        public static void main(String[] args) {
+            SelectionSort sorter = new SelectionSort();
+            int[] arr = {64, 34, 25, 12, 22, 11, 90};
+    
+            System.out.println("Unsorted array:");
+            sorter.printArray(arr);
+    
+            sorter.selectionSort(arr);
+    
+            System.out.println("Sorted array:");
+            sorter.printArray(arr);
+        }
+    }
+    </code>
+                    </pre>
+                </div>
+            </div>
+    
+            <!-- Question 17 -->
+            <div class="question-box">
+                <h3>17. Program to implement Insertion Sort</h3>
+                <div class="code-container">
+                    <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                    <pre>
+    <code>
+    class InsertionSort {
+        public void insertionSort(int[] arr) {
+            int n = arr.length;
+            for (int i = 1; i < n; i++) {
+                int key = arr[i];
+                int j = i - 1;
+    
+                while (j >= 0 && arr[j] > key) {
+                    arr[j + 1] = arr[j];
+                    j = j - 1;
+                }
+                arr[j + 1] = key;
+            }
+        }
+    
+        public void printArray(int[] arr) {
+            for (int num : arr) {
+                System.out.print(num + " ");
+            }
+            System.out.println();
+        }
+    
+        public static void main(String[] args) {
+            InsertionSort sorter = new InsertionSort();
+            int[] arr = {64, 34, 25, 12, 22, 11, 90};
+    
+            System.out.println("Unsorted array:");
+            sorter.printArray(arr);
+    
+            sorter.insertionSort(arr);
+    
+            System.out.println("Sorted array:");
+            sorter.printArray(arr);
+        }
+    }
+    </code>
+                    </pre>
+                </div>
+            </div>
+    
+            <!-- Question 18 -->
+            <div class="question-box">
+                <h3>18. Program to implement Heap Sort</h3>
+                <div class="code-container">
+                    <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                    <pre>
+    <code>
+    class HeapSort {
+        public void heapify(int[] arr, int n, int i) {
+            int largest = i;
+            int left = 2 * i + 1;
+            int right = 2 * i + 2;
+    
+            if (left < n && arr[left] > arr[largest]) {
+                largest = left;
+            }
+    
+            if (right < n && arr[right] > arr[largest]) {
+                largest = right;
+            }
+    
+            if (largest != i) {
+                int temp = arr[i];
+                arr[i] = arr[largest];
+                arr[largest] = temp;
+                heapify(arr, n, largest);
+            }
+        }
+    
+        public void heapSort(int[] arr) {
+            int n = arr.length;
+    
+            for (int i = n / 2 - 1; i >= 0; i--) {
+                heapify(arr, n, i);
+            }
+    
+            for (int i = n - 1; i >= 0; i--) {
+                int temp = arr[0];
+                arr[0] = arr[i];
+                arr[i] = temp;
+                heapify(arr, i, 0);
+            }
+        }
+    
+        public void printArray(int[] arr) {
+            for (int num : arr) {
+                System.out.print(num + " ");
+            }
+            System.out.println();
+        }
+    
+        public static void main(String[] args) {
+            HeapSort sorter = new HeapSort();
+            int[] arr = {12, 11, 13, 5, 6, 7};
+    
+            System.out.println("Unsorted array:");
+            sorter.printArray(arr);
+    
+            sorter.heapSort(arr);
+    
+            System.out.println("Sorted array:");
+            sorter.printArray(arr);
+        }
+    }
+    </code>
+                    </pre>
+                </div>
+            </div>
+    
+            <!-- Question 19 -->
+            <div class="question-box">
+                <h3>19. Program to implement Merge Sort</h3>
+                <div class="code-container">
+                    <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                    <pre>
+    <code>
+    class MergeSort {
+        public void merge(int[] arr, int left, int right) {
+            if (left < right) {
+                int mid = (left + right) / 2;
+    
+                merge(arr, left, mid);
+                merge(arr, mid + 1, right);
+    
+                mergeArrays(arr, left, mid, right);
+            }
+        }
+    
+        public void mergeArrays(int[] arr, int left, int mid, int right) {
+            int n1 = mid - left + 1;
+            int n2 = right - mid;
+    
+            int[] leftArray = new int[n1];
+            int[] rightArray = new int[n2];
+    
+            System.arraycopy(arr, left, leftArray, 0, n1);
+            System.arraycopy(arr, mid + 1, rightArray, 0, n2);
+    
+            int i = 0, j = 0;
+            int k = left;
+    
+            while (i < n1 && j < n2) {
+                if (leftArray[i] <= rightArray[j]) {
+                    arr[k] = leftArray[i];
+                    i++;
+                } else {
+                    arr[k] = rightArray[j];
+                    j++;
+                }
+                k++;
+            }
+    
+            while (i < n1) {
+                arr[k] = leftArray[i];
+                i++;
+                k++;
+            }
+    
+            while (j < n2) {
+                arr[k] = rightArray[j];
+                j++;
+                k++;
+            }
+        }
+    
+        public void printArray(int[] arr) {
+            for (int num : arr) {
+                System.out.print(num + " ");
+            }
+            System.out.println();
+        }
+    
+        public static void main(String[] args) {
+            MergeSort sorter = new MergeSort();
+            int[] arr = {12, 11, 13, 5, 6, 7};
+    
+            System.out.println("Unsorted array:");
+            sorter.printArray(arr);
+    
+            sorter.merge(arr, 0, arr.length - 1);
+    
+            System.out.println("Sorted array:");
+            sorter.printArray(arr);
+        }
+    }
+    </code>
+                    </pre>
+                </div>
+            </div>
+    
+            <!-- Question 20 -->
+            <div class="question-box">
+                <h3>20. Program to implement Quick Sort</h3>
+                <div class="code-container">
+                    <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                    <pre>
+    <code>
+    class QuickSort {
+        public int partition(int[] arr, int low, int high) {
+            int pivot = arr[high];
+            int i = low - 1;
+    
+            for (int j = low; j < high; j++) {
+                if (arr[j] <= pivot) {
+                    i++;
+                    int temp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = temp;
+                }
+            }
+    
+            int temp = arr[i + 1];
+            arr[i + 1] = arr[high];
+            arr[high] = temp;
+    
+            return i + 1;
+        }
+    
+        public void quickSort(int[] arr, int low, int high) {
+            if (low < high) {
+                int pi = partition(arr, low, high);
+    
+                quickSort(arr, low, pi - 1);
+                quickSort(arr, pi + 1, high);
+            }
+        }
+    
+        public void printArray(int[] arr) {
+            for (int num : arr) {
+                System.out.print(num + " ");
+            }
+            System.out.println();
+        }
+    
+        public static void main(String[] args) {
+            QuickSort sorter = new QuickSort();
+            int[] arr = {12, 11, 13, 5, 6, 7};
+    
+            System.out.println("Unsorted array:");
+            sorter.printArray(arr);
+    
+            sorter.quickSort(arr, 0, arr.length - 1);
+    
+            System.out.println("Sorted array:");
+            sorter.printArray(arr);
+        }
+    }
+    </code>
+                    </pre>
+                </div>
+            </div>
+
+            <div class="container">
+                <h1>DSA Questions in Python</h1>
+                </div>
+        
+                <!-- Question 1 -->
+                <div class="question-box">
+                    <h3>1. Program to demonstrate concept of structures</h3>
+                    <div class="code-container">
+                        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                        <pre>
+        <code>
+        class Student:
+            def __init__(self, name, age, marks):
+                self.name = name
+                self.age = age
+                self.marks = marks
+        
+        student1 = Student("John", 20, 85.5)
+        print(f"Name: {student1.name}")
+        print(f"Age: {student1.age}")
+        print(f"Marks: {student1.marks}")
+        </code>
+                        </pre>
+                    </div>
+                </div>
+        
+                <!-- Question 2 -->
+                <div class="question-box">
+                    <h3>2. Program to implement single Linked List</h3>
+                    <div class="code-container">
+                        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                        <pre>
+        <code>
+        class Node:
+            def __init__(self, data):
+                self.data = data
+                self.next = None
+        
+        class LinkedList:
+            def __init__(self):
+                self.head = None
+        
+            def append(self, data):
+                new_node = Node(data)
+                if not self.head:
+                    self.head = new_node
+                else:
+                    last = self.head
+                    while last.next:
+                        last = last.next
+                    last.next = new_node
+        
+            def display(self):
+                current = self.head
+                while current:
+                    print(current.data, end=" -> ")
+                    current = current.next
+                print("None")
+        
+        # Creating a linked list and appending elements
+        linked_list = LinkedList()
+        linked_list.append(10)
+        linked_list.append(20)
+        linked_list.append(30)
+        
+        linked_list.display()
+        </code>
+                        </pre>
+                    </div>
+                </div>
+        
+                <!-- Question 3 -->
+                <div class="question-box">
+                    <h3>3. Program to implement Doubly Linked List</h3>
+                    <div class="code-container">
+                        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                        <pre>
+        <code>
+        class Node:
+            def __init__(self, data):
+                self.data = data
+                self.prev = None
+                self.next = None
+        
+        class DoublyLinkedList:
+            def __init__(self):
+                self.head = None
+        
+            def append(self, data):
+                new_node = Node(data)
+                if not self.head:
+                    self.head = new_node
+                else:
+                    last = self.head
+                    while last.next:
+                        last = last.next
+                    last.next = new_node
+                    new_node.prev = last
+        
+            def display(self):
+                current = self.head
+                while current:
+                    print(current.data, end=" <-> ")
+                    current = current.next
+                print("None")
+        
+        # Creating a doubly linked list and appending elements
+        dll = DoublyLinkedList()
+        dll.append(10)
+        dll.append(20)
+        dll.append(30)
+        
+        dll.display()
+        </code>
+                        </pre>
+                    </div>
+                </div>
+        
+                <!-- Question 4 -->
+                <div class="question-box">
+                    <h3>4. Program to implement Stack using Linked List</h3>
+                    <div class="code-container">
+                        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                        <pre>
+        <code>
+        class Node:
+            def __init__(self, data):
+                self.data = data
+                self.next = None
+        
+        class Stack:
+            def __init__(self):
+                self.top = None
+        
+            def push(self, data):
+                new_node = Node(data)
+                new_node.next = self.top
+                self.top = new_node
+        
+            def pop(self):
+                if self.top is None:
+                    print("Stack is empty")
+                    return
+                popped = self.top
+                self.top = self.top.next
+                return popped.data
+        
+            def peek(self):
+                if self.top:
+                    return self.top.data
+                else:
+                    return "Stack is empty"
+        
+        # Stack operations
+        stack = Stack()
+        stack.push(10)
+        stack.push(20)
+        stack.push(30)
+        
+        print("Top element is:", stack.peek())
+        print("Popped element:", stack.pop())
+        print("Top element after pop:", stack.peek())
+        </code>
+                        </pre>
+                    </div>
+                </div>
+        
+                <!-- Question 5 -->
+                <div class="question-box">
+                    <h3>5. Program to implement Queue using Linked List</h3>
+                    <div class="code-container">
+                        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                        <pre>
+        <code>
+        class Node:
+            def __init__(self, data):
+                self.data = data
+                self.next = None
+        
+        class Queue:
+            def __init__(self):
+                self.front = self.rear = None
+        
+            def enqueue(self, data):
+                new_node = Node(data)
+                if self.rear is None:
+                    self.front = self.rear = new_node
+                    return
+                self.rear.next = new_node
+                self.rear = new_node
+        
+            def dequeue(self):
+                if self.front is None:
+                    print("Queue is empty")
+                    return
+                dequeued = self.front
+                self.front = self.front.next
+                return dequeued.data
+        
+        # Queue operations
+        queue = Queue()
+        queue.enqueue(10)
+        queue.enqueue(20)
+        queue.enqueue(30)
+        
+        print("Dequeued element:", queue.dequeue())
+        print("Dequeued element:", queue.dequeue())
+        </code>
+                        </pre>
+                    </div>
+                </div>
+        
+                <!-- Question 6 -->
+                <div class="question-box">
+                    <h3>6. Program to implement Stack using Arrays</h3>
+                    <div class="code-container">
+                        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                        <pre>
+        <code>
+        class Stack:
+            def __init__(self, size):
+                self.stack = []
+                self.size = size
+        
+            def push(self, item):
+                if len(self.stack) >= self.size:
+                    print("Stack Overflow")
+                else:
+                    self.stack.append(item)
+        
+            def pop(self):
+                if not self.stack:
+                    print("Stack Underflow")
+                else:
+                    return self.stack.pop()
+        
+            def peek(self):
+                if self.stack:
+                    return self.stack[-1]
+                else:
+                    return "Stack is empty"
+        
+        # Stack operations
+        stack = Stack(3)
+        stack.push(10)
+        stack.push(20)
+        stack.push(30)
+        
+        print("Top element is:", stack.peek())
+        print("Popped element:", stack.pop())
+        print("Top element after pop:", stack.peek())
+        </code>
+                        </pre>
+                    </div>
+                </div>
+        
+                <!-- Question 7 -->
+                <div class="question-box">
+                    <h3>7. Program to implement Queue using Arrays</h3>
+                    <div class="code-container">
+                        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                        <pre>
+        <code>
+        class Queue:
+            def __init__(self, size):
+                self.queue = []
+                self.size = size
+        
+            def enqueue(self, item):
+                if len(self.queue) >= self.size:
+                    print("Queue is full")
+                else:
+                    self.queue.append(item)
+        
+            def dequeue(self):
+                if not self.queue:
+                    print("Queue is empty")
+                else:
+                    return self.queue.pop(0)
+        
+        # Queue operations
+        queue = Queue(3)
+        queue.enqueue(10)
+        queue.enqueue(20)
+        queue.enqueue(30)
+        
+        print("Dequeued element:", queue.dequeue())
+        </code>
+                        </pre>
+                    </div>
+                </div>
+        
+                <!-- Question 8 -->
+                <div class="question-box">
+                    <h3>8. Program to Create and Copy a Tree</h3>
+                    <div class="code-container">
+                        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                        <pre>
+        <code>
+        class Node:
+            def __init__(self, data):
+                self.data = data
+                self.left = self.right = None
+        
+        def copy_tree(root):
+            if root is None:
+                return None
+            new_node = Node(root.data)
+            new_node.left = copy_tree(root.left)
+            new_node.right = copy_tree(root.right)
+            return new_node
+        
+        # Creating and copying a tree
+        root = Node(1)
+        root.left = Node(2)
+        root.right = Node(3)
+        
+        print("Original Tree Root Data:", root.data)
+        copy_root = copy_tree(root)
+        print("Copied Tree Root Data:", copy_root.data)
+        </code>
+                        </pre>
+                    </div>
+                </div>
+        
+                <!-- Question 9 -->
+                <div class="question-box">
+                    <h3>9. Program to implement Tree Traversal</h3>
+                    <div class="code-container">
+                        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                        <pre>
+        <code>
+        class Node:
+            def __init__(self, data):
+                self.data = data
+                self.left = self.right = None
+        
+        def inorder(root):
+            if root:
+                inorder(root.left)
+                print(root.data, end=" ")
+                inorder(root.right)
+        
+        # Creating a tree
+        root = Node(1)
+        root.left = Node(2)
+        root.right = Node(3)
+        
+        print("Inorder Traversal:")
+        inorder(root)
+        </code>
+                        </pre>
+                    </div>
+                </div>
+        
+                <!-- Question 10 -->
+                <div class="question-box">
+                    <h3>10. Program to implement Insert and Delete Operation on Trees</h3>
+                    <div class="code-container">
+                        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                        <pre>
+        <code>
+        class Node:
+            def __init__(self, data):
+                self.data = data
+                self.left = self.right = None
+        
+        def insert(root, data):
+            if root is None:
+                return Node(data)
+            else:
+                if data < root.data:
+                    root.left = insert(root.left, data)
+                else:
+                    root.right = insert(root.right, data)
+            return root
+        
+        def delete(root, key):
+            if root is None:
+                return root
+            if key < root.data:
+                root.left = delete(root.left, key)
+            elif key > root.data:
+                root.right = delete(root.right, key)
+            else:
+                if root.left is None:
+                    return root.right
+                elif root.right is None:
+                    return root.left
+                temp = find_min(root.right)
+                root.data = temp.data
+                root.right = delete(root.right, temp.data)
+            return root
+        
+        def find_min(root):
+            while root.left:
+                root = root.left
+            return root
+        
+        # Creating a tree
+        root = Node(50)
+        root = insert(root, 30)
+        root = insert(root, 20)
+        root = insert(root, 40)
+        
+        root = delete(root, 30)
+        
+        print("Tree after deletion:")
+        inorder(root)
+        </code>
+                        </pre>
+                    </div>
+                </div>
+        
+                <!-- Question 11 -->
+<div class="question-box">
+    <h3>11. Program to implement AVL Trees</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+class Node:
+    def __init__(self, key):
+        self.left = None
+        self.right = None
+        self.value = key
+        self.height = 1
+
+def height(node):
+    if not node:
+        return 0
+    return node.height
+
+def max(a, b):
+    return a if a > b else b
+
+def right_rotate(y):
+    x = y.left
+    T2 = x.right
+    x.right = y
+    y.left = T2
+    y.height = max(height(y.left), height(y.right)) + 1
+    x.height = max(height(x.left), height(x.right)) + 1
+    return x
+
+def left_rotate(x):
+    y = x.right
+    T2 = y.left
+    y.left = x
+    x.right = T2
+    x.height = max(height(x.left), height(x.right)) + 1
+    y.height = max(height(y.left), height(y.right)) + 1
+    return y
+
+def get_balance(node):
+    if not node:
+        return 0
+    return height(node.left) - height(node.right)
+
+def insert(root, key):
+    if not root:
+        return Node(key)
+    if key < root.value:
+        root.left = insert(root.left, key)
+    else:
+        root.right = insert(root.right, key)
+    root.height = max(height(root.left), height(root.right)) + 1
+    balance = get_balance(root)
+    if balance > 1 and key < root.left.value:
+        return right_rotate(root)
+    if balance < -1 and key > root.right.value:
+        return left_rotate(root)
+    if balance > 1 and key > root.left.value:
+        root.left = left_rotate(root.left)
+        return right_rotate(root)
+    if balance < -1 and key < root.right.value:
+        root.right = right_rotate(root.right)
+        return left_rotate(root)
+    return root
+
+def pre_order(root):
+    if root:
+        print(root.value, end=" ")
+        pre_order(root.left)
+        pre_order(root.right)
+
+root = None
+values = [10, 20, 30, 15, 25, 5]
+for value in values:
+    root = insert(root, value)
+print("Pre-order traversal of the constructed AVL tree:")
+pre_order(root)
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 12 -->
+<div class="question-box">
+    <h3>12. Program to implement Warshall's algorithm to find path matrix</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+def warshall(graph):
+    n = len(graph)
+    path_matrix = [row[:] for row in graph]
+    for k in range(n):
+        for i in range(n):
+            for j in range(n):
+                if path_matrix[i][j] == 0 and path_matrix[i][k] == 1 and path_matrix[k][j] == 1:
+                    path_matrix[i][j] = 1
+    return path_matrix
+
+graph = [
+    [0, 1, 0, 0],
+    [1, 0, 1, 0],
+    [0, 1, 0, 1],
+    [0, 0, 1, 0]
+]
+
+print("Path Matrix:")
+for row in warshall(graph):
+    print(row)
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 13 -->
+<div class="question-box">
+    <h3>13. Program to implement Dijkstra's algorithm</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+import heapq
+
+def dijkstra(graph, start):
+    queue = [(0, start)]
+    distances = {start: 0}
+    while queue:
+        current_distance, current_node = heapq.heappop(queue)
+        for neighbor, weight in graph[current_node]:
+            distance = current_distance + weight
+            if neighbor not in distances or distance < distances[neighbor]:
+                distances[neighbor] = distance
+                heapq.heappush(queue, (distance, neighbor))
+    return distances
+
+graph = {
+    'A': [('B', 1), ('C', 4)],
+    'B': [('A', 1), ('C', 2), ('D', 5)],
+    'C': [('A', 4), ('B', 2), ('D', 1)],
+    'D': [('B', 5), ('C', 1)]
+}
+
+start_node = 'A'
+print("Shortest distances from node:", start_node)
+distances = dijkstra(graph, start_node)
+for node, distance in distances.items():
+    print(f"Distance from {start_node} to {node}: {distance}")
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 14 -->
+<div class="question-box">
+    <h3>14. Program to implement Binary Search</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+def binary_search(arr, target):
+    left, right = 0, len(arr) - 1
+    while left <= right:
+        mid = (left + right) // 2
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+    return -1
+
+arr = [1, 3, 5, 7, 9, 11]
+target = 7
+result = binary_search(arr, target)
+if result != -1:
+    print(f"Element found at index: {result}")
+else:
+    print("Element not found.")
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 15 -->
+<div class="question-box">
+    <h3>15. Program to implement Bubble Sort</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+def bubble_sort(arr):
+    n = len(arr)
+    for i in range(n):
+        for j in range(0, n-i-1):
+            if arr[j] > arr[j+1]:
+                arr[j], arr[j+1] = arr[j+1], arr[j]
+
+arr = [64, 34, 25, 12, 22, 11, 90]
+bubble_sort(arr)
+print("Sorted array is:", arr)
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 16 -->
+<div class="question-box">
+    <h3>16. Program to implement Selection Sort</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+def selection_sort(arr):
+    n = len(arr)
+    for i in range(n):
+        min_index = i
+        for j in range(i+1, n):
+            if arr[j] < arr[min_index]:
+                min_index = j
+        arr[i], arr[min_index] = arr[min_index], arr[i]
+
+arr = [64, 25, 12, 22, 11]
+selection_sort(arr)
+print("Sorted array is:", arr)
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 17 -->
+<div class="question-box">
+    <h3>17. Program to implement Insertion Sort</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+def insertion_sort(arr):
+    for i in range(1, len(arr)):
+        key = arr[i]
+        j = i - 1
+        while j >= 0 and key < arr[j]:
+            arr[j + 1] = arr[j]
+            j -= 1
+        arr[j + 1] = key
+
+arr = [12, 11, 13, 5, 6]
+insertion_sort(arr)
+print("Sorted array is:", arr)
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 18 -->
+<div class="question-box">
+    <h3>18. Program to implement Heap Sort</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+def heapify(arr, n, i):
+    largest = i
+    left = 2 * i + 1
+    right = 2 * i + 2
+    if left < n and arr[left] > arr[largest]:
+        largest = left
+    if right < n and arr[right] > arr[largest]:
+        largest = right
+    if largest != i:
+        arr[i], arr[largest] = arr[largest], arr[i]
+        heapify(arr, n, largest)
+
+def heap_sort(arr):
+    n = len(arr)
+    for i in range(n // 2 - 1, -1, -1):
+        heapify(arr, n, i)
+    for i in range(n - 1, 0, -1):
+        arr[i], arr[0] = arr[0], arr[i]
+        heapify(arr, i, 0)
+
+arr = [12, 11, 13, 5, 6]
+heap_sort(arr)
+print("Sorted array is:", arr)
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 19 -->
+<div class="question-box">
+    <h3>19. Program to implement Merge Sort</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+def merge_sort(arr):
+    if len(arr) > 1:
+        mid = len(arr) // 2
+        left_half = arr[:mid]
+        right_half = arr[mid:]
+        merge_sort(left_half)
+        merge_sort(right_half)
+        i = j = k = 0
+        while i < len(left_half) and j < len(right_half):
+            if left_half[i] < right_half[j]:
+                arr[k] = left_half[i]
+                i += 1
+            else:
+                arr[k] = right_half[j]
+                j += 1
+            k += 1
+        while i < len(left_half):
+            arr[k] = left_half[i]
+            i += 1
+            k += 1
+        while j < len(right_half):
+            arr[k] = right_half[j]
+            j += 1
+            k += 1
+
+arr = [38, 27, 43, 3, 9, 82, 10]
+merge_sort(arr)
+print("Sorted array is:", arr)
+</code>
+        </pre>
+    </div>
+</div>
+
+<!-- Question 20 -->
+<div class="question-box">
+    <h3>20. Program to implement Quick Sort</h3>
+    <div class="code-container">
+        <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+        <pre>
+<code>
+def quick_sort(arr):
+    if len(arr) <= 1:
+        return arr
+    pivot = arr[len(arr) // 2]
+    left = [x for x in arr if x < pivot]
+    middle = [x for x in arr if x == pivot]
+    right = [x for x in arr if x > pivot]
+    return quick_sort(left) + middle + quick_sort(right)
+
+arr = [38, 27, 43, 3, 9, 82, 10]
+print("Sorted array is:", quick_sort(arr))
+</code>
+        </pre>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
+<div>
+    <footer>
+        <p>Copyright &copy; Tahir Naseer 2024</p>
+    </footer>
+</div>
+    
