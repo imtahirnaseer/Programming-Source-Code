@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Questions</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>JavaScript Coding Questions</h1>
+
+        <div class="question-box">
+            <h3>1. Write a JavaScript function to check if a number is even or odd</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+function checkEvenOdd(number) {
+    if (number % 2 === 0) {
+        console.log(number + " is even.");
+    } else {
+        console.log(number + " is odd.");
+    }
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <div class="question-box">
+            <h3>2. Create a JavaScript function to calculate the factorial of a number</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+function factorial(n) {
+    if (n === 0 || n === 1) {
+        return 1;
+    } else {
+        return n * factorial(n - 1);
+    }
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <div class="question-box">
+            <h3>3. Write a JavaScript function to reverse a string</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+function reverseString(str) {
+    return str.split('').reverse().join('');
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <div class="question-box">
+            <h3>4. Create a JavaScript function to find the largest number in an array</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+function findLargestNumber(arr) {
+    return Math.max(...arr);
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <div class="question-box">
+            <h3>5. Write a JavaScript function to sort an array in ascending order</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+function sortArray(arr) {
+    return arr.sort((a, b) => a - b);
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+
+        <!-- Question 6 -->
+        <div class="question-box">
+            <h3>6. Write a JavaScript function to check if a number is prime</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+function isPrime(num) {
+    if (num <= 1) return false;
+    for (let i = 2; i < num; i++) {
+        if (num % i === 0) return false;
+    }
+    return true;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 7 -->
+        <div class="question-box">
+            <h3>7. Create a JavaScript function to find the sum of all elements in an array</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+function sumArray(arr) {
+    return arr.reduce((acc, val) => acc + val, 0);
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 8 -->
+        <div class="question-box">
+            <h3>8. Write a JavaScript function to check if a string is a palindrome</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+function isPalindrome(str) {
+    const reversedStr = str.split('').reverse().join('');
+    return str === reversedStr;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 9 -->
+        <div class="question-box">
+            <h3>9. Create a JavaScript function to find the Fibonacci sequence up to a certain number</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+function fibonacci(n) {
+    let a = 0, b = 1;
+    const sequence = [];
+    for (let i = 0; i < n; i++) {
+        sequence.push(a);
+        [a, b] = [b, a + b];
+    }
+    return sequence;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 10 -->
+        <div class="question-box">
+            <h3>10. Write a JavaScript function to find the factorial of a number iteratively</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+function factorialIterative(n) {
+    let result = 1;
+    for (let i = 2; i <= n; i++) {
+        result *= i;
+    }
+    return result;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 11 -->
+        <div class="question-box">
+            <h3>11. Create a JavaScript function to count the number of vowels in a string</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+function countVowels(str) {
+    const vowels = ['a', 'e', 'i', 'o', 'u'];
+    let count = 0;
+    for (let char of str) {
+        if (vowels.includes(char.toLowerCase())) {
+            count++;
+        }
+    }
+    return count;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 12 -->
+        <div class="question-box">
+            <h3>12. Write a JavaScript function to find the longest word in a sentence</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+function longestWord(sentence) {
+    const words = sentence.split(' ');
+    let longest = '';
+    for (let word of words) {
+        if (word.length > longest.length) {
+            longest = word;
+        }
+    }
+    return longest;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 13 -->
+        <div class="question-box">
+            <h3>13. Create a JavaScript function to merge two sorted arrays</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+function mergeSortedArrays(arr1, arr2) {
+    let result = [];
+    let i = 0, j = 0;
+    while (i < arr1.length && j < arr2.length) {
+        if (arr1[i] < arr2[j]) {
+            result.push(arr1[i]);
+            i++;
+        } else {
+            result.push(arr2[j]);
+            j++;
+        }
+    }
+    return result.concat(arr1.slice(i), arr2.slice(j));
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 14 -->
+        <div class="question-box">
+            <h3>14. Write a JavaScript function to remove duplicates from an array</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+function removeDuplicates(arr) {
+    return [...new Set(arr)];
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 15 -->
+        <div class="question-box">
+            <h3>15. Create a JavaScript function to find the average of numbers in an array</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+function average(arr) {
+    const sum = arr.reduce((acc, val) => acc + val, 0);
+    return sum / arr.length;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 16 -->
+        <div class="question-box">
+            <h3>16. Write a JavaScript function to capitalize the first letter of each word in a string</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+function capitalizeWords(str) {
+    return str.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 17 -->
+        <div class="question-box">
+            <h3>17. Write a JavaScript function to shuffle an array randomly</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+function shuffleArray(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 18 -->
+        <div class="question-box">
+            <h3>18. Create a JavaScript function to find the second largest number in an array</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+function secondLargest(arr) {
+    let largest = -Infinity, second = -Infinity;
+    for (let num of arr) {
+        if (num > largest) {
+            second = largest;
+            largest = num;
+        } else if (num > second && num !== largest) {
+            second = num;
+        }
+    }
+    return second;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 19 -->
+        <div class="question-box">
+            <h3>19. Write a JavaScript function to format a number with commas</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+function formatNumber(num) {
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 20 -->
+        <div class="question-box">
+            <h3>20. Create a JavaScript function to flatten a nested array</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+function flattenArray(arr) {
+    return arr.reduce((flat, item) => flat.concat(Array.isArray(item) ? flattenArray(item) : item), []);
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 21 -->
+        <div class="question-box">
+            <h3>21. Write a JavaScript function to get the current date and time</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+function getCurrentDateTime() {
+    const now = new Date();
+    return now.toLocaleString();
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 22 -->
+        <div class="question-box">
+            <h3>22. Create a JavaScript function to find the GCD (Greatest Common Divisor) of two numbers</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+function gcd(a, b) {
+    while (b) {
+        [a, b] = [b, a % b];
+    }
+    return a;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 23 -->
+        <div class="question-box">
+            <h3>23. Write a JavaScript function to convert a string to title case</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+function toTitleCase(str) {
+    return str.replace(/\w\S*/g, (word) => word.charAt(0).toUpperCase() + word.substr(1).toLowerCase());
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 24 -->
+        <div class="question-box">
+            <h3>24. Create a JavaScript function to check if a number is a perfect square</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+function isPerfectSquare(num) {
+    return Math.sqrt(num) % 1 === 0;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 25 -->
+        <div class="question-box">
+            <h3>25. Write a JavaScript function to check if a number is a palindrome</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+function isPalindromeNumber(num) {
+    const reversedNum = num.toString().split('').reverse().join('');
+    return num.toString() === reversedNum;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 26 -->
+        <div class="question-box">
+            <h3>26. Create a JavaScript function to find the common elements between two arrays</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+function commonElements(arr1, arr2) {
+    return arr1.filter(value => arr2.includes(value));
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 27 -->
+        <div class="question-box">
+            <h3>27. Write a JavaScript function to check if a number is a power of 2</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+function isPowerOfTwo(num) {
+    return num > 0 && (num & (num - 1)) === 0;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 28 -->
+        <div class="question-box">
+            <h3>28. Write a JavaScript function to find the mode of an array</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+function findMode(arr) {
+    const frequency = {};
+    arr.forEach(value => frequency[value] = (frequency[value] || 0) + 1);
+    const maxFrequency = Math.max(...Object.values(frequency));
+    return Object.keys(frequency).filter(key => frequency[key] === maxFrequency);
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 29 -->
+        <div class="question-box">
+            <h3>29. Create a JavaScript function to rotate a matrix 90 degrees</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+function rotateMatrix(matrix) {
+    return matrix[0].map((_, colIndex) => matrix.map(row => row[colIndex])).reverse();
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 30 -->
+        <div class="question-box">
+            <h3>30. Write a JavaScript function to generate a random string of a given length</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+function generateRandomString(length) {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let result = '';
+    for (let i = 0; i < length; i++) {
+        result += characters.charAt(Math.floor(Math.random() * characters.length));
+    }
+    return result;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+<div>
+    <footer>
+        <p>Copyright &copy; Tahir Naseer 2024</p>
+    </footer>
+</div>
