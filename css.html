@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Questions</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>CSS Coding Questions</h1>
+
+        <div class="question-box">
+            <h3>1. Write CSS to center a div horizontally and vertically in the viewport</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+.center-div {
+    width: 200px;
+    height: 200px;
+    background-color: #3498db;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <div class="question-box">
+            <h3>2. Create a CSS rule to style a button with a hover effect</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+button {
+    background-color: #2980b9;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #1abc9c;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <div class="question-box">
+            <h3>3. Write CSS to make a responsive grid layout</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.item {
+    background-color: #f39c12;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <div class="question-box">
+            <h3>4. Create a CSS animation to fade in a text element</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.fade-in-text {
+    animation: fadeIn 2s ease-in-out;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <div class="question-box">
+            <h3>5. Style a navigation bar with hover effects for links</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+nav {
+    background-color: #34495e;
+    padding: 10px 20px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #1abc9c;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <div class="question-box">
+            <h3>6. Write CSS to create a shadow effect on an element</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+.shadow-box {
+    width: 200px;
+    height: 200px;
+    background-color: #ecf0f1;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1);
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <div class="question-box">
+            <h3>7. Create a CSS rule to style a responsive image gallery</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.gallery img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <div class="question-box">
+            <h3>8. Style a footer with social media icons</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+footer {
+    background-color: #34495e;
+    padding: 20px;
+    text-align: center;
+}
+
+footer .social-icons {
+    list-style-type: none;
+    padding: 0;
+}
+
+footer .social-icons li {
+    display: inline;
+    margin: 0 10px;
+}
+
+footer .social-icons a {
+    color: white;
+    font-size: 24px;
+    text-decoration: none;
+}
+
+footer .social-icons a:hover {
+    color: #1abc9c;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <div class="question-box">
+            <h3>9. Write CSS to create a responsive navigation bar</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+nav {
+    background-color: #2c3e50;
+    padding: 10px 20px;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <div class="question-box">
+            <h3>10. Create a CSS rule to apply a gradient background</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+body {
+    background: linear-gradient(to right, #ff7e5f, #feb47b);
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <div class="question-box">
+            <h3>11. Create a CSS rule to create a circular button</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+.button {
+    width: 50px;
+    height: 50px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 12 -->
+        <div class="question-box">
+            <h3>12. Create a CSS rule for a sticky header</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+header {
+    position: sticky;
+    top: 0;
+    background-color: #2c3e50;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 13 -->
+        <div class="question-box">
+            <h3>13. Write CSS to create a horizontal scrolling text</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+.marquee {
+    white-space: nowrap;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.marquee p {
+    display: inline-block;
+    animation: scroll-text 10s linear infinite;
+}
+
+@keyframes scroll-text {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 14 -->
+        <div class="question-box">
+            <h3>14. Create a CSS rule to add a gradient border to an element</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+.gradient-border {
+    border: 5px solid transparent;
+    background-image: linear-gradient(white, white), radial-gradient(circle, #ff7e5f, #feb47b);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 15 -->
+        <div class="question-box">
+            <h3>15. Create a CSS rule for a hover effect that changes the background color and text color</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+button {
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: #1abc9c;
+    color: #2c3e50;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 16 -->
+        <div class="question-box">
+            <h3>16. Write CSS to create a background image with a fixed position</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+body {
+    background-image: url('background.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 17 -->
+        <div class="question-box">
+            <h3>17. Style a button with a box-shadow effect</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+button {
+    background-color: #2980b9;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 18 -->
+        <div class="question-box">
+            <h3>18. Create a CSS rule for a full-screen background image</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+body {
+    height: 100vh;
+    margin: 0;
+    background-image: url('background.jpg');
+    background-size: cover;
+    background-position: center;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 19 -->
+        <div class="question-box">
+            <h3>19. Create a CSS rule to animate a bounce effect</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+.bounce {
+    animation: bounce 1s ease infinite;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 20 -->
+        <div class="question-box">
+            <h3>20. Create a CSS rule to add a hover effect on an image that enlarges it</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+img {
+    transition: transform 0.3s ease;
+}
+
+img:hover {
+    transform: scale(1.2);
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 21 -->
+        <div class="question-box">
+            <h3>21. Create a CSS rule for a rotating image on hover</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+img {
+    transition: transform 0.5s ease;
+}
+
+img:hover {
+    transform: rotate(360deg);
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 22 -->
+        <div class="question-box">
+            <h3>22. Write CSS to create a hover effect with a color change and text underline</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+a {
+    text-decoration: none;
+    color: #3498db;
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    color: #1abc9c;
+    text-decoration: underline;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 23 -->
+        <div class="question-box">
+            <h3>23. Write CSS to create a responsive card layout with text content</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+.card {
+    width: 300px;
+    padding: 20px;
+    background-color: #ecf0f1;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card h3 {
+    margin-top: 0;
+}
+
+@media (max-width: 768px) {
+    .card {
+        width: 100%;
+    }
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 24 -->
+        <div class="question-box">
+            <h3>24. Create a CSS rule to style a form with labels and inputs</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+label {
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 25 -->
+        <div class="question-box">
+            <h3>25. Write CSS to add a background pattern using an image</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+body {
+    background-image: url('pattern.png');
+    background-repeat: repeat;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+
+         <!-- Question 26 -->
+         <div class="question-box">
+            <h3>26. Create a CSS rule to add a box shadow to a div</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+.box {
+    width: 200px;
+    height: 200px;
+    background-color: #f39c12;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 27 -->
+        <div class="question-box">
+            <h3>27. Write CSS to create a simple progress bar</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+.progress-bar {
+    width: 100%;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.progress-bar span {
+    display: block;
+    height: 20px;
+    width: 50%;
+    background-color: #3498db;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 28 -->
+        <div class="question-box">
+            <h3>28. Style a footer with centered text</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+footer {
+    background-color: #34495e;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 29 -->
+        <div class="question-box">
+            <h3>29. Write CSS to create a smooth scroll effect for the page</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+html {
+    scroll-behavior: smooth;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 30 -->
+        <div class="question-box">
+            <h3>30. Write CSS to hide an element using display property</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+.hidden {
+    display: none;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 31 -->
+        <div class="question-box">
+            <h3>31. Create a CSS rule to create a triangle shape</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+.triangle {
+    width: 0;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 100px solid #3498db;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 32 -->
+        <div class="question-box">
+            <h3>32. Style a div to create a rounded card with a shadow</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+.card {
+    width: 250px;
+    padding: 20px;
+    background-color: #ecf0f1;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 33 -->
+        <div class="question-box">
+            <h3>33. Create a CSS rule to add a hover effect that enlarges an image</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+img {
+    transition: transform 0.3s ease;
+}
+
+img:hover {
+    transform: scale(1.1);
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 34 -->
+        <div class="question-box">
+            <h3>34. Write CSS to create a button with a gradient background</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background: linear-gradient(to right, #3498db, #1abc9c);
+    color: white;
+    font-size: 16px;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+        <!-- Question 35 -->
+        <div class="question-box">
+            <h3>35. Create a CSS rule to create a drop-down menu</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre>
+<code>
+nav {
+    position: relative;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav li {
+    position: relative;
+    display: inline-block;
+}
+
+nav li:hover > ul {
+    display: block;
+}
+
+nav ul ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #34495e;
+    min-width: 150px;
+}
+
+nav a {
+    display: block;
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+}
+
+nav a:hover {
+    background-color: #1abc9c;
+}
+</code>
+                </pre>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+<div>
+    <footer>
+        <p>Copyright &copy; Tahir Naseer 2024</p>
+    </footer>
+</div>
