@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Programming Questions</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Python Programming Questions</h1>
+
+        <!-- Question 1 -->
+        <div class="question-box">
+            <h3>1. Write a program to demonstrate different number datatypes in Python.</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre><code>
+# Integer, float, and complex
+integer_num = 10
+float_num = 10.5
+complex_num = 3 + 4j
+
+print("Integer:", integer_num)
+print("Float:", float_num)
+print("Complex:", complex_num)
+                </code></pre>
+            </div>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="question-box">
+            <h3>2. Write a program to perform different arithmetic operations on numbers in Python.</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre><code>
+a, b = 10, 5
+print("Addition:", a + b)
+print("Subtraction:", a - b)
+print("Multiplication:", a * b)
+print("Division:", a / b)
+print("Modulus:", a % b)
+                </code></pre>
+            </div>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="question-box">
+            <h3>3. Write a program to create, concatenate and access substrings from a string.</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre><code>
+# Create and concatenate
+string1 = "Hello"
+string2 = "World"
+concatenated = string1 + " " + string2
+print("Concatenated String:", concatenated)
+
+# Access substring
+substring = concatenated[0:5]
+print("Substring:", substring)
+                </code></pre>
+            </div>
+        </div>
+
+        <!-- Question 4 -->
+        <div class="question-box">
+            <h3>4. Write a Python script to print the current date in the following format.</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre><code>
+from datetime import datetime
+current_date = datetime.now().strftime("%d-%m-%Y")
+print("Current Date:", current_date)
+                </code></pre>
+            </div>
+        </div>
+
+        <!-- Question 5 -->
+        <div class="question-box">
+            <h3>5. Write a Python script to use string methods.</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre><code>
+text = "  Python Programming  "
+print("Original:", text)
+print("Lower:", text.lower())
+print("Upper:", text.upper())
+print("Strip:", text.strip())
+print("Replace:", text.replace("Python", "Java"))
+                </code></pre>
+            </div>
+        </div>
+
+        <!-- Question 6 -->
+        <div class="question-box">
+            <h3>6. Write a Python program to create, append and remove lists in Python.</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre><code>
+# Working with lists
+my_list = [1, 2, 3]
+my_list.append(4)
+my_list.remove(2)
+print("Updated List:", my_list)
+                </code></pre>
+            </div>
+        </div>
+
+        <!-- Question 7 -->
+        <div class="question-box">
+            <h3>7. Write a program to demonstrate working with tuples in Python.</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre><code>
+my_tuple = (1, 2, 3, 4, 5)
+print("Tuple Elements:", my_tuple)
+print("Access Element:", my_tuple[1])
+                </code></pre>
+            </div>
+        </div>
+
+        <!-- Question 8 -->
+        <div class="question-box">
+            <h3>8. Write a program to demonstrate working with dictionaries in Python.</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre><code>
+# Working with dictionaries
+my_dict = {"name": "Alice", "age": 25}
+print("Original Dictionary:", my_dict)
+
+# Add and remove elements
+my_dict["city"] = "New York"
+del my_dict["age"]
+print("Updated Dictionary:", my_dict)
+                </code></pre>
+            </div>
+        </div>
+
+         <!-- Question 9 -->
+         <div class="question-box">
+            <h3>9. Write a program to check whether a number is even or odd using if condition.</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre><code>
+number = int(input("Enter a number: "))
+if number % 2 == 0:
+    print(f"{number} is even.")
+else:
+    print(f"{number} is odd.")
+                </code></pre>
+            </div>
+        </div>
+
+        <!-- Question 10 -->
+        <div class="question-box">
+            <h3>10. Write a program to demonstrate a for loop.</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre><code>
+for i in range(1, 6):
+    print(f"Iteration {i}")
+                </code></pre>
+            </div>
+        </div>
+
+        <!-- Question 11 -->
+        <div class="question-box">
+            <h3>11. Write a program to demonstrate a while loop.</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre><code>
+counter = 1
+while counter <= 5:
+    print(f"Counter: {counter}")
+    counter += 1
+                </code></pre>
+            </div>
+        </div>
+
+        <!-- Question 12 -->
+        <div class="question-box">
+            <h3>12. Write a program to display prime numbers between 50 to 60.</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre><code>
+for num in range(50, 61):
+    is_prime = True
+    for i in range(2, int(num**0.5) + 1):
+        if num % i == 0:
+            is_prime = False
+            break
+    if is_prime:
+        print(num)
+                </code></pre>
+            </div>
+        </div>
+
+        <!-- Question 13 -->
+        <div class="question-box">
+            <h3>13. Write a program to display the Fibonacci series.</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre><code>
+n = 10
+a, b = 0, 1
+for _ in range(n):
+    print(a, end=" ")
+    a, b = b, a + b
+                </code></pre>
+            </div>
+        </div>
+
+        <!-- Question 14 -->
+        <div class="question-box">
+            <h3>14. Write a program to display Armstrong numbers.</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre><code>
+for num in range(100, 1000):
+    digits = list(map(int, str(num)))
+    if sum(d**3 for d in digits) == num:
+        print(num)
+                </code></pre>
+            </div>
+        </div>
+
+        <!-- Question 15 -->
+        <div class="question-box">
+            <h3>15. Write a program to display the address of variables.</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre><code>
+x = 10
+print(f"Address of x: {id(x)}")
+                </code></pre>
+            </div>
+        </div>
+
+        <!-- Question 16 -->
+        <div class="question-box">
+            <h3>16. Write a program to implement functions in Python.</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre><code>
+def greet(name):
+    print(f"Hello, {name}!")
+
+greet("Alice")
+                </code></pre>
+            </div>
+        </div>
+
+        <!-- Question 17 -->
+        <div class="question-box">
+            <h3>17. Function call with tuple and dictionary.</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre><code>
+def func(a, b, c):
+    print(a, b, c)
+
+args = (1, 2, 3)
+kwargs = {"a": 1, "b": 2, "c": 3}
+
+func(*args)
+func(**kwargs)
+                </code></pre>
+            </div>
+        </div>
+
+        <!-- Question 18 -->
+        <div class="question-box">
+            <h3>18. Write a program to implement modules.</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre><code>
+# Create a module `mymodule.py` with a function
+def add(a, b):
+    return a + b
+
+# Import and use the module
+import mymodule
+print(mymodule.add(5, 3))
+                </code></pre>
+            </div>
+        </div>
+
+        <!-- Question 19 -->
+        <div class="question-box">
+            <h3>19. Write a program to implement ladders and snake game.</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre><code>
+# Ladders and Snakes implementation
+# Basic logic: positions affected by ladders/snakes
+ladders = {3: 22, 5: 8, 11: 26, 20: 29}
+snakes = {17: 4, 19: 7, 21: 9, 27: 1}
+
+position = 0
+while position < 30:
+    dice = int(input("Roll the dice (1-6): "))
+    position += dice
+    position = ladders.get(position, position)
+    position = snakes.get(position, position)
+    print(f"Current Position: {position}")
+                </code></pre>
+            </div>
+        </div>
+
+        <!-- Question 20 -->
+        <div class="question-box">
+            <h3>20. Write a program to implement the dir function in modules.</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre><code>
+import math
+print(dir(math))
+                </code></pre>
+            </div>
+        </div>
+
+        <!-- Question 21 -->
+        <div class="question-box">
+            <h3>21. Write a program to explore the math module.</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre><code>
+import math
+print("Square root of 16:", math.sqrt(16))
+print("Factorial of 5:", math.factorial(5))
+                </code></pre>
+            </div>
+        </div>
+
+        <!-- Question 22 -->
+        <div class="question-box">
+            <h3>22. Write a program to explore the datetime module.</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre><code>
+from datetime import datetime
+now = datetime.now()
+print("Current DateTime:", now)
+                </code></pre>
+            </div>
+        </div>
+
+        <!-- Question 23 -->
+        <div class="question-box">
+            <h3>23. Write a program to explore lambda functions.</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre><code>
+add = lambda x, y: x + y
+print("Addition:", add(5, 3))
+                </code></pre>
+            </div>
+        </div>
+
+        <!-- Question 24 -->
+        <div class="question-box">
+            <h3>24. Write a program to implement linear search.</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre><code>
+def linear_search(arr, x):
+    for i in range(len(arr)):if arr[i] == x:
+    return i
+return -1
+
+array = [10, 20, 30, 40, 50]
+target = 30
+result = linear_search(array, target)
+
+if result != -1:
+print(f"Element found at index {result}")
+else:
+print("Element not found")
+        </code></pre>
+    </div>
+</div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
+<div>
+    <footer>
+        <p>Copyright &copy; Tahir Naseer 2024</p>
+    </footer>
+</div>
