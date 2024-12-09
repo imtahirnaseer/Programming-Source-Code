@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Programming Questions</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Java Programming Questions</h1>
+
+        <!-- Question 1 -->
+        <div class="question-box">
+            <h3>1. Write a Java program to check whether a number is even or odd</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre><code>
+public class EvenOdd {
+    public static void checkEvenOdd(int number) {
+        if (number % 2 == 0) {
+            System.out.println(number + " is even.");
+        } else {
+            System.out.println(number + " is odd.");
+        }
+    }
+
+    public static void main(String[] args) {
+        checkEvenOdd(7);
+    }
+}
+                </code></pre>
+            </div>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="question-box">
+            <h3>2. Write a Java program to calculate the factorial of a number</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre><code>
+public class Factorial {
+    public static int factorial(int n) {
+        if (n == 0 || n == 1) {
+            return 1;
+        }
+        return n * factorial(n - 1);
+    }
+
+    public static void main(String[] args) {
+        System.out.println(factorial(5));
+    }
+}
+                </code></pre>
+            </div>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="question-box">
+            <h3>3. Create a Java program to reverse a number</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre><code>
+public class ReverseNumber {
+    public static void reverseNumber(int num) {
+        int reversed = 0;
+        while (num != 0) {
+            reversed = reversed * 10 + num % 10;
+            num /= 10;
+        }
+        System.out.println("Reversed Number: " + reversed);
+    }
+
+    public static void main(String[] args) {
+        reverseNumber(12345);
+    }
+}
+                </code></pre>
+            </div>
+        </div>
+
+        <!-- Question 4 -->
+        <div class="question-box">
+            <h3>4. Write a Java program to find the largest element in an array</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre><code>
+public class LargestElement {
+    public static int findLargest(int[] arr) {
+        int largest = arr[0];
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] > largest) {
+                largest = arr[i];
+            }
+        }
+        return largest;
+    }
+
+    public static void main(String[] args) {
+        int[] numbers = {10, 20, 5, 40, 15};
+        System.out.println("Largest Element: " + findLargest(numbers));
+    }
+}
+                </code></pre>
+            </div>
+        </div>
+
+        <!-- Question 5 -->
+        <div class="question-box">
+            <h3>5. Create a Java program to check if a number is prime</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre><code>
+public class PrimeCheck {
+    public static boolean isPrime(int n) {
+        if (n <= 1) {
+            return false;
+        }
+        for (int i = 2; i <= Math.sqrt(n); i++) {
+            if (n % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(isPrime(29));
+    }
+}
+                </code></pre>
+            </div>
+        </div>
+
+        <!-- Question 6 -->
+        <div class="question-box">
+            <h3>6. Write a Java program to demonstrate the usage of constructor overloading</h3>
+            <div class="code-container">
+                <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                <pre><code>
+public class ConstructorOverloading {
+    private int x;
+    private int y;
+
+    public ConstructorOverloading() {
+        this(0, 0);
+    }
+
+    public ConstructorOverloading(int x) {
+        this(x, 0);
+    }
+
+    public ConstructorOverloading(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    public void display() {
+        System.out.println("x: " + x + ", y: " + y);
+    }
+
+    public static void main(String[] args) {
+        ConstructorOverloading obj1 = new ConstructorOverloading();
+        ConstructorOverloading obj2 = new ConstructorOverloading(5);
+        ConstructorOverloading obj3 = new ConstructorOverloading(5, 10);
+
+        obj1.display();
+        obj2.display();
+        obj3.display();
+    }
+}
+                </code></pre>
+            </div>
+        </div>
+
+               <!-- Question 7 -->
+               <div class="question-box">
+                <h3>7. Write a Java program to demonstrate the usage of keywords (Static, Super, Final, this)</h3>
+                <div class="code-container">
+                    <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                    <pre><code>
+    class KeywordDemo {
+        static String staticVar = "I am static";
+        final int finalVar = 42;
+    
+        void showThis() {
+            System.out.println("This refers to: " + this);
+        }
+    }
+    
+    class Parent {
+        void display() {
+            System.out.println("This is the parent class.");
+        }
+    }
+    
+    class Child extends Parent {
+        void display() {
+            super.display();
+            System.out.println("This is the child class.");
+        }
+    }
+    
+    public class KeywordUsage {
+        public static void main(String[] args) {
+            KeywordDemo obj = new KeywordDemo();
+            System.out.println(KeywordDemo.staticVar);
+            obj.showThis();
+    
+            Child child = new Child();
+            child.display();
+        }
+    }
+                    </code></pre>
+                </div>
+            </div>
+    
+            <!-- Question 8 -->
+            <div class="question-box">
+                <h3>8. Write a program to demonstrate exception handling</h3>
+                <div class="code-container">
+                    <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                    <pre><code>
+    public class ExceptionHandlingDemo {
+        public static void main(String[] args) {
+            try {
+                int result = 10 / 0;
+                System.out.println("Result: " + result);
+            } catch (ArithmeticException e) {
+                System.out.println("Caught an exception: " + e.getMessage());
+            } finally {
+                System.out.println("Finally block executed.");
+            }
+        }
+    }
+                    </code></pre>
+                </div>
+            </div>
+    
+            <!-- Question 9 -->
+            <div class="question-box">
+                <h3>9. Write a program to demonstrate the concept of single thread creation and multithread creation</h3>
+                <div class="code-container">
+                    <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                    <pre><code>
+    class SingleThread extends Thread {
+        public void run() {
+            System.out.println("Single thread is running.");
+        }
+    }
+    
+    class MultiThread implements Runnable {
+        public void run() {
+            System.out.println("Multi-thread is running.");
+        }
+    }
+    
+    public class ThreadDemo {
+        public static void main(String[] args) {
+            SingleThread single = new SingleThread();
+            single.start();
+    
+            Thread multi = new Thread(new MultiThread());
+            multi.start();
+        }
+    }
+                    </code></pre>
+                </div>
+            </div>
+    
+            <!-- Question 10 -->
+            <div class="question-box">
+                <h3>10. Write a Java program to demonstrate the usage of String Classes</h3>
+                <div class="code-container">
+                    <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                    <pre><code>
+    public class StringDemo {
+        public static void main(String[] args) {
+            String str = "Hello, World!";
+            System.out.println("Length: " + str.length());
+            System.out.println("Uppercase: " + str.toUpperCase());
+            System.out.println("Substring: " + str.substring(7));
+            System.out.println("Character at index 4: " + str.charAt(4));
+        }
+    }
+                    </code></pre>
+                </div>
+            </div>
+    
+            <!-- Question 11 -->
+            <div class="question-box">
+                <h3>11. Write a program to demonstrate the concept of several collection classes of Java</h3>
+                <div class="code-container">
+                    <button class="copy-btn"><i class="fas fa-copy"></i> Copy code</button>
+                    <pre><code>
+    import java.util.*;
+    
+    public class CollectionDemo {
+        public static void main(String[] args) {
+            List<String> list = new ArrayList<>();
+            list.add("Apple");
+            list.add("Banana");
+            list.add("Cherry");
+            System.out.println("List: " + list);
+    
+            Set<String> set = new HashSet<>(list);
+            set.add("Date");
+            System.out.println("Set: " + set);
+    
+            Map<Integer, String> map = new HashMap<>();
+            map.put(1, "One");
+            map.put(2, "Two");
+            System.out.println("Map: " + map);
+        }
+    }
+                    </code></pre>
+                </div>
+            </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+<div>
+    <footer>
+        <p>Copyright &copy; Tahir Naseer 2024</p>
+    </footer>
+</div>
